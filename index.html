@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<html>
+<head>
+  <title>Oliver Perrin's Portfolio</title>
+  <link rel="stylesheet" href="app.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+
+  <header>
+    <div class="header-left">
+      <button id="theme-toggle" class="theme-toggle">
+        <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="5"></circle>
+          <line x1="12" y1="1" x2="12" y2="3"></line>
+          <line x1="12" y1="21" x2="12" y2="23"></line>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+          <line x1="1" y1="12" x2="3" y2="12"></line>
+          <line x1="21" y1="12" x2="23" y2="12"></line>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+        <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+      </button>
+      <a href="#" class="nav-link refresh-tab">© Code by Oliver</a>
+    </div>
+    <img src="Splash.jpg" alt="Banner Image" class="banner-image">
+    <nav id="main-nav">
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="scrolling-text-container">
+      <div class="scrolling-text">
+        <span>Oliver Perrin — Oliver Perrin — Oliver Perrin — Oliver Perrin — </span>
+        <span>Oliver Perrin — Oliver Perrin — Oliver Perrin — Oliver Perrin — </span>
+      </div>
+    </div>
+  </header>
+
+  <div class="location-indicator">
+    <div class="location-content">
+      <p>Located<br>in Boone<br>North Carolina</p>
+      <div class="globe-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="2" y1="12" x2="22" y2="12"></line>
+          <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <div id="floating-menu" class="hidden">
+    <div class="menu-button">
+      <div class="circle">
+        <div class="line"></div>
+        <div class="line"></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="side-panel" class="hidden">
+    <nav>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <main>
+    <section id="home">
+      <h1>Welcome to My Portfolio</h1>
+      <p>Hello, I'm Oliver Perrin, a passionate developer and designer. I create innovative solutions and captivating user experiences.</p>
+      <a href="#work" class="cta-button">View My Work</a>
+    </section>
+
+    <section id="work">
+      <h2>My Projects</h2>
+      <div class="project-grid">
+        <div class="project-card">
+          <img src="https://via.placeholder.com/300x200" alt="Project 1">
+          <h3>Project 1</h3>
+          <p>A brief description of Project 1 and its key features.</p>
+          <a href="#" class="project-button">Learn More</a>
+        </div>
+        <div class="project-card">
+          <img src="https://via.placeholder.com/300x200" alt="Project 2">
+          <h3>Project 2</h3>
+          <p>An overview of Project 2 and its main objectives.</p>
+          <a href="#" class="project-button">Learn More</a>
+        </div>
+        <div class="project-card">
+          <img src="https://via.placeholder.com/300x200" alt="Project 3">
+          <h3>Project 3</h3>
+          <p>Highlighting the unique aspects of Project 3 and its impact.</p>
+          <a href="#" class="project-button">Learn More</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <h2>About Me</h2>
+      <img src="https://via.placeholder.com/200x200" alt="Oliver Perrin" class="profile-image">
+      <p>I'm a dedicated developer with a passion for creating elegant and efficient solutions. With expertise in various programming languages and frameworks, I strive to deliver high-quality work that exceeds expectations.</p>
+      <p>My journey in the world of technology began [your background]. Since then, I've worked on numerous projects, constantly expanding my skills and embracing new challenges.</p>
+      <a href="#contact" class="cta-button">Get in Touch</a>
+    </section>
+
+    <section id="contact">
+      <h2>Contact Me</h2>
+      <p style="text-align: center;">I'm always open to new opportunities and collaborations. Feel free to reach out!</p>
+      <form>
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Your Email" required>
+        <textarea placeholder="Your Message" required></textarea>
+        <button type="submit" class="submit-button">Send Message</button>
+      </form>
+    </section>
+  </main>
+
+  <div class="arrow-indicator">↓</div>
+
+  <div class="job-title">
+    <h2>Freelance</h2>
+    <h2>Designer & Developer</h2>
+  </div>
+
+  <footer>
+    <p>Copyright © 2023 Oliver Perrin</p>
+  </footer>
+
+</body>
+</html>
