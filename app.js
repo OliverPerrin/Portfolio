@@ -1,183 +1,267 @@
-// This code will handle the menu navigation
+// Initialize Lenis smooth scrolling
+        const lenis = new Lenis({
+            duration: 1.2,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            direction: 'vertical',
+            gestureDirection: 'vertical',
+            smooth: true,
+            mouseMultiplier: 1,
+            smoothTouch: false,
+            touchMultiplier: 2,
+            infinite: false,
+        });
 
-document.addEventListener('DOMContentLoaded', () => {
-  const navLinks = document.querySelector('.nav-links');
-  const menuButton = document.querySelector('.menu-button');
-  const sections = document.querySelectorAll('section');
-  const refreshTab = document.querySelector('.refresh-tab');
-  const mainNav = document.getElementById('main-nav');
-  const floatingMenu = document.getElementById('floating-menu');
-  const sidePanel = document.getElementById('side-panel');
+        function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+        }
 
-  // Initialize Lenis
-  const lenis = new Lenis({
-    duration: 1.2,
-    easing: (t) => Math.min(1, 1 - Math.pow(1 - t, 4)), // https://easings.net
-    direction: 'vertical',
-    gestureDirection: 'vertical',
-    smooth: true,
-    mouseMultiplier: 1,
-    smoothTouch: false,
-    touchMultiplier: 2,
-    infinite: false,
-  });
+        requestAnimationFrame(raf);
 
-  function raf(time) {
-    lenis.raf(time);
-    requestAnimationFrame(raf);
-  }
+        // GSAP ScrollTrigger setup
+        gsap.registerPlugin(ScrollTrigger);
 
-  requestAnimationFrame(raf);
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = this.getAttribute('href');
+                lenis.scrollTo(target);
+            });
+        });
 
-  refreshTab.addEventListener('click', (event) => {
-    event.preventDefault(); // Prevent the default behavior of the anchor element (navigation)
-    location.reload(); // Reload the page
-  });
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+        let isDark = true;
 
-  menuButton.addEventListener('click', () => {
-    sidePanel.classList.toggle('hidden');
-    menuButton.classList.toggle('open');
-  });
+        themeToggle.addEventListener('click', () => {
+            isDark = !isDark;
+            body.classList.toggle('light-theme');
+            
+            // Update theme toggle icon
+            const icon = themeToggle.querySelector('svg');
+            if (isDark) {
+                icon.innerHTML = `
+                    <circle cx="12" cy="12" r="5"></circle>
+                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                `;
+            } else {
+                icon.innerHTML = `<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>`;
+            }
+        });
 
-  const closeSidePanel = () => {
-    sidePanel.classList.add('hidden');
-    menuButton.classList.remove('open');
-  };
+        // Scroll animations
+        gsap.utils.toArray('.fade-in').forEach((element) => {
+            gsap.fromTo(element, {
+                opacity: 0,
+                y: 30
+            }, {
+                opacity: 1,
+                y: 0,
+                duration: 0.8,
+                ease: "power2.out",
+                scrollTrigger: {
+                    trigger: element,
+                    start: "top 85%",
+                    toggleActions: "play none none reverse"
+                }
+            });
+        });
 
-  // Apply smooth scrolling to all anchor links using Lenis
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-      e.preventDefault();
-      const target = this.getAttribute('href');
-      lenis.scrollTo(target);
-    });
-  });
+        gsap.utils.toArray('.fade-in-up').forEach((element) => {
+            gsap.fromTo(element, {
+                opacity: 0,
+                y: 50
+            }, {
+                opacity: 1,
+                y: 0,
+                duration: 0.8,
+                ease: "power2.out",
+                scrollTrigger: {
+                    trigger: element,
+                    start: "top 85%",
+                    toggleActions: "play none none reverse"
+                }
+            });
+        });
 
-  // This code will handle the menu navigation
+        gsap.utils.toArray('.fade-in-left').forEach((element) => {
+            gsap.fromTo(element, {
+                opacity: 0,
+                x: -50
+            }, {
+                opacity: 1,
+                x: 0,
+                duration: 0.8,
+                ease: "power2.out",
+                scrollTrigger: {
+                    trigger: element,
+                    start: "top 85%",
+                    toggleActions: "play none none reverse"
+                }
+            });
+        });
 
-document.addEventListener('DOMContentLoaded', () => {
-  const navLinks = document.querySelector('.nav-links');
-  const menuButton = document.querySelector('.menu-button');
-  const sections = document.querySelectorAll('section');
-  const refreshTab = document.querySelector('.refresh-tab');
-  const mainNav = document.getElementById('main-nav');
-  const floatingMenu = document.getElementById('floating-menu');
-  const sidePanel = document.getElementById('side-panel');
+        gsap.utils.toArray('.fade-in-right').forEach((element) => {
+            gsap.fromTo(element, {
+                opacity: 0,
+                x: 50
+            }, {
+                opacity: 1,
+                x: 0,
+                duration: 0.8,
+                ease: "power2.out",
+                scrollTrigger: {
+                    trigger: element,
+                    start: "top 85%",
+                    toggleActions: "play none none reverse"
+                }
+            });
+        });
 
-  // Initialize Lenis
-  const lenis = new Lenis({
-    duration: 1.2,
-    easing: (t) => Math.min(1, 1 - Math.pow(1 - t, 4)), // https://easings.net
-    direction: 'vertical',
-    gestureDirection: 'vertical',
-    smooth: true,
-    mouseMultiplier: 1,
-    smoothTouch: false,
-    touchMultiplier: 2,
-    infinite: false,
-  });
+        // Parallax effect for hero background
+        gsap.to(".hero-background", {
+            yPercent: -50,
+            ease: "none",
+            scrollTrigger: {
+                trigger: ".hero",
+                start: "top bottom",
+                end: "bottom top",
+                scrub: true
+            }
+        });
 
-  function raf(time) {
-    lenis.raf(time);
-    requestAnimationFrame(raf);
-  }
+        // Navigation background change on scroll
+        ScrollTrigger.create({
+            start: "top -80",
+            onUpdate: (self) => {
+                const nav = document.querySelector('.nav-container');
+                if (self.direction === 1) {
+                    nav.style.transform = 'translateY(-100%)';
+                } else {
+                    nav.style.transform = 'translateY(0%)';
+                }
+            }
+        });
 
-  requestAnimationFrame(raf);
+        // Contact form submission
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const name = formData.get('name');
+            const email = formData.get('email');
+            const subject = formData.get('subject');
+            const message = formData.get('message');
+            
+            // Simulate form submission
+            const submitBtn = this.querySelector('.submit-btn');
+            const originalText = submitBtn.textContent;
+            
+            submitBtn.textContent = 'Sending...';
+            submitBtn.disabled = true;
+            
+            setTimeout(() => {
+                submitBtn.textContent = 'Message Sent!';
+                setTimeout(() => {
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
+                    this.reset();
+                }, 2000);
+            }, 1000);
+        });
 
-  refreshTab.addEventListener('click', (event) => {
-    event.preventDefault(); // Prevent the default behavior of the anchor element (navigation)
-    location.reload(); // Reload the page
-  });
+        // Cursor animation (optional enhancement)
+        const cursor = document.createElement('div');
+        cursor.className = 'cursor';
+        cursor.style.cssText = `
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.1s ease;
+            display: none;
+        `;
+        document.body.appendChild(cursor);
 
-  menuButton.addEventListener('click', () => {
-    sidePanel.classList.toggle('hidden');
-    menuButton.classList.toggle('open');
-  });
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.display = 'block';
+            cursor.style.left = e.clientX - 10 + 'px';
+            cursor.style.top = e.clientY - 10 + 'px';
+        });
 
-  const closeSidePanel = () => {
-    sidePanel.classList.add('hidden');
-    menuButton.classList.remove('open');
-  };
+        document.addEventListener('mouseleave', () => {
+            cursor.style.display = 'none';
+        });
 
-  // Apply smooth scrolling to all anchor links using Lenis
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-      e.preventDefault();
-      const target = this.getAttribute('href');
-      lenis.scrollTo(target);
-    });
-  });
+        // Add hover effects for interactive elements
+        document.querySelectorAll('a, button, .project-card, .skill-category, .experience-item').forEach(element => {
+            element.addEventListener('mouseenter', () => {
+                cursor.style.transform = 'scale(1.5)';
+                cursor.style.background = 'rgba(102, 126, 234, 0.5)';
+            });
+            
+            element.addEventListener('mouseleave', () => {
+                cursor.style.transform = 'scale(1)';
+                cursor.style.background = 'rgba(255, 255, 255, 0.3)';
+            });
+        });
 
-  navLinks.addEventListener('click', (event) => {
-    const target = event.target;
+        // Typing animation for hero title
+        const heroTitle = document.querySelector('.hero-title');
+        const text = heroTitle.textContent;
+        heroTitle.textContent = '';
+        
+        let i = 0;
+        function typeWriter() {
+            if (i < text.length) {
+                heroTitle.textContent += text.charAt(i);
+                i++;
+                setTimeout(typeWriter, 100);
+            }
+        }
+        
+        // Start typing animation after page load
+        window.addEventListener('load', () => {
+            setTimeout(typeWriter, 1000);
+        });
 
-    if (target.tagName === 'A') {
-      event.preventDefault();
-      const sectionId = target.getAttribute('href');
-      lenis.scrollTo(sectionId);
-      closeSidePanel();
-    }
-  });
+        // Stats counter animation
+        const stats = document.querySelectorAll('.stat-number');
+        
+        function animateStats() {
+            stats.forEach(stat => {
+                const target = parseInt(stat.textContent);
+                let count = 0;
+                const increment = target / 50;
+                
+                const timer = setInterval(() => {
+                    count += increment;
+                    if (count >= target) {
+                        count = target;
+                        clearInterval(timer);
+                    }
+                    stat.textContent = Math.floor(count) + (stat.textContent.includes('+') ? '+' : '');
+                }, 50);
+            });
+        }
 
-  const sidePanelLinks = sidePanel.querySelectorAll('.nav-links a');
-  sidePanelLinks.forEach(link => {
-    link.addEventListener('click', closeSidePanel);
-  });
-
-  // Close side panel when clicking outside
-  document.addEventListener('click', (event) => {
-    if (!sidePanel.contains(event.target) && !menuButton.contains(event.target)) {
-      closeSidePanel();
-    }
-  });
-
-  // Theme switcher
-  const toggleTheme = document.getElementById('theme-toggle');
-  const currentTheme = localStorage.getItem('theme');
-
-  // Function to set the theme
-  const setTheme = (theme) => {
-    if (theme === 'dark-mode') {
-      document.body.classList.add('dark-mode');
-    } else {
-      document.body.classList.remove('dark-mode');
-    }
-    localStorage.setItem('theme', theme);
-  };
-
-  // Set initial theme
-  if (currentTheme) {
-    setTheme(currentTheme);
-  }
-
-  // Toggle theme on button click
-  toggleTheme.addEventListener('click', () => {
-    if (document.body.classList.contains('dark-mode')) {
-      setTheme('light-mode');
-    } else {
-      setTheme('dark-mode');
-    }
-  });
-
-  // Scrolling text direction change using Lenis
-  const scrollingTextSpans = document.querySelectorAll('.scrolling-text span');
-  let lastScrollDirection = 0; // 0 for initial, 1 for down, -1 for up
-
-  function setScrollDirection(direction) {
-    const animation = direction === 'down' ? 'scroll-right 50s linear infinite' : 'scroll-left 50s linear infinite';
-    scrollingTextSpans.forEach(span => {
-      span.style.animation = animation;
-    });
-  }
-
-  lenis.on('scroll', ({ direction }) => {
-    if (direction !== lastScrollDirection) {
-      setScrollDirection(direction === 1 ? 'down' : 'up');
-      lastScrollDirection = direction;
-    }
-  });
-
-  // Initialize scroll direction
-  setScrollDirection('up'); // Default to left (up) initially
-});
-});
+        // Trigger stats animation when section is visible
+        ScrollTrigger.create({
+            trigger: '.stats-grid',
+            start: 'top 80%',
+            onEnter: animateStats,
+            once: true
+        });
