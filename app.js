@@ -9,6 +9,26 @@ document.addEventListener('DOMContentLoaded', () => {
   const floatingMenu = document.getElementById('floating-menu');
   const sidePanel = document.getElementById('side-panel');
 
+  // Initialize Lenis
+  const lenis = new Lenis({
+    duration: 1.2,
+    easing: (t) => Math.min(1, 1 - Math.pow(1 - t, 4)), // https://easings.net
+    direction: 'vertical',
+    gestureDirection: 'vertical',
+    smooth: true,
+    mouseMultiplier: 1,
+    smoothTouch: false,
+    touchMultiplier: 2,
+    infinite: false,
+  });
+
+  function raf(time) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+  }
+
+  requestAnimationFrame(raf);
+
   refreshTab.addEventListener('click', (event) => {
     event.preventDefault(); // Prevent the default behavior of the anchor element (navigation)
     location.reload(); // Reload the page
@@ -24,38 +44,67 @@ document.addEventListener('DOMContentLoaded', () => {
     menuButton.classList.remove('open');
   };
 
-  // Smooth scrolling function
-  function smoothScroll(target, duration) {
-    const targetElement = document.querySelector(target);
-    const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
-    const startPosition = window.pageYOffset;
-    const distance = targetPosition - startPosition;
-    let startTime = null;
-
-    function animation(currentTime) {
-      if (startTime === null) startTime = currentTime;
-      const timeElapsed = currentTime - startTime;
-      const run = ease(timeElapsed, startPosition, distance, duration);
-      window.scrollTo(0, run);
-      if (timeElapsed < duration) requestAnimationFrame(animation);
-    }
-
-    function ease(t, b, c, d) {
-      t /= d / 2;
-      if (t < 1) return c / 2 * t * t + b;
-      t--;
-      return -c / 2 * (t * (t - 2) - 1) + b;
-    }
-
-    requestAnimationFrame(animation);
-  }
-
-  // Apply smooth scrolling to all anchor links
+  // Apply smooth scrolling to all anchor links using Lenis
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
       e.preventDefault();
       const target = this.getAttribute('href');
-      smoothScroll(target, 1000); // 1000ms duration
+      lenis.scrollTo(target);
+    });
+  });
+
+  // This code will handle the menu navigation
+
+document.addEventListener('DOMContentLoaded', () => {
+  const navLinks = document.querySelector('.nav-links');
+  const menuButton = document.querySelector('.menu-button');
+  const sections = document.querySelectorAll('section');
+  const refreshTab = document.querySelector('.refresh-tab');
+  const mainNav = document.getElementById('main-nav');
+  const floatingMenu = document.getElementById('floating-menu');
+  const sidePanel = document.getElementById('side-panel');
+
+  // Initialize Lenis
+  const lenis = new Lenis({
+    duration: 1.2,
+    easing: (t) => Math.min(1, 1 - Math.pow(1 - t, 4)), // https://easings.net
+    direction: 'vertical',
+    gestureDirection: 'vertical',
+    smooth: true,
+    mouseMultiplier: 1,
+    smoothTouch: false,
+    touchMultiplier: 2,
+    infinite: false,
+  });
+
+  function raf(time) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+  }
+
+  requestAnimationFrame(raf);
+
+  refreshTab.addEventListener('click', (event) => {
+    event.preventDefault(); // Prevent the default behavior of the anchor element (navigation)
+    location.reload(); // Reload the page
+  });
+
+  menuButton.addEventListener('click', () => {
+    sidePanel.classList.toggle('hidden');
+    menuButton.classList.toggle('open');
+  });
+
+  const closeSidePanel = () => {
+    sidePanel.classList.add('hidden');
+    menuButton.classList.remove('open');
+  };
+
+  // Apply smooth scrolling to all anchor links using Lenis
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const target = this.getAttribute('href');
+      lenis.scrollTo(target);
     });
   });
 
@@ -65,38 +114,10 @@ document.addEventListener('DOMContentLoaded', () => {
     if (target.tagName === 'A') {
       event.preventDefault();
       const sectionId = target.getAttribute('href');
-      smoothScroll(sectionId, 1000);
+      lenis.scrollTo(sectionId);
       closeSidePanel();
     }
   });
-
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 100) {
-      mainNav.classList.add('hidden');
-      floatingMenu.classList.remove('hidden');
-    } else {
-      mainNav.classList.remove('hidden');
-      floatingMenu.classList.add('hidden');
-      closeSidePanel();
-    }
-  });
-
-  // Prevent automatic scrolling on page load
-  if (window.location.hash) {
-    window.scrollTo(0, 0);
-    setTimeout(() => {
-      const targetSection = document.querySelector(window.location.hash);
-      if (targetSection) {
-        targetSection.scrollIntoView({ behavior: 'smooth' });
-      }
-    }, 100);
-  }
-
-  // Scrolling text animation
-  // const scrollingText = document.querySelector('.scrolling-text');
-  // scrollingText.addEventListener('animationiteration', () => {
-  //   scrollingText.style.transform = 'translateX(0)';
-  // });
 
   const sidePanelLinks = sidePanel.querySelectorAll('.nav-links a');
   sidePanelLinks.forEach(link => {
@@ -138,39 +159,25 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Scrolling text direction change
+  // Scrolling text direction change using Lenis
   const scrollingTextSpans = document.querySelectorAll('.scrolling-text span');
-  let lastScrollTop = 0;
-  let isScrollingDown = false;
+  let lastScrollDirection = 0; // 0 for initial, 1 for down, -1 for up
 
   function setScrollDirection(direction) {
-    const animation = direction === 'right' ? 'scroll-right' : 'scroll-left';
+    const animation = direction === 'down' ? 'scroll-right 50s linear infinite' : 'scroll-left 50s linear infinite';
     scrollingTextSpans.forEach(span => {
-      span.style.animation = 'none';
-      span.offsetHeight; // Trigger reflow
-      span.style.animation = `${animation} 50s linear infinite`;
+      span.style.animation = animation;
     });
   }
 
-  window.addEventListener('scroll', () => {
-    const st = window.pageYOffset || document.documentElement.scrollTop;
-    
-    if (st > lastScrollTop && !isScrollingDown) {
-      // Started scrolling down
-      isScrollingDown = true;
-      setScrollDirection('right');
-    } else if (st < lastScrollTop && isScrollingDown) {
-      // Started scrolling up
-      isScrollingDown = false;
-      setScrollDirection('left');
+  lenis.on('scroll', ({ direction }) => {
+    if (direction !== lastScrollDirection) {
+      setScrollDirection(direction === 1 ? 'down' : 'up');
+      lastScrollDirection = direction;
     }
-    
-    lastScrollTop = st <= 0 ? 0 : st; // For Mobile or negative scrolling
-  }, false);
+  });
 
   // Initialize scroll direction
-  setScrollDirection('left');
-
-  // ... (rest of the existing code)
+  setScrollDirection('up'); // Default to left (up) initially
 });
-
+});

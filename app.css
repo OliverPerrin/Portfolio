@@ -14,16 +14,12 @@
   font-style: normal;
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
 body {
-  font-family: 'Trebuchet MS', sans-serif;
+  font-family: 'NeueMontreal', sans-serif;
   margin: 0;
   padding: 0;
   line-height: 1.6;
-  color: #333;
+  color: #222; /* Slightly darker grey for better contrast */
 }
 
 header {
@@ -149,14 +145,24 @@ nav {
 }
 
 section {
-  padding: 60px 20px;
+  padding: 80px 20px; /* Increased padding for more breathing room */
   max-width: 1200px;
   margin: 0 auto;
 }
 
 h1, h2 {
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 40px; /* Increased margin for better separation */
+  font-family: 'NeueMontreal', sans-serif;
+  font-weight: bold;
+}
+
+h1 {
+  font-size: 3.5em;
+}
+
+h2 {
+  font-size: 2.5em;
 }
 
 .project-grid {
@@ -166,18 +172,72 @@ h1, h2 {
 }
 
 .project-card {
-  background-color: #f8f8f8;
-  border-radius: 10px;
+  position: relative;
   overflow: hidden;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  display: flex;
-  flex-direction: column;
+  transition: transform 0.3s, box-shadow 0.3s; /* Added box-shadow transition */
+  border-radius: 8px; /* Slightly rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.project-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  transition: opacity 0.3s;
+  z-index: 1;
+}
+
+.project-card:hover {
+  transform: translateY(-5px); /* Lift effect on hover */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+}
+
+.project-card:hover::before {
+  opacity: 1;
+}
+
+.project-card img {
+  transition: transform 0.3s;
+}
+
+.project-card:hover img {
+  transform: scale(1.1);
+}
+
+.project-card h3,
+.project-card p {
+  position: relative;
+  z-index: 2;
+  transition: color 0.3s;
+}
+
+.project-card:hover h3,
+.project-card:hover p {
+  color: #fff;
+}
+
+.project-card .project-button {
+  position: relative;
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.project-card:hover .project-button {
+  opacity: 1;
 }
 
 .project-card img {
   width: 100%;
   height: 200px;
   object-fit: cover;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
 }
 
 .project-card h3, .project-card p {
@@ -210,6 +270,7 @@ h1, h2 {
   height: 200px;
   border-radius: 50%;
   margin: 0 auto 30px;
+  object-fit: cover;
 }
 
 form {
@@ -221,7 +282,7 @@ form {
 
 input, textarea {
   margin-bottom: 20px;
-  padding: 10px;
+  padding: 12px;
   border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 16px;
@@ -235,6 +296,7 @@ footer {
   background-color: #f9f9f9;
   padding: 20px;
   text-align: center;
+  color: #333; /* Ensure footer text is visible in light mode */
 }
 
 .hidden {
@@ -324,7 +386,7 @@ footer {
 .scrolling-text span {
   display: inline-block;
   padding-left: 0%;
-  animation: scroll-left 50s linear infinite; /* Increased duration */
+  animation: scroll-left 30s linear infinite;
 }
 
 .scrolling-text span:nth-child(2) {
@@ -333,19 +395,19 @@ footer {
 
 @keyframes scroll-left {
   0% {
-    transform: translate(0, 0);
+    transform: translateX(0);
   }
   100% {
-    transform: translate(-100%, 0);
+    transform: translateX(-100%);
   }
 }
 
 @keyframes scroll-right {
   0% {
-    transform: translate(-100%, 0);
+    transform: translateX(-100%);
   }
   100% {
-    transform: translate(0, 0);
+    transform: translateX(0);
   }
 }
 
@@ -601,4 +663,168 @@ body.dark-mode .job-title {
 /* Dark mode adjustments if needed */
 body.dark-mode .job-title {
   color: #ffffff;
+}
+
+/* Add hover animations to navigation links */
+.nav-links a {
+  position: relative;
+  transition: color 0.3s;
+}
+
+.nav-links a::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: -5px;
+  left: 0;
+  background-color: #fff;
+  visibility: hidden;
+  transform: scaleX(0);
+  transition: all 0.3s ease-in-out;
+}
+
+.nav-links a:hover {
+  color: #fff;
+}
+
+.nav-links a:hover::before {
+  visibility: visible;
+  transform: scaleX(1);
+}
+
+/* Add hover animations to project buttons */
+.project-button {
+  position: relative;
+  overflow: hidden;
+  transition: color 0.3s;
+}
+
+.project-button::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: -100%;
+  background-color: #000;
+  transition: left 0.3s ease-in-out;
+  z-index: -1;
+}
+
+.project-button:hover {
+  color: #fff;
+}
+
+.project-button:hover::before {
+  left: 0;
+}
+
+/* Styles for Education Section */
+.education-item {
+  margin-bottom: 30px;
+  padding: 20px;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  background-color: #fdfdfd;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.education-item h3 {
+  font-size: 1.8em;
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.education-item p {
+  margin: 5px 0;
+  color: #555;
+}
+
+/* Styles for Experience Section */
+.experience-item {
+  margin-bottom: 30px;
+  padding: 20px;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  background-color: #fdfdfd;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.experience-item h3 {
+  font-size: 1.8em;
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.experience-item p {
+  margin: 5px 0;
+  color: #555;
+}
+
+.experience-item ul {
+  list-style: disc;
+  margin-left: 20px;
+  color: #555;
+}
+
+.experience-item li {
+  margin-bottom: 5px;
+}
+
+/* Styles for Skills Section */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minminmax(250px, 1fr));
+  gap: 30px;
+  margin-top: 20px;
+}
+
+.skill-category {
+  background-color: #fdfdfd;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.skill-category h3 {
+  font-size: 1.5em;
+  margin-top: 0;
+  margin-bottom: 15px;
+  color: #333;
+  text-align: left;
+}
+
+.skill-category ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.skill-category li {
+  margin-bottom: 8px;
+  color: #555;
+  font-size: 1.1em;
+}
+
+/* Dark mode adjustments for new sections */
+body.dark-mode .education-item,
+body.dark-mode .experience-item,
+body.dark-mode .skill-category {
+  background-color: #1a1a1a;
+  border-color: #333;
+  box-shadow: 0 2px 4px rgba(255, 255, 255, 0.05);
+}
+
+body.dark-mode .education-item h3,
+body.dark-mode .education-item p,
+body.dark-mode .experience-item h3,
+body.dark-mode .experience-item p,
+body.dark-mode .experience-item ul,
+body.dark-mode .experience-item li,
+body.dark-mode .skill-category h3,
+body.dark-mode .skill-category li {
+  color: #eee;
 }

@@ -5,6 +5,7 @@
   <title>Oliver Perrin's Portfolio</title>
   <link rel="stylesheet" href="app.css">
   <script src="app.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.27/dist/lenis.min.js"></script>
 </head>
 <body>
 
@@ -34,6 +35,9 @@
         <li><a href="#home">Home</a></li>
         <li><a href="#work">Work</a></li>
         <li><a href="#about">About</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#skills">Skills</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
@@ -52,7 +56,7 @@
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <circle cx="12" cy="12" r="10"></circle>
           <line x1="2" y1="12" x2="22" y2="12"></line>
-          <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+          <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1 4-10 15.3 15.3 0 0 1 4-10z"></path>
         </svg>
       </div>
     </div>
@@ -73,6 +77,9 @@
         <li><a href="#home">Home</a></li>
         <li><a href="#work">Work</a></li>
         <li><a href="#about">About</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#skills">Skills</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
@@ -89,21 +96,21 @@
       <h2>My Projects</h2>
       <div class="project-grid">
         <div class="project-card">
-          <img src="https://via.placeholder.com/300x200" alt="Project 1">
-          <h3>Project 1</h3>
-          <p>A brief description of Project 1 and its key features.</p>
-          <a href="#" class="project-button">Learn More</a>
+          <img src="https://source.unsplash.com/random/300x200/?code,programming" alt="MultiSport Web App">
+          <h3>MultiSport Web App</h3>
+          <p>Engineered a comprehensive multi-sport web application using HTML, CSS, JavaScript, and Python. Managed projects with GitHub, deployed the application using Netlify, Tailwind, node.js, React, and Alembic. Integrated various APIs for event tickets, sports schedules, and results to provide real-time information.</p>
+          <a href="https://github.com/OliverPerrin/MultiSportApp" class="project-button" target="_blank">View on GitHub</a>
         </div>
         <div class="project-card">
-          <img src="https://via.placeholder.com/300x200" alt="Project 2">
-          <h3>Project 2</h3>
-          <p>An overview of Project 2 and its main objectives.</p>
-          <a href="#" class="project-button">Learn More</a>
+          <img src="https://source.unsplash.com/random/300x200/?web,design" alt="Personal Portfolio Website">
+          <h3>Personal Portfolio Website</h3>
+          <p>Developed a personal portfolio website using HTML, CSS, and JavaScript to showcase projects and skills. Utilized Netlify for free hosting and GitHub for version control.</p>
+          <a href="https://github.com/OliverPerrin/Portfolio" class="project-button" target="_blank">View on GitHub</a>
         </div>
         <div class="project-card">
-          <img src="https://via.placeholder.com/300x200" alt="Project 3">
-          <h3>Project 3</h3>
-          <p>Highlighting the unique aspects of Project 3 and its impact.</p>
+          <img src="https://source.unsplash.com/random/300x200/?technology,data" alt="Grammy.com Project">
+          <h3>Grammy.com Project</h3>
+          <p>Conducted data analysis for two websites owned by The Recording Academy providing data-driven insights into audience engagement and evaluating business metrics and KPIs, using Python. Communicated data-driven recommendations and performance insights using data visualizations.</p>
           <a href="#" class="project-button">Learn More</a>
         </div>
       </div>
@@ -111,10 +118,91 @@
 
     <section id="about">
       <h2>About Me</h2>
-      <img src="https://via.placeholder.com/200x200" alt="Oliver Perrin" class="profile-image">
-      <p>I'm a dedicated developer with a passion for creating elegant and efficient solutions. With expertise in various programming languages and frameworks, I strive to deliver high-quality work that exceeds expectations.</p>
-      <p>My journey in the world of technology began [your background]. Since then, I've worked on numerous projects, constantly expanding my skills and embracing new challenges.</p>
+      <img src="https://source.unsplash.com/random/200x200/?person,portrait" alt="Oliver Perrin" class="profile-image">
+      <p>I'm Oliver Perrin, a passionate and dedicated Senior Computer Science student at Appalachian State University with a minor in Mathematics and a certificate in Data Science. I thrive on creating elegant and efficient solutions, constantly expanding my skills and embracing new challenges. My academic journey has equipped me with a strong foundation in various programming paradigms and problem-solving techniques, from building mathematical language interpreters in Haskell to developing a Y86 Pipelined Assembly simulator in C and C++. I've also gained valuable experience in collaborative environments, working in a team to develop a video game in Java and presenting data through my own website using d3.js and Tableau dashboards. As a Team Captain in the university’s ESports club, I've honed my leadership and teamwork abilities.</p>
       <a href="#contact" class="cta-button">Get in Touch</a>
+    </section>
+
+    <section id="education">
+      <h2>Education</h2>
+      <div class="education-item">
+        <h3>Appalachian State University</h3>
+        <p>Computer Science BS, Mathematics Minor, Data Science Certificate</p>
+        <p>Expected Graduation: May 2026</p>
+        <p>Relevant Coursework: Data Structures, Algorithms, Object-Oriented Programming, Database Management, Web Development, Mathematical Language Interpreters (Haskell), Y86 Pipelined Assembly Simulator (C/C++), Game Development (Java), Data Visualization (d3.js, Tableau)</p>
+      </div>
+    </section>
+
+    <section id="experience">
+      <h2>Experience</h2>
+      <div class="experience-item">
+        <h3>The Global Career Accelerator | SQL & Python Trainee | Remote</h3>
+        <p>May, 2025 - July, 2025</p>
+        <ul>
+          <li>Analyzed real-world datasets in Jupyter Notebook, producing actionable insights and recommendations.</li>
+          <li>Communicated data analysis results verbally, in writing, and by creating visualizations in Plotly.</li>
+          <li>Examined user behavior across various industries and scenarios, identifying key trends and patterns.</li>
+          <li>Collaborated with a diverse global team to complete tasks and deliver timely and accurate projects.</li>
+        </ul>
+      </div>
+      <div class="experience-item">
+        <h3>Triaxis Power Consulting LLC | IoT Systems Development Intern | Charlotte, NC</h3>
+        <p>June-August, 2023 & July-August, 2024</p>
+        <ul>
+          <li>Developed a Raspberry Pi-based monitoring system to measure pipe temperature variations and structural changes within fossil fuel power plants.</li>
+          <li>Conducted research to ensure continuous operation and optimized data uploads to cloud storage as well as integrating advanced software updates and resolving sensor accuracy issues.</li>
+          <li>Researched, recommended, and implemented a Network-Attached Storage (NAS) solution, streamlining the company's workflow and significantly reducing cloud storage costs.</li>
+          <li>Enhanced data visualizations in Python to further improve data interpretation and decision-making capabilities.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="skills">
+      <h2>Skills</h2>
+      <div class="skills-grid">
+        <div class="skill-category">
+          <h3>Coding Languages</h3>
+          <ul>
+            <li>Java</li>
+            <li>C</li>
+            <li>C++</li>
+            <li>SQL</li>
+            <li>Python</li>
+            <li>JavaScript</li>
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>Haskell</li>
+            <li>Assembly (x86, Y86, LC-3)</li>
+          </ul>
+        </div>
+        <div class="skill-category">
+          <h3>Libraries/Tools</h3>
+          <ul>
+            <li>Alembic</li>
+            <li>Tailwind</li>
+            <li>React</li>
+            <li>Node.js</li>
+            <li>d3.js</li>
+            <li>Jupyter Notebook</li>
+            <li>Pandas</li>
+            <li>Plotly</li>
+            <li>Makefile</li>
+            <li>CMake</li>
+            <li>Maven</li>
+          </ul>
+        </div>
+        <div class="skill-category">
+          <h3>Analytics</h3>
+          <ul>
+            <li>Artificial Intelligence</li>
+            <li>Data analysis</li>
+            <li>Data cleaning</li>
+            <li>Visualizing data</li>
+            <li>Presenting findings</li>
+            <li>Intercultural teamwork</li>
+          </ul>
+        </div>
+      </div>
     </section>
 
     <section id="contact">
@@ -132,8 +220,9 @@
   <div class="arrow-indicator">↓</div>
 
   <div class="job-title">
-    <h2>Freelance</h2>
-    <h2>Designer & Developer</h2>
+    <h2>Articial Intelligence &</h2>
+    <h2>Machine Learning Design</h2>
+    <h2>& Development</h2>
   </div>
 
   <footer>
