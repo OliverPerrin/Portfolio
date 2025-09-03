@@ -33,13 +33,19 @@
         // Theme toggle functionality
         const themeToggle = document.getElementById('theme-toggle');
         const body = document.body;
-        let isDark = true;
 
-        themeToggle.addEventListener('click', () => {
-            isDark = !isDark;
-            body.classList.toggle('light-theme');
-            
-            // Update theme toggle icon
+        // Check for saved theme preference on load
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'light') {
+            body.classList.add('light-theme');
+            updateThemeToggleIcon(false); // false for light theme
+        } else {
+            // Default to dark theme if no preference or 'dark' is saved
+            body.classList.remove('light-theme');
+            updateThemeToggleIcon(true); // true for dark theme
+        }
+
+        function updateThemeToggleIcon(isDark) {
             const icon = themeToggle.querySelector('svg');
             if (isDark) {
                 icon.innerHTML = `
@@ -55,6 +61,17 @@
                 `;
             } else {
                 icon.innerHTML = `<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>`;
+            }
+        }
+
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('light-theme');
+            if (body.classList.contains('light-theme')) {
+                localStorage.setItem('theme', 'light');
+                updateThemeToggleIcon(false);
+            } else {
+                localStorage.setItem('theme', 'dark');
+                updateThemeToggleIcon(true);
             }
         });
 
