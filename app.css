@@ -267,6 +267,7 @@ body {
     grid-template-columns: 1fr 1.5fr;
     gap: 80px;
     align-items: center;
+    position: relative; 
 }
 
 .about-image {
@@ -275,7 +276,11 @@ body {
     border-radius: 20px;
     object-fit: cover;
     background: url('IMG_4011.jpeg') center/cover;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 0px solid rgba(0, 0, 0, 0.0);
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
 }
 
 .about-text {

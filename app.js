@@ -1,3 +1,4 @@
+document.body.classList.remove('light-theme');
 // Initialize Lenis smooth scrolling
         const lenis = new Lenis({
             duration: 1.2,
