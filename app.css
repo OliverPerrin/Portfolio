@@ -754,7 +754,7 @@ body.light-theme .theme-toggle {
 }
 
 body.light-theme .hero {
-    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    background: linear-gradient(135deg, #595959 0%, #ffffff 100%);
 }
 
 body.light-theme .footer-links a,
@@ -785,6 +785,11 @@ body.light-theme .stat-item:hover,
 body.light-theme .skill-category:hover,
 body.light-theme .experience-item:hover {
     background: rgba(0, 0, 0, 0.06);
+}
+
+body.light-theme .skill-category h3,
+body.light-theme .stat-number {
+    color: #0a0a0a;
 }
 
 body.light-theme .tech-tag {
@@ -844,27 +849,15 @@ body.light-theme .about-text {
 }
 
 body.light-theme .about-image {
-    background: none;
-}
-
-body.light-theme .nav-links a {
-    color: #0a0a0a;
+    border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 body.light-theme .nav-links a::after {
     background: #0a0a0a;
 }
 
-body.light-theme .theme-toggle {
-    color: #0a0a0a;
-}
-
 body.light-theme .theme-toggle:hover {
     background: rgba(0, 0, 0, 0.1);
-}
-
-body.light-theme .logo {
-    color: #0a0a0a;
 }
 
 body.light-theme .hero-title {
@@ -880,18 +873,4 @@ body.light-theme .section-title {
 
 body.light-theme .hero-gradient {
     background: radial-gradient(circle at center, transparent 0%, rgba(255, 255, 255, 0.8) 100%);
-}
-
-body.light-theme .hero {
-    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
-}
-
-body.light-theme .nav-container {
-    background: rgba(255, 255, 255, 0.9);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-body.light-theme {
-    background-color: #ffffff;
-    color: #0a0a0a;
 }

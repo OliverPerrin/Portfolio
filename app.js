@@ -75,6 +75,30 @@
             }
         });
 
+        function sendEmail(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            // Format the email body with proper spacing
+            const emailBody = 
+`Name: ${name}
+Email: ${email}
+Message: ${message}`;
+            
+            const mailtoLink = `mailto:oliver.t.perrin@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
+            
+            window.location.href = mailtoLink;
+            
+            // Clear the form
+            document.getElementById('contactForm').reset();
+            
+            // Show success message
+            alert('Thank you for your message! Your email client will open shortly.');
+        }
         // Scroll animations
         gsap.utils.toArray('.fade-in').forEach((element) => {
             gsap.fromTo(element, {
