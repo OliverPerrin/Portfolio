@@ -1,0 +1,11 @@
+# Resume PDF
+Resume-OliverPerrin copy.pdf
+
+# Mac OS files
+.DS_Store
+
+# Node modules (if added later)
+node_modules/
+
+# Logs
+*.log
