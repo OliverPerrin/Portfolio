@@ -494,6 +494,25 @@ body {
     color: #ffffff;
 }
 
+/* Image-based certification icons */
+.cert-icon img {
+    max-width: 70%;
+    max-height: 70%;
+    object-fit: contain;
+    display: block;
+    filter: none;
+}
+
+/* Two side-by-side logos */
+.cert-icon.dual {
+    gap: 6px;
+}
+
+.cert-icon.dual img {
+    max-width: 44%;
+    max-height: 70%;
+}
+
 .cert-info h3 {
     font-size: 20px;
     font-weight: 600;
