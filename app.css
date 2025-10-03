@@ -385,6 +385,12 @@ body {
     border: 1px solid rgba(0, 0, 0, 0.06);
 }
 
+/* Black background variant for images that need high contrast */
+.project-image.project-image--black {
+    background: #000000 !important;
+    border-color: rgba(255, 255, 255, 0.08);
+}
+
 /* When plain, make image stand out on white */
 .project-image.project-image--plain .project-thumbnail {
     background: transparent;
