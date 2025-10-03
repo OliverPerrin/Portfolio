@@ -379,6 +379,17 @@ body {
     background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
 }
 
+/* Plain image variant to remove gradients (white background) */
+.project-image.project-image--plain {
+    background: #ffffff !important;
+}
+
+/* When plain, make image stand out on white */
+.project-image.project-image--plain .project-thumbnail {
+    background: transparent;
+    padding: 12px;
+}
+
 /* Ensure project thumbnails are fully visible and scaled down */
 .project-thumbnail {
     width: 100%;
