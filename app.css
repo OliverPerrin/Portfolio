@@ -494,6 +494,19 @@ body {
     color: #ffffff;
 }
 
+/* Extra large icon for emphasis */
+.cert-icon.cert-icon--xl {
+    width: 88px;
+    height: 88px;
+}
+
+@media (max-width: 768px) {
+    .cert-icon.cert-icon--xl {
+        width: 64px;
+        height: 64px;
+    }
+}
+
 /* Image-based certification icons */
 .cert-icon img {
     max-width: 100%;
