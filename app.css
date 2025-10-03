@@ -381,7 +381,8 @@ body {
 
 /* Plain image variant to remove gradients (white background) */
 .project-image.project-image--plain {
-    background: #ffffff !important;
+    background: #f5f7fb !important; /* very light gray so white logos are visible */
+    border: 1px solid rgba(0, 0, 0, 0.06);
 }
 
 /* When plain, make image stand out on white */
