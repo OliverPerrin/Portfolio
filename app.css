@@ -402,6 +402,14 @@ body {
     border-radius: 12px;
 }
 
+/* For screenshots that should fill the box */
+.project-thumbnail--cover {
+    object-fit: cover;
+    padding: 0; /* allow full bleed */
+    background: none;
+    border-radius: 0;
+}
+
 .project-content {
     padding: 32px;
 }
