@@ -496,8 +496,8 @@ body {
 
 /* Image-based certification icons */
 .cert-icon img {
-    max-width: 70%;
-    max-height: 70%;
+    max-width: 88%;
+    max-height: 88%;
     object-fit: contain;
     display: block;
     filter: none;
@@ -506,11 +506,12 @@ body {
 /* Two side-by-side logos */
 .cert-icon.dual {
     gap: 6px;
+    justify-content: space-evenly;
 }
 
 .cert-icon.dual img {
-    max-width: 44%;
-    max-height: 70%;
+    max-width: 45%;
+    max-height: 80%;
 }
 
 .cert-info h3 {
@@ -587,6 +588,15 @@ body {
     .cert-icon {
         width: 50px;
         height: 50px;
+    }
+
+    /* Tighter spacing and scale for dual logos on mobile */
+    .cert-icon.dual {
+        gap: 4px;
+    }
+    .cert-icon.dual img {
+        max-width: 44%;
+        max-height: 78%;
     }
 }
 
