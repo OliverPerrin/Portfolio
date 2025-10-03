@@ -484,9 +484,9 @@ body {
 
 .cert-icon {
     flex-shrink: 0;
-    width: 60px;
-    height: 60px;
-    background: rgba(255, 255, 255, 0.1);
+    width: 72px;
+    height: 72px;
+    background: transparent; /* remove inner gray box so logos can breathe */
     border-radius: 12px;
     display: flex;
     align-items: center;
@@ -496,8 +496,8 @@ body {
 
 /* Image-based certification icons */
 .cert-icon img {
-    max-width: 88%;
-    max-height: 88%;
+    max-width: 100%;
+    max-height: 100%;
     object-fit: contain;
     display: block;
     filter: none;
@@ -510,8 +510,8 @@ body {
 }
 
 .cert-icon.dual img {
-    max-width: 45%;
-    max-height: 80%;
+    max-width: 48%;
+    max-height: 90%;
 }
 
 .cert-info h3 {
@@ -1074,6 +1074,16 @@ body.light-theme .experience-item,
 body.light-theme .contact-form {
     background: rgba(0, 0, 0, 0.05);
     border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Light theme edges for certification cards to match other components */
+body.light-theme .certification-card {
+    background: rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+body.light-theme .certification-card:hover {
+    background: rgba(0, 0, 0, 0.06);
 }
 
 body.light-theme .project-card:hover,
