@@ -391,6 +391,15 @@ body {
     padding: 12px;
 }
 
+/* Ensure cover thumbnails in plain containers fully fill the box */
+.project-image.project-image--plain .project-thumbnail.project-thumbnail--cover {
+    padding: 0;
+    background: none;
+    border-radius: 0;
+    object-fit: cover;
+    object-position: center;
+}
+
 /* Ensure project thumbnails are fully visible and scaled down */
 .project-thumbnail {
     width: 100%;

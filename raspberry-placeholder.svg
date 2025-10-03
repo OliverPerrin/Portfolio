@@ -1,8 +1,0 @@
-<svg width="512" height="512" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="128" height="128" rx="16" fill="#ffffff"/>
-  <circle cx="64" cy="72" r="24" fill="#1f2937"/>
-  <circle cx="52" cy="48" r="10" fill="#1f2937"/>
-  <circle cx="76" cy="48" r="10" fill="#1f2937"/>
-  <path d="M48 24c8 0 12 6 16 6s8-6 16-6" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/>
-  <text x="10" y="120" fill="#9aa4b2" font-family="Arial, Helvetica, sans-serif" font-size="10">Raspberry Pi</text>
-</svg>
