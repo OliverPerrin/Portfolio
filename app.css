@@ -400,6 +400,11 @@ body {
     object-position: center;
 }
 
+/* Slight zoom-in for Grammys to eliminate minor edges */
+.project-thumbnail--zoom {
+    transform: scale(1.06);
+}
+
 /* Ensure project thumbnails are fully visible and scaled down */
 .project-thumbnail {
     width: 100%;
