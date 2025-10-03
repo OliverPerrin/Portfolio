@@ -402,7 +402,7 @@ body {
 
 /* Slight zoom-in for Grammys to eliminate minor edges */
 .project-thumbnail--zoom {
-    transform: scale(0.5);
+    transform: scale(1.0);
 }
 
 /* Ensure project thumbnails are fully visible and scaled down */
