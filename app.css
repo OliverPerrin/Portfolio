@@ -486,7 +486,7 @@ body {
     flex-shrink: 0;
     width: 72px;
     height: 72px;
-    background: transparent; /* remove inner gray box so logos can breathe */
+    background: transparent; /* remove inner gray box */
     border-radius: 12px;
     display: flex;
     align-items: center;
