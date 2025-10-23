@@ -96,6 +96,25 @@ body {
     left: 0;
     width: 0;
     height: 1px;
+
+    /* Contact strip under hero icons */
+    .hero-contact {
+        margin-top: 16px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        align-items: center;
+        justify-content: center;
+        font-size: 14px;
+        color: #a0a9c0;
+    }
+    .hero-contact a { color: #a0a9c0; text-decoration: none; }
+    .hero-contact a:hover { color: #ffffff; text-decoration: underline; }
+    .hero-contact .dot { opacity: 0.6; }
+
+    body.light-theme .hero-contact { color: #374151; }
+    body.light-theme .hero-contact a { color: #374151; }
+    body.light-theme .hero-contact a:hover { color: #111827; }
     background: #ffffff;
     transition: width 0.3s ease;
 }
