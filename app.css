@@ -361,6 +361,14 @@ body {
     letter-spacing: 1px;
 }
 
+/* Tighten spacing before the Education section on About page */
+#education.section {
+    padding-top: 40px; /* was 120px via .section */
+}
+#education .section-header {
+    margin-bottom: 40px; /* was 80px globally */
+}
+
 /* Projects Section */
 .projects-grid {
     display: grid;
