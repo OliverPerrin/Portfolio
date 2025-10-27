@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>https://oliverperrin.com/</loc>
+  <lastmod>2025-10-27T15:25:17+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://oliverperrin.com/about</loc>
+  <lastmod>2025-10-27T15:25:17+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://oliverperrin.com/projects</loc>
+  <lastmod>2025-10-27T15:25:17+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://oliverperrin.com/skills</loc>
+  <lastmod>2025-10-27T15:25:17+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://oliverperrin.com/experience</loc>
+  <lastmod>2025-10-27T15:25:17+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://oliverperrin.com/certifications</loc>
+  <lastmod>2025-10-27T15:25:17+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://oliverperrin.com/contact</loc>
+  <lastmod>2025-10-27T15:25:17+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://oliverperrin.com/Resume-OliverPerrin.pdf</loc>
+  <lastmod>2025-10-27T15:25:17+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://oliverperrin.com/Oliver%20Perrin%20-%20SQL%20Project%20|%20Sustainability%20Impact%20Analysis%20for%20Intel.pdf</loc>
+  <lastmod>2025-10-27T15:25:17+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://oliverperrin.com/oliverp_Analyzing_Website_Performance_Grammys.pdf</loc>
+  <lastmod>2025-10-27T15:25:17+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+
+
+</urlset>
