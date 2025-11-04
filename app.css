@@ -677,6 +677,17 @@ body {
     margin-bottom: 24px;
 }
 
+.project-highlights {
+    margin: 0 0 24px 20px;
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+.project-highlights li {
+    margin-bottom: 8px;
+}
+
 .tech-tag {
     background: rgba(255, 255, 255, 0.1);
     color: #ffffff;
@@ -1223,6 +1234,7 @@ body.light-theme .about-text,
 body.light-theme .stat-label,
 body.light-theme .project-description,
 body.light-theme .project-link,
+body.light-theme .project-highlights,
 body.light-theme .skill-item,
 body.light-theme .experience-company,
 body.light-theme .experience-description,
