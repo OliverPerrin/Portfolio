@@ -326,6 +326,42 @@ body {
     margin-bottom: 24px;
 }
 
+/* Text-only about section (no image) */
+.about-text-only {
+    max-width: 900px;
+    margin: 0 auto;
+    font-size: 18px;
+    line-height: 1.8;
+    opacity: 0.88;
+}
+
+.about-text-only p {
+    margin-bottom: 24px;
+}
+
+.about-text-only h3 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-top: 48px;
+    margin-bottom: 24px;
+    color: #ffffff;
+}
+
+.about-text-only ul {
+    margin: 16px 0 24px 32px;
+    line-height: 1.8;
+}
+
+.about-text-only li {
+    margin-bottom: 12px;
+    opacity: 0.85;
+}
+
+.about-text-only strong {
+    color: #ffffff;
+    font-weight: 600;
+}
+
 .stats-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -1231,6 +1267,7 @@ body.light-theme .hero-subtitle,
 body.light-theme .hero-description,
 body.light-theme .section-subtitle,
 body.light-theme .about-text,
+body.light-theme .about-text-only,
 body.light-theme .stat-label,
 body.light-theme .project-description,
 body.light-theme .project-link,
@@ -1246,6 +1283,19 @@ body.light-theme .copyright {
 
 body.light-theme .about-text {
     color: #0a0a0a;
+}
+
+body.light-theme .about-text-only {
+    color: #0a0a0a;
+    opacity: 0.92;
+}
+
+body.light-theme .about-text-only h3 {
+    color: #0a0a0a;
+}
+
+body.light-theme .about-text-only strong {
+    color: #111827;
 }
 
 body.light-theme .about-image {
