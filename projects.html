@@ -55,15 +55,26 @@
                 <div class="project-image">
                 </div>
                 <div class="project-content">
-                    <h3 class="project-title">LexiMind: Multi-Task Transformer for Document Analysis</h3>
-                    <p class="project-description">Building a custom encoder–decoder Transformer for abstractive summarization, emotion classification, and topic clustering across literary and news corpora. Includes attention visualization for interpretability.</p>
+                    <h3 class="project-title">LexiMind: Multi-Task Transformer for Text Understanding & Generation</h3>
+                    <p class="project-description">I built LexiMind, a multi-task NLP system based on FLAN-T5 that jointly performs abstractive summarization, topic classification, and emotion detection on literary and academic text. The project focused on understanding when multi-task learning helps versus hurts performance, rather than assuming joint training is always beneficial.
+
+                    Through systematic ablation studies, I found that shared encoder representations significantly improved low-resource topic classification (+3.2% accuracy), while emotion detection suffered from negative transfer due to domain mismatch between social-media emotion labels and formal text. I also quantified the impact of transfer learning, showing that pretrained initialization accounted for ~85% of final model performance, with fine-tuning providing critical domain adaptation.
+
+                    The project involved end-to-end dataset curation, GPU training, and evaluation using ROUGE, BERTScore, and multi-label F1. Code, models, and a live demo are publicly available.
+                </p>
                     <div class="project-tech">
                         <span class="tech-tag">PyTorch</span>
                         <span class="tech-tag">Transformers</span>
                         <span class="tech-tag">Python</span>
                         <span class="tech-tag">NLP</span>
                     </div>
-                    <a href="#" class="project-link" aria-disabled="true">In Progress</a>
+                    <a href="https://HuggingFace.co/spaces/OliverPerrin/LexiMind" class="project-link" target="_blank" rel="noopener">
+                        View HF Demo →
+                    </a>
+                    <br>
+                    <a href="https://github.com/OliverPerrin/LexiMind" class="project-link project-link--secondary" target="_blank" rel="noopener">
+                        GitHub Repo →
+                    </a>
                 </div>
             </div>
             <div class="project-card fade-in-up">
@@ -71,7 +82,7 @@
                 </div>
                 <div class="project-content">
                     <h3 class="project-title">F1 Race Outcome Predictor</h3>
-                    <p class="project-description">End-to-end machine learning system forecasting Formula 1 race finishes and qualifying performance using historical telemetry, team context, and driver form.</p>
+                    <p class="project-description">End-to-end machine learning system forecasting Formula 1 race finishes and qualifying performance using the FastF1 datset.</p>
                     <div class="project-tech">
                         <span class="tech-tag">Python</span>
                         <span class="tech-tag">Scikit-learn</span>
