@@ -57,10 +57,6 @@
                 <div class="project-content">
                     <h3 class="project-title">LexiMind: Multi-Task Transformer for Text Understanding & Generation</h3>
                     <p class="project-description">I built LexiMind, a multi-task NLP system based on FLAN-T5 that jointly performs abstractive summarization, topic classification, and emotion detection on literary and academic text. The project focused on understanding when multi-task learning helps versus hurts performance, rather than assuming joint training is always beneficial.
-
-                    Through systematic ablation studies, I found that shared encoder representations significantly improved low-resource topic classification (+3.2% accuracy), while emotion detection suffered from negative transfer due to domain mismatch between social-media emotion labels and formal text. I also quantified the impact of transfer learning, showing that pretrained initialization accounted for ~85% of final model performance, with fine-tuning providing critical domain adaptation.
-
-                    The project involved end-to-end dataset curation, GPU training, and evaluation using ROUGE, BERTScore, and multi-label F1. Code, models, and a live demo are publicly available.
                 </p>
                     <div class="project-tech">
                         <span class="tech-tag">PyTorch</span>
