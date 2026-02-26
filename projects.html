@@ -48,15 +48,15 @@
     <section id="projects" class="section">
         <div class="section-header">
             <h2 class="section-title fade-in">Featured Projects</h2>
-            <p class="section-subtitle fade-in">Innovative solutions built with cutting-edge technologies</p>
+            <p class="section-subtitle fade-in">Things I've built — from research experiments to full-stack applications</p>
         </div>
         <div class="projects-grid">
             <div class="project-card fade-in-up">
                 <div class="project-image">
                 </div>
                 <div class="project-content">
-                    <h3 class="project-title">LexiMind: Multi-Task Transformer for Literary & Academic Text</h3>
-                    <p class="project-description">I built LexiMind, a multi-task NLP system based on FLAN-T5 that jointly performs abstractive summarization, topic classification, and emotion detection on literary and academic text. The project focused on understanding when multi-task learning helps versus hurts performance, rather than assuming joint training is always beneficial.
+                    <h3 class="project-title">LexiMind: Multi-Task Learning for Literary & Academic Text</h3>
+                    <p class="project-description">I investigated positive and negative transfer in a 272M-parameter multi-task transformer (FLAN-T5-base) jointly trained for abstractive summarization, topic classification, and emotion detection. I designed attention pooling and temperature-based task sampling to eliminate negative transfer in emotion detection, improving sample-averaged F1 from 0.199 to 0.352 (+77%) over naive multi-task learning. I ran controlled ablations across pooling strategies, task scheduling, and initialization — and I'm currently writing a paper based on the findings.
                 </p>
                     <div class="project-tech">
                         <span class="tech-tag">PyTorch</span>
@@ -78,12 +78,12 @@
                 </div>
                 <div class="project-content">
                     <h3 class="project-title">F1 Race Outcome Predictor</h3>
-                    <p class="project-description">End-to-end machine learning system forecasting Formula 1 race finishes and qualifying performance using the FastF1 datset.</p>
+                    <p class="project-description">I built an end-to-end ML pipeline ingesting FastF1 and Ergast data across multiple seasons, engineering features covering lap times, session deltas, and driver/team context. I trained a Random Forest regressor (MAE 1.78 grid positions, RMSE 2.28) and two Logistic Regression classifiers for Q3 and top-ten qualification prediction (93.8% and 92.6% accuracy). The interactive Streamlit dashboard includes scenario planning for upcoming races and full model diagnostics.</p>
                     <div class="project-tech">
                         <span class="tech-tag">Python</span>
                         <span class="tech-tag">Scikit-learn</span>
                         <span class="tech-tag">Pandas</span>
-                        <span class="tech-tag">NumPy</span>
+                        <span class="tech-tag">Seaborn</span>
                         <span class="tech-tag">Streamlit</span>
                         <span class="tech-tag">FastF1</span>
                     </div>
@@ -116,19 +116,17 @@
                 <img src="Screenshot 2025-09-08 at 11.42.48 AM.jpg" alt="PlayAxis Thumbnail" class="project-thumbnail project-thumbnail--cover">
                     </div>
                 <div class="project-content">
-                    <h3 class="project-title">PlayAxis: MultiSport and Event Web Application</h3>
-                    <p class="project-description">Engineered a comprehensive multi-sport and event web application using modern web technologies. Integrated various APIs for real-time sports data, event tickets, and schedules.</p>
+                    <h3 class="project-title">PlayAxis: Full-Stack Sports & Events Platform</h3>
+                    <p class="project-description">I built a platform aggregating real-time schedules, scores, and event data by integrating 3+ external APIs with a FastAPI backend (Pydantic validation) and a PostgreSQL database. Containerized with Docker and automated CI/CD via Netlify and Koyeb, reducing deployment time by 60%.</p>
                     <div class="project-tech">
+                        <span class="tech-tag">React.js</span>
+                        <span class="tech-tag">FastAPI</span>
+                        <span class="tech-tag">PostgreSQL</span>
+                        <span class="tech-tag">Docker</span>
                         <span class="tech-tag">Python</span>
+                        <span class="tech-tag">JavaScript</span>
                         <span class="tech-tag">Netlify</span>
                         <span class="tech-tag">Koyeb</span>
-                        <span class="tech-tag">Alembic</span>
-                        <span class="tech-tag">Tailwind CSS</span>
-                        <span class="tech-tag">JavaScript</span>
-                        <span class="tech-tag">React</span>
-                        <span class="tech-tag">Node.js</span>
-                        <span class="tech-tag">API Integration</span>
-                        <span class="tech-tag">PostgresSQL</span>
                     </div>
                     <a href="https://playaxis.netlify.app" class="project-link" target="_blank">
                         View Project →
@@ -145,7 +143,7 @@
                     </div>
                 <div class="project-content">
                     <h3 class="project-title">Personal Portfolio Website</h3>
-                    <p class="project-description">Developed a personal portfolio website using HTML, CSS, and JavaScript to showcase projects and skills. Utilized Netlify for free hosting and GitHub for version control.</p>
+                    <p class="project-description">The site you're looking at right now. I designed and built it from scratch with HTML, CSS, and JavaScript, using GSAP and Lenis for smooth animations. Hosted on Netlify with GitHub for version control.</p>
                     <div class="project-tech">
                         <span class="tech-tag">HTML</span>
                         <span class="tech-tag">CSS</span>
@@ -181,7 +179,7 @@
                 </div>
                 <div class="project-content">
                     <h3 class="project-title">IoT Monitoring System</h3>
-                    <p class="project-description">Developed a Raspberry Pi-based monitoring system for fossil fuel power plants, measuring temperature variations and structural changes with cloud integration.</p>
+                    <p class="project-description">I built a Raspberry Pi-based monitoring system for fossil fuel power plants during my internship at Triaxis Power. It tracks pipe temperature and thermal expansion using thermocouples and potentiometers, with automated cloud sync for continuous remote monitoring across multiple plant sites.</p>
                     <div class="project-tech">
                         <span class="tech-tag">Raspberry Pi</span>
                         <span class="tech-tag">IoT</span>
@@ -200,7 +198,7 @@
                 </div>
                 <div class="project-content">
                     <h3 class="project-title">Sustainability Impact Analysis for Intel</h3>
-                    <p class="project-description">Data-driven evaluation of Intel's 2024 device repurposing and recycling program to prioritize devices for maximum reductions in e-waste, energy consumption, and CO₂ emissions.</p>
+                    <p class="project-description">A data-driven evaluation of Intel's 2024 device repurposing and recycling program, completed during my time with The Global Career Accelerator. I analyzed which devices to prioritize for maximum reductions in e-waste, energy consumption, and CO₂ emissions.</p>
                     <div class="project-tech">
                         <span class="tech-tag">SQL</span>
                         <span class="tech-tag">Data Analysis</span>
@@ -220,7 +218,7 @@
                 </div>
                 <div class="project-content">
                     <h3 class="project-title">Grammy.com Analytics Dashboard</h3>
-                    <p class="project-description">Conducted comprehensive data analysis for The Recording Academy's websites, providing data-driven insights into audience engagement and business metrics.</p>
+                    <p class="project-description">I conducted comprehensive data analysis for The Recording Academy's websites during my Data Science work with The Global Career Accelerator, providing data-driven insights into audience engagement and business performance metrics.</p>
                     <div class="project-tech">
                         <span class="tech-tag">Python</span>
                         <span class="tech-tag">Data Analysis</span>
@@ -248,7 +246,7 @@
             <a href="contact.html">Contact</a>
         </div>
         <div class="copyright">
-            <p>&copy; 2025 Oliver Perrin. Designed and developed with passion.</p>
+            <p>&copy; 2026 Oliver Perrin. Designed and developed with passion.</p>
         </div>
     </div>
 </footer>
