@@ -51,33 +51,37 @@
             <h2 class="section-title fade-in">About Me</h2>
         </div>
         <div class="about-text-only fade-in-up">
-            <p>I'm Oliver — a Computer Science student at Appalachian State University graduating in May 2026, with a minor in Mathematics and a Data Science certificate. I focus on machine learning, deep learning, and natural language processing. Right now, I'm also working as an ML Engineering Lead at an early-stage startup, which has been one of the most challenging and rewarding experiences of my time in school.</p>
-            
-            <p>What drives me is understanding how models actually learn — particularly through attention mechanisms — and how the decisions we make around architecture, training, and data shape performance, generalization, and interpretability. I enjoy working close to the math, moving between theory and implementation, and letting experimental results guide the next step.</p>
-            
+            <p>I'm Oliver — an ML engineer and researcher finishing my B.S. in Computer Science at Appalachian State University this May, with a minor in Mathematics and a Data Science certificate. I work on production ML systems and controlled empirical research, and my focus sits at the intersection of multi-task learning, reinforcement learning theory, and NLP / language modeling.</p>
+
+            <p>I'm currently an ML Engineer & Researcher at a stealth, pre-launch startup, which I joined as a senior-year intern after my capstone work became the initial production system and is now being transitioned into a full-time role post-graduation. Day-to-day I work directly with the founder and one other engineer on nearly all ML architecture and research decisions ahead of launch.</p>
+
+            <p>What drives me is understanding how models actually learn — particularly through attention mechanisms — and how decisions around architecture, training, and data shape performance, generalization, and interpretability. I like working close to the math, moving between theory and implementation, and letting experimental results pick the next step.</p>
+
             <h3>What I'm Working On</h3>
-            
-            <p>At the startup, I lead a small team building a production ML pipeline that harmonizes product attributes across 125K+ items from heterogeneous data sources. We use semantic embedding matching with sentence-transformers and GPU-accelerated inference. I also architected a multi-format data ingestion layer that auto-detects and normalizes JSON schemas into a unified attribute registry. It's been a crash course in shipping ML under real product constraints, and I collaborate directly with the founder on a weekly basis to integrate ML outputs into the live product.</p>
-            
-            <p>On the research side, my main personal project is <strong>LexiMind</strong> — a 272M-parameter multi-task transformer (FLAN-T5-base) that I built to investigate positive and negative transfer when jointly training for abstractive summarization, topic classification, and emotion detection across literary and academic text. A big focus has been on designing controlled ablations and understanding when multi-task learning actually helps versus hurts, rather than assuming joint training is always beneficial. I'm currently authoring a paper for submission based on this work.</p>
-            
-            <p>Beyond that, I've built an F1 race outcome predictor using classical ML methods and feature engineering, and PlayAxis, a full-stack sports platform integrating multiple external APIs with a FastAPI backend and PostgreSQL. These projects sharpened my ability to reason about real-world datasets, evaluation metrics, and end-to-end system design.</p>
-            
+
+            <p>At the startup, I'm the core ML engineer on a 10-person pre-launch team (9 engineers + founder, advised by an external board). I shipped a production attribute and unit harmonization system — SBERT embeddings over 125K+ product attributes, cosine-similarity retrieval, GPU-accelerated batch inference, and confidence + top-k match evidence surfaced for output explainability. I also designed a schema-agnostic ingestion layer that auto-detects multiple JSON formats and normalizes them into a canonical attribute representation, plus unit-harmonization logic across physical, electrical, and thermal dimensions that teammates now consume for downstream visualizations and a browser extension.</p>
+
+            <p>On top of that I built a real-time ML operations dashboard in FastAPI + WebSockets, with batch upload, step-level event streaming, and grouped downloadable outputs for debugging and stakeholder demos. I'm also prototyping a second system — a multi-agent harmonization and product-data scraping pipeline built with Claude Agent Skills orchestrated through Obsidian — and presenting architecture deep-dives to the company's advisory board (specifics under NDA).</p>
+
+            <p>On the research side, my main project is <strong>LexiMind</strong> — a 272M-parameter encoder-decoder transformer I implemented from scratch (Pre-LN, RMSNorm, T5 relative position bias, FlashAttention, gated-GELU FFN, KV-cache) with explicit FLAN-T5-base weight mapping, jointly trained on abstractive summarization, topic classification, and multi-label emotion detection across literary and academic text. I diagnosed negative transfer in naive MTL and designed two targeted interventions — learned attention pooling for classification heads and temperature-based task sampling — improving emotion-detection sample-averaged F1 from 0.199 → 0.352 (+77%) and surpassing the single-task baseline. The shared-encoder MTL system also beats a BERT-base topic-classification specialist (85.7% vs. 83.1%). I'm targeting an arXiv preprint and EMNLP 2026 submission, with 5-seed validation, bootstrap CIs, gradient-conflict diagnostics, and MLflow tracking already in place.</p>
+
+            <p>Alongside that I've built an F1 race outcome predictor using classical ML methods and careful feature engineering, and PlayAxis — a full-stack sports platform integrating multiple external APIs with a FastAPI backend and PostgreSQL. These projects sharpened how I reason about real-world datasets, evaluation metrics, and end-to-end system design.</p>
+
             <h3>Background & How I Learn</h3>
-            
-            <p>My coursework has covered Applied Machine Learning, Reinforcement Learning, Numerical Methods, Data Structures & Algorithms, and Database Systems. I also completed the Machine Learning Specialization by Andrew Ng, and I regularly read foundational and modern ML literature to stay grounded in both the classics and what's new.</p>
-            
+
+            <p>My coursework has covered Linear Algebra, Statistical Data Analysis, Numerical Methods, Computational Mathematics, Advanced Reinforcement Learning, Theoretical Computer Science, Applied Machine Learning, and Data Structures & Algorithms. I also completed the Machine Learning Specialization by Andrew Ng, and I regularly read foundational and modern ML literature to stay grounded in both the classics and what's new.</p>
+
             <p>I learn best by building. I implement models from scratch, validate ideas through experiments, and refine systems based on evidence rather than assumptions. NLP, representation learning, and applied deep learning are where I spend most of my time — and I genuinely enjoy explaining complex ideas clearly, whether through writing, diagrams, or code.</p>
-            
+
             <h3>What I'm Looking For</h3>
-            
-            <p>I'm looking for ML Engineering or research-oriented Software Engineering roles where I can:</p>
+
+            <p>Beyond my current role, I'm open to research engineer or research-focused ML roles where mathematical rigor and experimental methodology are valued. I want to keep:</p>
             <ul>
-                <li>Contribute to model development, experimentation, and production ML systems</li>
-                <li>Work alongside experienced engineers and researchers who push me to grow</li>
-                <li>Keep building a strong foundation in ML systems and applied research</li>
+                <li>Contributing to model development, experimentation, and production ML systems</li>
+                <li>Working alongside experienced engineers and researchers who push me to grow</li>
+                <li>Building a strong foundation in ML systems and applied research</li>
             </ul>
-            
+
             <p>This site is where I share my projects, technical work, and what I'm learning along the way. Thanks for stopping by.</p>
         </div>
     </section>
@@ -92,25 +96,38 @@
             <div class="skill-category fade-in-up">
                 <h3>Relevant Coursework</h3>
                 <ul class="skill-list">
-                    <li class="skill-item">Applied Machine Learning</li>
-                    <li class="skill-item">Reinforcement Learning</li>
+                    <li class="skill-item">Linear Algebra</li>
+                    <li class="skill-item">Statistical Data Analysis</li>
                     <li class="skill-item">Numerical Methods</li>
+                    <li class="skill-item">Computational Mathematics</li>
+                    <li class="skill-item">Advanced Reinforcement Learning</li>
+                    <li class="skill-item">Theoretical Computer Science</li>
+                    <li class="skill-item">Applied Machine Learning</li>
                     <li class="skill-item">Data Structures & Algorithms</li>
-                    <li class="skill-item">Database Systems</li>
                 </ul>
             </div>
             <div class="skill-category fade-in-up">
-                <h3>Academic Projects</h3>
+                <h3>Research Interests</h3>
                 <ul class="skill-list">
-                    <li class="skill-item">Mathematical language interpreter (Haskell)</li>
-                    <li class="skill-item">Y86 pipelined CPU simulator (C/C++)</li>
+                    <li class="skill-item">Multi-task learning</li>
+                    <li class="skill-item">Reinforcement learning theory</li>
+                    <li class="skill-item">NLP / language modeling</li>
+                </ul>
+            </div>
+            <div class="skill-category fade-in-up">
+                <h3>Senior Capstone (ML Lead)</h3>
+                <ul class="skill-list">
+                    <li class="skill-item">Built ML harmonization system and real-time inference dashboard</li>
+                    <li class="skill-item">Deliverables deployed in production at partnering stealth startup</li>
+                    <li class="skill-item">Carried forward into current full-time role post-graduation</li>
+                </ul>
+            </div>
+            <div class="skill-category fade-in-up">
+                <h3>Notable Academic Projects</h3>
+                <ul class="skill-list">
+                    <li class="skill-item">Formal language interpreter with lambda calculus and type inference (Haskell)</li>
+                    <li class="skill-item">Pipelined CPU simulator (C/C++)</li>
                     <li class="skill-item">2D game engine (Java)</li>
-                </ul>
-            </div>
-            <div class="skill-category fade-in-up">
-                <h3>Leadership</h3>
-                <ul class="skill-list">
-                    <li class="skill-item">Team Captain, University Esports Club</li>
                 </ul>
             </div>
         </div>
