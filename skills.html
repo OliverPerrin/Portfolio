@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Oliver Perrin - Skills</title>
+    <title>Skills — Oliver Perrin</title>
+    <meta name="description" content="Skills and learning sources — machine learning, deep learning, reinforcement learning, NLP, systems and languages.">
     <link rel="stylesheet" href="app.css">
     <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.34/dist/lenis.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
@@ -11,118 +12,123 @@
     <script src="app.js" defer></script>
 </head>
 <body>
-    <!-- Header -->
     <nav class="nav-container">
-    <div class="nav-content">
-        <a href="index.html" class="logo">
-            <img src="ProfilePhotocopy.png" alt="Oliver Perrin" class="logo-image">
-            <span>Oliver Perrin</span>
-        </a>
-        <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="projects.html">Projects</a></li>
-            <li><a href="skills.html">Skills</a></li>
-            <li><a href="experience.html">Experience</a></li>
-            <li><a href="certifications.html">Certifications</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="Oliver_Perrin_Resume.pdf" target="_blank" rel="noopener" class="resume-link">Resume</a></li>
-        </ul>
-        <button class="theme-toggle" id="theme-toggle">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <circle cx="12" cy="12" r="5"></circle>
-                <line x1="12" y1="1" x2="12" y2="3"></line>
-                <line x1="12" y1="21" x2="12" y2="23"></line>
-                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                <line x1="1" y1="12" x2="3" y2="12"></line>
-                <line x1="21" y1="12" x2="23" y2="12"></line>
-                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-            </svg>
-        </button>
-    </div>
-</nav>
-
-    <!-- Skills Section -->
-    <section id="skills" class="section">
-        <div class="section-header">
-            <h2 class="section-title fade-in">Technical Skills</h2>
-            <p class="section-subtitle fade-in">The tools and techniques I use day-to-day across ML, data, and software engineering</p>
+        <div class="nav-content">
+            <a href="index.html" class="logo">
+                <img src="ProfilePhotocopy.png" alt="Oliver Perrin" class="logo-image">
+                <span>Oliver Perrin</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="experience.html">Experience</a></li>
+                <li><a href="skills.html">Skills</a></li>
+                <li><a href="certifications.html">Certifications</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="Oliver_Perrin_Resume.pdf" target="_blank" rel="noopener" class="resume-link">Resume</a></li>
+            </ul>
+            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"></svg>
+            </button>
         </div>
-        <div class="skills-grid">
-            <div class="skill-category fade-in-up">
-                <h3>Machine Learning</h3>
-                <ul class="skill-list">
-                    <li class="skill-item">PyTorch</li>
-                    <li class="skill-item">Transformers (Hugging Face)</li>
-                    <li class="skill-item">TensorFlow</li>
-                    <li class="skill-item">Scikit-learn</li>
-                    <li class="skill-item">Multi-task Learning</li>
-                    <li class="skill-item">Transfer Learning</li>
-                    <li class="skill-item">Representation Learning</li>
-                    <li class="skill-item">NLP</li>
-                    <li class="skill-item">Reinforcement Learning</li>
-                </ul>
-            </div>
-            <div class="skill-category fade-in-up">
-                <h3>Data & Analysis</h3>
-                <ul class="skill-list">
-                    <li class="skill-item">Pandas</li>
-                    <li class="skill-item">NumPy</li>
-                    <li class="skill-item">Plotly</li>
-                    <li class="skill-item">Seaborn</li>
-                    <li class="skill-item">SQL</li>
-                    <li class="skill-item">Statistical Modeling</li>
-                    <li class="skill-item">MLflow</li>
-                    <li class="skill-item">Weights & Biases</li>
-                </ul>
-            </div>
-            <div class="skill-category fade-in-up">
-                <h3>Engineering & Systems</h3>
-                <ul class="skill-list">
-                    <li class="skill-item">Python</li>
-                    <li class="skill-item">C/C++</li>
-                    <li class="skill-item">Java</li>
-                    <li class="skill-item">JavaScript</li>
-                    <li class="skill-item">FastAPI</li>
-                    <li class="skill-item">React.js</li>
-                    <li class="skill-item">PostgreSQL</li>
-                    <li class="skill-item">Docker</li>
-                    <li class="skill-item">CI/CD</li>
-                    <li class="skill-item">LaTeX</li>
-                </ul>
-            </div>
-            <div class="skill-category fade-in-up">
-                <h3>Other Tools & Platforms</h3>
-                <ul class="skill-list">
-                    <li class="skill-item">Haskell</li>
-                    <li class="skill-item">Tableau</li>
-                    <li class="skill-item">Streamlit</li>
-                    <li class="skill-item">GSAP</li>
-                    <li class="skill-item">Netlify</li>
-                    <li class="skill-item">Koyeb</li>
-                    <li class="skill-item">Raspberry Pi / IoT</li>
-                </ul>
-            </div>
-        </div>
-    </section>
+    </nav>
 
-    <!-- Footer -->
+    <main class="page">
+        <section class="section">
+            <div class="section-header">
+                <span class="eyebrow">Skills</span>
+                <h2 class="section-title">Tools, topics, and the work behind them</h2>
+                <p class="section-subtitle">I prefer depth over breadth. These are the areas I work in day-to-day, not a wish list.</p>
+            </div>
+
+            <div class="skills-grid">
+                <div class="skill-category fade-in-up">
+                    <h3>Machine Learning</h3>
+                    <ul class="skill-list">
+                        <li class="skill-item">PyTorch</li>
+                        <li class="skill-item">Hugging Face Transformers</li>
+                        <li class="skill-item">TensorFlow</li>
+                        <li class="skill-item">Scikit-learn</li>
+                        <li class="skill-item">Multi-task Learning</li>
+                        <li class="skill-item">Transfer Learning</li>
+                        <li class="skill-item">Representation Learning</li>
+                        <li class="skill-item">Reinforcement Learning</li>
+                        <li class="skill-item">NLP</li>
+                    </ul>
+                </div>
+                <div class="skill-category fade-in-up">
+                    <h3>Training &amp; Evaluation</h3>
+                    <ul class="skill-list">
+                        <li class="skill-item">MLflow</li>
+                        <li class="skill-item">Weights &amp; Biases</li>
+                        <li class="skill-item">Bootstrap CIs</li>
+                        <li class="skill-item">Ablation design</li>
+                        <li class="skill-item">Statistical Modeling</li>
+                        <li class="skill-item">Pandas / NumPy</li>
+                        <li class="skill-item">Plotly / Seaborn</li>
+                        <li class="skill-item">SQL</li>
+                    </ul>
+                </div>
+                <div class="skill-category fade-in-up">
+                    <h3>Engineering &amp; Systems</h3>
+                    <ul class="skill-list">
+                        <li class="skill-item">Python</li>
+                        <li class="skill-item">C / C++</li>
+                        <li class="skill-item">Java</li>
+                        <li class="skill-item">JavaScript</li>
+                        <li class="skill-item">Haskell</li>
+                        <li class="skill-item">FastAPI</li>
+                        <li class="skill-item">React</li>
+                        <li class="skill-item">PostgreSQL</li>
+                        <li class="skill-item">Docker</li>
+                        <li class="skill-item">CI/CD</li>
+                        <li class="skill-item">LaTeX</li>
+                    </ul>
+                </div>
+                <div class="skill-category fade-in-up">
+                    <h3>Interests &amp; Reading</h3>
+                    <ul class="skill-list">
+                        <li class="skill-item">Attention / transformers</li>
+                        <li class="skill-item">Post-training &amp; RLHF</li>
+                        <li class="skill-item">Multi-task &amp; curriculum</li>
+                        <li class="skill-item">RL theory</li>
+                        <li class="skill-item">Language modeling from scratch</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <span class="eyebrow">Depth</span>
+                <h2 class="section-title">Where my ML / DL / RL background comes from</h2>
+                <p class="section-subtitle">Deliberate self-study on top of my university curriculum. I take lectures, notes, problem sets, and exams end-to-end — rather than skim.</p>
+            </div>
+            <div class="prose fade-in-up">
+                <h3>Stanford (self-directed)</h3>
+                <p class="inline-list"><code>CS229</code> Machine Learning · <code>CS230</code> Deep Learning · <code>CS336</code> Language Modeling from Scratch · <code>CS224R</code> Deep Reinforcement Learning · <code>CME295/296</code> Transformers &amp; LLMs.</p>
+
+                <h3>Appalachian State</h3>
+                <p class="inline-list"><code>Applied Machine Learning</code> · <code>Advanced Reinforcement Learning</code> · <code>Numerical Methods</code> · <code>Computational Mathematics</code> · <code>Statistical Data Analysis</code> · <code>Linear Algebra</code> · <code>Theoretical Computer Science</code> · <code>Data Structures &amp; Algorithms</code>.</p>
+
+                <h3>Other</h3>
+                <p class="inline-list">DeepLearning.AI <em>Machine Learning Specialization</em> (Andrew Ng) and <em>Advanced Learning Algorithms</em> — credentials on <a href="certifications.html">certifications</a>.</p>
+            </div>
+        </section>
+    </main>
+
     <footer class="footer">
-    <div class="footer-content">
-        <div class="footer-links">
-            <a href="index.html">Home</a>
-            <a href="about.html">About</a>
-            <a href="projects.html">Projects</a>
-            <a href="skills.html">Skills</a>
-            <a href="experience.html">Experience</a>
-            <a href="contact.html">Contact</a>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="projects.html">Projects</a>
+                <a href="experience.html">Experience</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="copyright">© 2026 Oliver Perrin</div>
         </div>
-        <div class="copyright">
-            <p>&copy; 2026 Oliver Perrin. Designed and developed with passion.</p>
-        </div>
-    </div>
-</footer>
+    </footer>
 </body>
 </html>

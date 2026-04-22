@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Oliver Perrin - Projects</title>
+    <title>Projects — Oliver Perrin</title>
+    <meta name="description" content="Selected projects by Oliver Perrin — LexiMind (272M MTL transformer, EMNLP 2026 target), LiminalML, F1 race predictor, PlayAxis, IoT monitoring.">
     <link rel="stylesheet" href="app.css">
     <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.34/dist/lenis.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
@@ -11,246 +12,184 @@
     <script src="app.js" defer></script>
 </head>
 <body>
-    <!-- Header -->
     <nav class="nav-container">
-    <div class="nav-content">
-        <a href="index.html" class="logo">
-            <img src="ProfilePhotocopy.png" alt="Oliver Perrin" class="logo-image">
-            <span>Oliver Perrin</span>
-        </a>
-                    <ul class="nav-links">
+        <div class="nav-content">
+            <a href="index.html" class="logo">
+                <img src="ProfilePhotocopy.png" alt="Oliver Perrin" class="logo-image">
+                <span>Oliver Perrin</span>
+            </a>
+            <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="projects.html">Projects</a></li>
-                <li><a href="skills.html">Skills</a></li>
                 <li><a href="experience.html">Experience</a></li>
+                <li><a href="skills.html">Skills</a></li>
                 <li><a href="certifications.html">Certifications</a></li>
                 <li><a href="contact.html">Contact</a></li>
                 <li><a href="Oliver_Perrin_Resume.pdf" target="_blank" rel="noopener" class="resume-link">Resume</a></li>
             </ul>
-        <button class="theme-toggle" id="theme-toggle">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <circle cx="12" cy="12" r="5"></circle>
-                <line x1="12" y1="1" x2="12" y2="3"></line>
-                <line x1="12" y1="21" x2="12" y2="23"></line>
-                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                <line x1="1" y1="12" x2="3" y2="12"></line>
-                <line x1="21" y1="12" x2="23" y2="12"></line>
-                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-            </svg>
-        </button>
-    </div>
-</nav>
-
-    <!-- Projects Section -->
-    <section id="projects" class="section">
-        <div class="section-header">
-            <h2 class="section-title fade-in">Featured Projects</h2>
-            <p class="section-subtitle fade-in">Things I've built — from research experiments to full-stack applications</p>
+            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"></svg>
+            </button>
         </div>
-        <div class="projects-grid">
-            <div class="project-card fade-in-up">
-                <div class="project-image">
-                </div>
-                <div class="project-content">
-                    <h3 class="project-title">LexiMind: Multi-Task Learning for Literary & Academic Text</h3>
-                    <p class="project-description">I implemented a 272M-parameter encoder-decoder transformer from scratch (Pre-LN, RMSNorm, T5 relative position bias, FlashAttention, gated-GELU FFN, KV-cache) with explicit FLAN-T5-base weight mapping, then jointly trained it on abstractive summarization, topic classification, and multi-label emotion detection across literary and academic text. I diagnosed negative transfer in naive MTL and designed two targeted interventions — learned attention pooling for classification heads and temperature-based task sampling (α=0.5) — improving emotion-detection sample-averaged F1 from 0.199 → 0.352 (+77%) and surpassing the single-task baseline; per-class threshold tuning further raised macro F1 to 0.290 on held-out test. The shared-encoder MTL system also beats a BERT-base topic-classification specialist (85.7% vs. 83.1% accuracy). Targeting an arXiv preprint and EMNLP 2026 submission, with 5-seed validation, bootstrap CIs, cross-task MD5 deduplication, gradient-conflict diagnostics, and MLflow experiment tracking already in place.
-                </p>
+    </nav>
+
+    <main class="page">
+        <section class="section">
+            <div class="section-header">
+                <span class="eyebrow">Projects</span>
+                <h2 class="section-title">Selected work</h2>
+                <p class="section-subtitle">Research experiments, production systems, and full-stack builds. A few of the things I've actually shipped.</p>
+            </div>
+
+            <div class="projects-list">
+                <article id="leximind" class="project-card is-featured fade-in-up">
+                    <div class="project-head">
+                        <h3 class="project-title">LexiMind — MTL for literary &amp; academic text</h3>
+                        <span class="project-date">Nov 2025 – present</span>
+                    </div>
+                    <p class="project-description">
+                        A <strong>272M-parameter encoder-decoder transformer I implemented from scratch</strong> (Pre-LN, RMSNorm, T5 relative position bias, FlashAttention, gated-GELU FFN, KV-cache) with explicit FLAN-T5-base weight mapping — jointly trained on abstractive summarization, topic classification, and multi-label emotion detection. I diagnosed negative transfer in naive MTL and designed two targeted interventions: learned attention pooling for classification heads and temperature-based task sampling (α=0.5). Emotion-detection sample-averaged F1 went <code>0.199 → 0.352</code> (+77%), beating the single-task baseline; per-class threshold tuning lifted macro F1 to <code>0.290</code>. Shared-encoder MTL also beats a BERT-base topic-classification specialist (<code>85.7%</code> vs. <code>83.1%</code>). 5-seed validation, bootstrap CIs, cross-task MD5 dedup, gradient-conflict diagnostics, MLflow tracking. Targeting arXiv + EMNLP 2026.
+                    </p>
                     <div class="project-tech">
                         <span class="tech-tag">PyTorch</span>
                         <span class="tech-tag">Transformers</span>
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">NLP</span>
                         <span class="tech-tag">Multi-Task Learning</span>
+                        <span class="tech-tag">FlashAttention</span>
                         <span class="tech-tag">MLflow</span>
+                        <span class="tech-tag">NLP</span>
                     </div>
-                    <a href="https://HuggingFace.co/spaces/OliverPerrin/LexiMind" class="project-link" target="_blank" rel="noopener">
-                        View HF Demo →
-                    </a>
-                    <br>
-                    <a href="https://github.com/OliverPerrin/LexiMind" class="project-link project-link--secondary" target="_blank" rel="noopener">
-                        GitHub Repo →
-                    </a>
-                </div>
-            </div>
-            <div class="project-card fade-in-up">
-                <div class="project-image">
-                </div>
-                <div class="project-content">
-                    <h3 class="project-title">F1 Race Outcome Predictor</h3>
-                    <p class="project-description">I built an end-to-end ML pipeline ingesting FastF1 and Ergast data across multiple seasons, engineering features covering lap times, session deltas, and driver/team context. I trained a Random Forest regressor (MAE 1.78 grid positions, RMSE 2.28) and two Logistic Regression classifiers for Q3 and top-ten qualification prediction (93.8% and 92.6% accuracy). The interactive Streamlit dashboard includes scenario planning for upcoming races and full model diagnostics.</p>
+                    <div class="project-links">
+                        <a href="https://HuggingFace.co/spaces/OliverPerrin/LexiMind" class="project-link" target="_blank" rel="noopener">HF Space →</a>
+                        <a href="https://github.com/OliverPerrin/LexiMind" class="project-link" target="_blank" rel="noopener">GitHub →</a>
+                    </div>
+                </article>
+
+                <article id="liminalml" class="project-card is-featured fade-in-up">
+                    <div class="project-head">
+                        <h3 class="project-title">LiminalML — structured interview prep for ML &amp; SWE</h3>
+                        <span class="project-date">2025 – present</span>
+                    </div>
+                    <p class="project-description">
+                        A product I'm building: a <strong>structured, non-skippable path</strong> through 157+ ML and SWE interview topics, grounded in the candidate's own resume. Two tracks (ML/Research, 71 topics; SWE, 86 topics), a six-stage flow that progresses from big picture → intuition → math/internals → implementation → interview questions → retrieval check. Every session injects the user's real projects and STAR stories into explanations and comprehension checks, so prep is calibrated to engineers who've already shipped code, not beginners.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Product</span>
+                        <span class="tech-tag">LLM Orchestration</span>
+                        <span class="tech-tag">Curriculum Design</span>
+                        <span class="tech-tag">Full Stack</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://liminalml.com" class="project-link" target="_blank" rel="noopener">liminalml.com ↗</a>
+                    </div>
+                </article>
+
+                <article class="project-card fade-in-up">
+                    <div class="project-head">
+                        <h3 class="project-title">F1 race outcome predictor</h3>
+                        <span class="project-date">2025</span>
+                    </div>
+                    <p class="project-description">
+                        End-to-end ML pipeline over FastF1 and Ergast data across multiple seasons, with engineered features covering lap times, session deltas, and driver/team context. Random Forest regressor (MAE 1.78, RMSE 2.28 grid positions) plus two Logistic Regression classifiers for Q3 and top-ten qualification (<code>93.8%</code> and <code>92.6%</code> accuracy). Interactive Streamlit dashboard for scenario planning and model diagnostics.
+                    </p>
                     <div class="project-tech">
                         <span class="tech-tag">Python</span>
                         <span class="tech-tag">Scikit-learn</span>
                         <span class="tech-tag">Pandas</span>
-                        <span class="tech-tag">Seaborn</span>
                         <span class="tech-tag">Streamlit</span>
                         <span class="tech-tag">FastF1</span>
                     </div>
-                    <a href="https://f1-race-predictor-oliverperrin.streamlit.app/" class="project-link" target="_blank" rel="noopener">
-                        View Streamlit Demo →
-                    </a>
-                    <br>
-                    <a href="https://github.com/OliverPerrin/F1-Race-Predictor" class="project-link project-link--secondary" target="_blank" rel="noopener">
-                        GitHub Repo →
-                    </a>
-                </div>
-            </div>
-            <div class="project-card fade-in-up">
-                <div class="project-image">
-                </div>
-                <div class="project-content">
-                    <h3 class="project-title">Movie Recommendation System</h3>
-                    <p class="project-description">Content-based filtering using TF‑IDF and cosine similarity to generate personalized recommendations over 10k+ movies.</p>
-                    <div class="project-tech">
-                        <span class="tech-tag">TensorFlow</span>
-                        <span class="tech-tag">Scikit-learn</span>
-                        <span class="tech-tag">NumPy</span>
-                        <span class="tech-tag">Python</span>
+                    <div class="project-links">
+                        <a href="https://f1-race-predictor-oliverperrin.streamlit.app/" class="project-link" target="_blank" rel="noopener">Streamlit demo →</a>
+                        <a href="https://github.com/OliverPerrin/F1-Race-Predictor" class="project-link" target="_blank" rel="noopener">GitHub →</a>
                     </div>
-                    <a href="#" class="project-link" aria-disabled="true">DeepLearning.AI Coursework</a>
-                </div>
-            </div>
-            <div class="project-card fade-in-up">
-            <div class="project-image">
-                <img src="Screenshot 2025-09-08 at 11.42.48 AM.jpg" alt="PlayAxis Thumbnail" class="project-thumbnail project-thumbnail--cover">
+                </article>
+
+                <article class="project-card fade-in-up">
+                    <div class="project-head">
+                        <h3 class="project-title">PlayAxis — full-stack sports &amp; events platform</h3>
+                        <span class="project-date">2025</span>
                     </div>
-                <div class="project-content">
-                    <h3 class="project-title">PlayAxis: Full-Stack Sports & Events Platform</h3>
-                    <p class="project-description">I built a platform aggregating real-time schedules, scores, and event data by integrating 3+ external APIs with a FastAPI backend (Pydantic validation) and a PostgreSQL database. Containerized with Docker and automated CI/CD via Netlify and Koyeb, reducing deployment time by 60%.</p>
+                    <p class="project-description">
+                        Aggregates real-time schedules, scores, and event data from 3+ external APIs into a FastAPI backend with Pydantic validation and a PostgreSQL store. Dockerized with CI/CD through Netlify and Koyeb. A good exercise in real-world schema reconciliation and deploy ergonomics.
+                    </p>
                     <div class="project-tech">
-                        <span class="tech-tag">React.js</span>
+                        <span class="tech-tag">React</span>
                         <span class="tech-tag">FastAPI</span>
                         <span class="tech-tag">PostgreSQL</span>
                         <span class="tech-tag">Docker</span>
                         <span class="tech-tag">Python</span>
-                        <span class="tech-tag">JavaScript</span>
-                        <span class="tech-tag">Netlify</span>
-                        <span class="tech-tag">Koyeb</span>
                     </div>
-                    <a href="https://playaxis.netlify.app" class="project-link" target="_blank">
-                        View Project →
-                    </a>
-                    <br>
-                    <a href="https://github.com/OliverPerrin/PlayAxis" class="project-link project-link--secondary" target="_blank" aria-label="PlayAxis GitHub repository">
-                        GitHub Repo →
-                    </a>
-                </div>
-            </div>
-            <div class="project-card fade-in-up">
-            <div class="project-image">
-                <img src="Screenshot 2025-09-08 at 11.48.28 AM.jpg" alt="Portfolio Website Thumbnail" class="project-thumbnail project-thumbnail--cover">
+                    <div class="project-links">
+                        <a href="https://playaxis.netlify.app" class="project-link" target="_blank" rel="noopener">Live site →</a>
+                        <a href="https://github.com/OliverPerrin/PlayAxis" class="project-link" target="_blank" rel="noopener">GitHub →</a>
                     </div>
-                <div class="project-content">
-                    <h3 class="project-title">Personal Portfolio Website</h3>
-                    <p class="project-description">The site you're looking at right now. I designed and built it from scratch with HTML, CSS, and JavaScript, using GSAP and Lenis for smooth animations. Hosted on Netlify with GitHub for version control.</p>
-                    <div class="project-tech">
-                        <span class="tech-tag">HTML</span>
-                        <span class="tech-tag">CSS</span>
-                        <span class="tech-tag">JavaScript</span>
-                        <span class="tech-tag">Lenis</span>
-                        <span class="tech-tag">GSAP</span>
+                </article>
+
+                <article class="project-card fade-in-up">
+                    <div class="project-head">
+                        <h3 class="project-title">IoT monitoring for fossil fuel power plants</h3>
+                        <span class="project-date">2023 – 2024 · Triaxis Power</span>
                     </div>
-                    <a href="https://github.com/OliverPerrin/Portfolio" class="project-link" target="_blank">
-                        GitHub Repo →
-                    </a>
-                </div>
-            </div>
-            <!-- Formula 1 Statistics Analysis -->
-            <div class="project-card fade-in-up">
-                <div class="project-image">
-                    <img src="Screenshot 2025-10-22 at 11.53.51 PM.jpg" alt="Formula 1 Statistics Dashboard" class="project-thumbnail project-thumbnail--cover">
-                </div>
-                <div class="project-content">
-                    <h3 class="project-title">Formula 1 Statistics Analysis</h3>
-                    <p class="project-description">Tableau dashboard analyzing Formula 1 data from 1950–2024. Visualizes drivers, constructors, and circuits across F1 history to uncover performance trends and insights.</p>
-                    <div class="project-tech">
-                        <span class="tech-tag">Tableau</span>
-                        <span class="tech-tag">Data Visualization</span>
-                    </div>
-                    <a href="https://public.tableau.com/app/profile/oliver.perrin/viz/Formula1Statistics_17404500008890/Formula1" class="project-link" target="_blank" rel="noopener">
-                        View Dashboard →
-                    </a>
-                </div>
-            </div>
-            <div class="project-card fade-in-up">
-                <div class="project-image project-image--plain">
-                    <img src="Pi-Plate.jpg" alt="Raspberry Pi" class="project-thumbnail">
-                </div>
-                <div class="project-content">
-                    <h3 class="project-title">IoT Monitoring System</h3>
-                    <p class="project-description">I built a Raspberry Pi-based monitoring system for fossil fuel power plants during my internship at Triaxis Power. It tracks pipe temperature and thermal expansion using thermocouples and potentiometers, with automated cloud sync for continuous remote monitoring across multiple plant sites.</p>
+                    <p class="project-description">
+                        A Raspberry Pi 4 system with thermocouples and potentiometers to track pipe temperature and thermal expansion for predictive maintenance. I scoped, specified, and deployed it end-to-end — hardware selection, pipeline, and visualization — across plant sites.
+                    </p>
                     <div class="project-tech">
                         <span class="tech-tag">Raspberry Pi</span>
                         <span class="tech-tag">IoT</span>
                         <span class="tech-tag">Python</span>
-                        <span class="tech-tag">Cloud Storage</span>
-                        <span class="tech-tag">Data Visualization</span>
                     </div>
-                    <a href="#contact" class="project-link">
-                        View Details →
-                    </a>
-                </div>
-            </div>
-            <div class="project-card fade-in-up">
-                <div class="project-image project-image--plain">
-                    <img src="intel-logo.png" alt="Intel Logo" class="project-thumbnail">
-                </div>
-                <div class="project-content">
-                    <h3 class="project-title">Sustainability Impact Analysis for Intel</h3>
-                    <p class="project-description">A data-driven evaluation of Intel's 2024 device repurposing and recycling program, completed during my time with The Global Career Accelerator. I analyzed which devices to prioritize for maximum reductions in e-waste, energy consumption, and CO₂ emissions.</p>
-                    <div class="project-tech">
-                        <span class="tech-tag">SQL</span>
-                        <span class="tech-tag">Data Analysis</span>
-                        <span class="tech-tag">Sustainability</span>
-                        <span class="tech-tag">CO₂ Impact</span>
-                        <span class="tech-tag">Energy Savings</span>
-                        <span class="tech-tag">Reporting</span>
-                    </div>
-                    <a href="Oliver Perrin - SQL Project | Sustainability Impact Analysis for Intel.pdf" class="project-link" target="_blank" rel="noopener" aria-label="Open Intel sustainability analysis PDF project">
-                        View Project PDF →
-                    </a>
-                </div>
-            </div>
-            <div class="project-card fade-in-up">
-                <div class="project-image project-image--plain project-image--black">
-                    <img src="grammy-awards.jpg" alt="Grammy Awards" class="project-thumbnail project-thumbnail--cover">
-                </div>
-                <div class="project-content">
-                    <h3 class="project-title">Grammy.com Analytics Dashboard</h3>
-                    <p class="project-description">I conducted comprehensive data analysis for The Recording Academy's websites during my Data Science work with The Global Career Accelerator, providing data-driven insights into audience engagement and business performance metrics.</p>
-                    <div class="project-tech">
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">Data Analysis</span>
-                        <span class="tech-tag">Visualization</span>
-                        <span class="tech-tag">KPI Tracking</span>
-                        <span class="tech-tag">Jupyter Notebook</span>
-                    </div>
-                    <a href="oliverp_Analyzing_Website_Performance_Grammys.pdf" class="project-link" target="_blank" rel="noopener" aria-label="Open Grammys web analytics PDF project">
-                        View Project PDF →
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
+                </article>
 
-    <!-- Footer -->
+                <article class="project-card fade-in-up">
+                    <div class="project-head">
+                        <h3 class="project-title">Formula 1 statistics dashboard</h3>
+                        <span class="project-date">2024</span>
+                    </div>
+                    <p class="project-description">
+                        Tableau analysis of Formula 1 data from 1950–2024, cutting across drivers, constructors, and circuits to surface long-range performance trends.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Tableau</span>
+                        <span class="tech-tag">Data Viz</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://public.tableau.com/app/profile/oliver.perrin/viz/Formula1Statistics_17404500008890/Formula1" class="project-link" target="_blank" rel="noopener">View dashboard →</a>
+                    </div>
+                </article>
+
+                <article class="project-card fade-in-up">
+                    <div class="project-head">
+                        <h3 class="project-title">This site</h3>
+                        <span class="project-date">2024 – present</span>
+                    </div>
+                    <p class="project-description">
+                        Built by hand — HTML / CSS / JS with Lenis for smooth scrolling and GSAP for soft fade-ins. Hosted on Netlify.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">HTML</span>
+                        <span class="tech-tag">CSS</span>
+                        <span class="tech-tag">JavaScript</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/OliverPerrin/Portfolio" class="project-link" target="_blank" rel="noopener">GitHub →</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
     <footer class="footer">
-    <div class="footer-content">
-        <div class="footer-links">
-            <a href="index.html">Home</a>
-            <a href="about.html">About</a>
-            <a href="projects.html">Projects</a>
-            <a href="skills.html">Skills</a>
-            <a href="experience.html">Experience</a>
-            <a href="contact.html">Contact</a>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="experience.html">Experience</a>
+                <a href="contact.html">Contact</a>
+                <a href="Oliver_Perrin_Resume.pdf" target="_blank" rel="noopener">Resume</a>
+            </div>
+            <div class="copyright">© 2026 Oliver Perrin</div>
         </div>
-        <div class="copyright">
-            <p>&copy; 2026 Oliver Perrin. Designed and developed with passion.</p>
-        </div>
-    </div>
-</footer>
+    </footer>
 </body>
 </html>

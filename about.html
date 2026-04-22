@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Oliver Perrin - About</title>
+    <title>About — Oliver Perrin</title>
+    <meta name="description" content="About Oliver Perrin — ML engineer and researcher finishing B.S. CS at Appalachian State. Production ML work at a stealth startup, independent research on multi-task learning, and self-study through Stanford's ML / DL / RL curriculum.">
     <link rel="stylesheet" href="app.css">
     <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.34/dist/lenis.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
@@ -11,144 +12,78 @@
     <script src="app.js" defer></script>
 </head>
 <body>
-    <!-- Header -->
     <nav class="nav-container">
-    <div class="nav-content">
-        <a href="index.html" class="logo">
-            <img src="ProfilePhotocopy.png" alt="Oliver Perrin" class="logo-image">
-            <span>Oliver Perrin</span>
-        </a>
-        <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="projects.html">Projects</a></li>
-            <li><a href="skills.html">Skills</a></li>
-            <li><a href="experience.html">Experience</a></li>
-            <li><a href="certifications.html">Certifications</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="Oliver_Perrin_Resume.pdf" target="_blank" rel="noopener" class="resume-link">Resume</a></li>
-        </ul>
-        <button class="theme-toggle" id="theme-toggle">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <circle cx="12" cy="12" r="5"></circle>
-                <line x1="12" y1="1" x2="12" y2="3"></line>
-                <line x1="12" y1="21" x2="12" y2="23"></line>
-                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                <line x1="1" y1="12" x2="3" y2="12"></line>
-                <line x1="21" y1="12" x2="23" y2="12"></line>
-                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-            </svg>
-        </button>
-    </div>
-</nav>
-
-    <main>
-    <!-- About Section -->
-    <section id="about" class="section">
-        <div class="section-header">
-            <h2 class="section-title fade-in">About Me</h2>
-        </div>
-        <div class="about-text-only fade-in-up">
-            <p>I'm Oliver — an ML engineer and researcher finishing my B.S. in Computer Science at Appalachian State University this May, with a minor in Mathematics and a Data Science certificate. I work on production ML systems and controlled empirical research, and my focus sits at the intersection of multi-task learning, reinforcement learning theory, and NLP / language modeling.</p>
-
-            <p>I'm currently an ML Engineer & Researcher at a stealth, pre-launch startup, which I joined as a senior-year intern after my capstone work became the initial production system and is now being transitioned into a full-time role post-graduation. Day-to-day I work directly with the founder and one other engineer on nearly all ML architecture and research decisions ahead of launch.</p>
-
-            <p>What drives me is understanding how models actually learn — particularly through attention mechanisms — and how decisions around architecture, training, and data shape performance, generalization, and interpretability. I like working close to the math, moving between theory and implementation, and letting experimental results pick the next step.</p>
-
-            <h3>What I'm Working On</h3>
-
-            <p>At the startup, I'm the core ML engineer on a 10-person pre-launch team (9 engineers + founder, advised by an external board). I shipped a production attribute and unit harmonization system — SBERT embeddings over 125K+ product attributes, cosine-similarity retrieval, GPU-accelerated batch inference, and confidence + top-k match evidence surfaced for output explainability. I also designed a schema-agnostic ingestion layer that auto-detects multiple JSON formats and normalizes them into a canonical attribute representation, plus unit-harmonization logic across physical, electrical, and thermal dimensions that teammates now consume for downstream visualizations and a browser extension.</p>
-
-            <p>On top of that I built a real-time ML operations dashboard in FastAPI + WebSockets, with batch upload, step-level event streaming, and grouped downloadable outputs for debugging and stakeholder demos. I'm also prototyping a second system — a multi-agent harmonization and product-data scraping pipeline built with Claude Agent Skills orchestrated through Obsidian — and presenting architecture deep-dives to the company's advisory board (specifics under NDA).</p>
-
-            <p>On the research side, my main project is <strong>LexiMind</strong> — a 272M-parameter encoder-decoder transformer I implemented from scratch (Pre-LN, RMSNorm, T5 relative position bias, FlashAttention, gated-GELU FFN, KV-cache) with explicit FLAN-T5-base weight mapping, jointly trained on abstractive summarization, topic classification, and multi-label emotion detection across literary and academic text. I diagnosed negative transfer in naive MTL and designed two targeted interventions — learned attention pooling for classification heads and temperature-based task sampling — improving emotion-detection sample-averaged F1 from 0.199 → 0.352 (+77%) and surpassing the single-task baseline. The shared-encoder MTL system also beats a BERT-base topic-classification specialist (85.7% vs. 83.1%). I'm targeting an arXiv preprint and EMNLP 2026 submission, with 5-seed validation, bootstrap CIs, gradient-conflict diagnostics, and MLflow tracking already in place.</p>
-
-            <p>Alongside that I've built an F1 race outcome predictor using classical ML methods and careful feature engineering, and PlayAxis — a full-stack sports platform integrating multiple external APIs with a FastAPI backend and PostgreSQL. These projects sharpened how I reason about real-world datasets, evaluation metrics, and end-to-end system design.</p>
-
-            <h3>Background & How I Learn</h3>
-
-            <p>My coursework has covered Linear Algebra, Statistical Data Analysis, Numerical Methods, Computational Mathematics, Advanced Reinforcement Learning, Theoretical Computer Science, Applied Machine Learning, and Data Structures & Algorithms. I also completed the Machine Learning Specialization by Andrew Ng, and I regularly read foundational and modern ML literature to stay grounded in both the classics and what's new.</p>
-
-            <p>I learn best by building. I implement models from scratch, validate ideas through experiments, and refine systems based on evidence rather than assumptions. NLP, representation learning, and applied deep learning are where I spend most of my time — and I genuinely enjoy explaining complex ideas clearly, whether through writing, diagrams, or code.</p>
-
-            <h3>What I'm Looking For</h3>
-
-            <p>Beyond my current role, I'm open to research engineer or research-focused ML roles where mathematical rigor and experimental methodology are valued. I want to keep:</p>
-            <ul>
-                <li>Contributing to model development, experimentation, and production ML systems</li>
-                <li>Working alongside experienced engineers and researchers who push me to grow</li>
-                <li>Building a strong foundation in ML systems and applied research</li>
+        <div class="nav-content">
+            <a href="index.html" class="logo">
+                <img src="ProfilePhotocopy.png" alt="Oliver Perrin" class="logo-image">
+                <span>Oliver Perrin</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="experience.html">Experience</a></li>
+                <li><a href="skills.html">Skills</a></li>
+                <li><a href="certifications.html">Certifications</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="Oliver_Perrin_Resume.pdf" target="_blank" rel="noopener" class="resume-link">Resume</a></li>
             </ul>
+            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"></svg>
+            </button>
+        </div>
+    </nav>
 
-            <p>This site is where I share my projects, technical work, and what I'm learning along the way. Thanks for stopping by.</p>
-        </div>
-    </section>
-    
-    <!-- Education Section -->
-    <section id="education" class="section">
-        <div class="section-header">
-            <h2 class="section-title fade-in">Education</h2>
-            <p class="section-subtitle fade-in">Appalachian State University • B.S. Computer Science, Minor in Mathematics, Data Science Certificate</p>
-        </div>
-        <div class="skills-grid">
-            <div class="skill-category fade-in-up">
-                <h3>Relevant Coursework</h3>
-                <ul class="skill-list">
-                    <li class="skill-item">Linear Algebra</li>
-                    <li class="skill-item">Statistical Data Analysis</li>
-                    <li class="skill-item">Numerical Methods</li>
-                    <li class="skill-item">Computational Mathematics</li>
-                    <li class="skill-item">Advanced Reinforcement Learning</li>
-                    <li class="skill-item">Theoretical Computer Science</li>
-                    <li class="skill-item">Applied Machine Learning</li>
-                    <li class="skill-item">Data Structures & Algorithms</li>
-                </ul>
+    <main class="page">
+        <section class="section">
+            <div class="section-header">
+                <span class="eyebrow">About</span>
+                <h2 class="section-title">ML engineer and researcher.</h2>
+                <p class="section-subtitle">Production ML systems with the research discipline to back them up.</p>
             </div>
-            <div class="skill-category fade-in-up">
-                <h3>Research Interests</h3>
-                <ul class="skill-list">
-                    <li class="skill-item">Multi-task learning</li>
-                    <li class="skill-item">Reinforcement learning theory</li>
-                    <li class="skill-item">NLP / language modeling</li>
-                </ul>
+            <div class="prose fade-in-up">
+                <p>I'm Oliver — an ML engineer and researcher based in Boone, NC. I'm finishing a B.S. in Computer Science at Appalachian State this May with a minor in Mathematics and a Data Science certificate, and I'm transitioning into a full-time ML role at the stealth, pre-launch startup I've been working with since my senior year. My research interests sit at the intersection of <strong>multi-task learning, reinforcement learning theory, and NLP / language modeling</strong>.</p>
+
+                <p>I joined the startup as a senior-year intern after my capstone — an ML harmonization system and real-time inference dashboard — became the initial production system the team built on. Today I work directly with the founder and one other engineer on nearly all ML architecture and research decisions ahead of launch.</p>
+
+                <h3>How I work</h3>
+
+                <p>I learn by building and I prefer evidence over opinions. I'll implement models from scratch rather than take a library for granted, run ablations rather than trust defaults, and sit with results long enough to understand <em>why</em> something worked before shipping it. Most of my time goes to NLP, representation learning, and applied deep learning — and I genuinely enjoy explaining what's going on, in code, in diagrams, or in prose.</p>
+
+                <p>What I care about is the feedback loop between theory and implementation: staying close to the math, designing controlled experiments, and letting the results pick the next step. That's how I ended up with <a href="projects.html#leximind">LexiMind</a> — a 272M-parameter encoder-decoder transformer I built from scratch (Pre-LN, RMSNorm, T5 relative position bias, FlashAttention, gated-GELU FFN, KV-cache) with explicit FLAN-T5-base weight mapping, then jointly trained on summarization, topic classification, and multi-label emotion detection. The interesting part wasn't the scale, it was diagnosing negative transfer in naive MTL and designing two targeted interventions that lifted emotion-detection sample-averaged F1 from <code>0.199</code> to <code>0.352</code>.</p>
+
+                <h3>Coursework &amp; self-study</h3>
+
+                <p>A lot of my depth in ML, DL, and RL comes from deliberate self-study on top of my university curriculum. I work through Stanford courses end-to-end — full lectures, written notes, problem sets, and exams — to stay honest about what I actually understand.</p>
+
+                <p class="inline-list"><strong>Stanford (self-directed, lectures + exams + notes):</strong> <code>CS229</code> Machine Learning · <code>CS230</code> Deep Learning · <code>CS336</code> Language Modeling from Scratch · <code>CS224R</code> Deep Reinforcement Learning · <code>CME295/296</code> Transformers &amp; LLMs.</p>
+
+                <p class="inline-list"><strong>Appalachian State:</strong> <code>Applied Machine Learning</code> · <code>Advanced Reinforcement Learning</code> · <code>Numerical Methods</code> · <code>Computational Mathematics</code> · <code>Statistical Data Analysis</code> · <code>Linear Algebra</code> · <code>Theoretical Computer Science</code> · <code>Data Structures &amp; Algorithms</code>.</p>
+
+                <p class="inline-list"><strong>Other:</strong> DeepLearning.AI <em>Machine Learning Specialization</em> (Andrew Ng) — see <a href="certifications.html">certifications</a>. Ongoing reading list leans on classic ML papers and the modern LLM / post-training literature.</p>
+
+                <h3>Notable academic projects</h3>
+
+                <p class="inline-list">Formal language interpreter with lambda calculus and type inference (Haskell) · pipelined CPU simulator (C/C++) · 2D game engine (Java). My senior capstone — the ML harmonization system and inference dashboard — is now running in production at the startup and formed the foundation of my full-time role.</p>
+
+                <h3>What I'm looking for</h3>
+
+                <p>Beyond my current role, I'm open to <strong>research engineer</strong> or research-focused ML positions where mathematical rigor and experimental methodology are valued. If that sounds like your team, I'd love to talk — <a href="contact.html">get in touch</a>.</p>
             </div>
-            <div class="skill-category fade-in-up">
-                <h3>Senior Capstone (ML Lead)</h3>
-                <ul class="skill-list">
-                    <li class="skill-item">Built ML harmonization system and real-time inference dashboard</li>
-                    <li class="skill-item">Deliverables deployed in production at partnering stealth startup</li>
-                    <li class="skill-item">Carried forward into current full-time role post-graduation</li>
-                </ul>
-            </div>
-            <div class="skill-category fade-in-up">
-                <h3>Notable Academic Projects</h3>
-                <ul class="skill-list">
-                    <li class="skill-item">Formal language interpreter with lambda calculus and type inference (Haskell)</li>
-                    <li class="skill-item">Pipelined CPU simulator (C/C++)</li>
-                    <li class="skill-item">2D game engine (Java)</li>
-                </ul>
-            </div>
-        </div>
-    </section>
+        </section>
     </main>
 
-    <!-- Footer -->
     <footer class="footer">
-    <div class="footer-content">
-        <div class="footer-links">
-            <a href="index.html">Home</a>
-            <a href="about.html">About</a>
-            <a href="projects.html">Projects</a>
-            <a href="skills.html">Skills</a>
-            <a href="experience.html">Experience</a>
-            <a href="contact.html">Contact</a>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="projects.html">Projects</a>
+                <a href="experience.html">Experience</a>
+                <a href="contact.html">Contact</a>
+                <a href="Oliver_Perrin_Resume.pdf" target="_blank" rel="noopener">Resume</a>
+            </div>
+            <div class="copyright">© 2026 Oliver Perrin</div>
         </div>
-        <div class="copyright">
-            <p>&copy; 2026 Oliver Perrin. Designed and developed with passion.</p>
-        </div>
-    </div>
-</footer>
+    </footer>
 </body>
 </html>
