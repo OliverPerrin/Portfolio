@@ -116,7 +116,6 @@ Portfolio/
 ├── index.html              # Homepage with hero section
 ├── about.html              # About page with bio and education
 ├── projects.html           # Featured projects showcase
-├── skills.html             # Technical skills organized by category
 ├── experience.html         # Professional timeline
 ├── certifications.html     # Credentials and certificates
 ├── contact.html            # Contact form and information
