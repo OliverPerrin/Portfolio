@@ -51,8 +51,13 @@
                         <span class="project-date">Nov 2025 – present</span>
                     </div>
                     <p class="project-description">
-                        A <strong>272M-parameter encoder-decoder transformer I implemented from scratch</strong> (Pre-LN, RMSNorm, T5 relative position bias, FlashAttention, gated-GELU FFN, KV-cache) with explicit FLAN-T5-base weight mapping — jointly trained on abstractive summarization, topic classification, and multi-label emotion detection. I diagnosed negative transfer in naive MTL and designed two targeted interventions: learned attention pooling for classification heads and temperature-based task sampling (α=0.5). Emotion-detection sample-averaged F1 went <code>0.199 → 0.352</code> (+77%), beating the single-task baseline; per-class threshold tuning lifted macro F1 to <code>0.290</code>. Shared-encoder MTL also beats a BERT-base topic-classification specialist (<code>85.7%</code> vs. <code>83.1%</code>). 5-seed validation, bootstrap CIs, cross-task MD5 dedup, gradient-conflict diagnostics, MLflow tracking.
-                    </p>
+                        I built a multi-task NLP system to do summarization, emotion detection, and topic classification from one shared encoder as an undergraduate research project, implementing the transformer from scratch and training it on my personal 4070.
+
+                        In April 2026 I was preparing it for submission when I audited my own draft and found that several baseline and ablation numbers were not good enough. I withdrew the paper and did a writeup on Substack. The verified results are there.
+
+                        What I took from it is that the evaluation was the hard part, not the model. Getting honest numbers out of a 28-class multi-label problem with a long tail where threshold choice, split reuse, and metric selection can each move the headline by ten points was harder than getting the training work for the model, and it's where the original draft went wrong.
+
+                        I'm now rebuilding it around a question I think is more useful: given a fixed post-training compute budget, is it better to jointly train one multi-task model, merge separately-tuned experts, or distill from a frontier teacher? 
                     <div class="project-tech">
                         <span class="tech-tag">PyTorch</span>
                         <span class="tech-tag">Transformers</span>
