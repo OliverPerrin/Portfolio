@@ -114,10 +114,9 @@ Organized by category:
 ```
 Portfolio/
 ├── index.html              # Homepage with hero section
-├── about.html              # About page with bio and education
+├── about.html              # About page with bio, education, and certifications
 ├── projects.html           # Featured projects showcase
 ├── experience.html         # Professional timeline
-├── certifications.html     # Credentials and certificates
 ├── contact.html            # Contact form and information
 ├── app.css                 # Global styles and theme system
 ├── app.js                  # GSAP animations and theme toggle
