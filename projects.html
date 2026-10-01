@@ -57,7 +57,10 @@
 
                         What I took from it is that the evaluation was the hard part, not the model. Getting honest numbers out of a 28-class multi-label problem with a long tail where threshold choice, split reuse, and metric selection can each move the headline by ten points was harder than getting the training work for the model, and it's where the original draft went wrong.
 
-                        I'm now rebuilding it around a question I think is more useful: given a fixed post-training compute budget, is it better to jointly train one multi-task model, merge separately-tuned experts, or distill from a frontier teacher? 
+                        I'm now rebuilding it around a question I think is more useful: given a fixed post-training compute budget, is it better to jointly train one multi-task model, train separate specialists, or merge those specialists? Training is paused while I rebuild the data sources.
+
+                        LexiMind also has a live book-discovery site now, with search and "more like this" recommendations over 120 sourced Open Library works.
+                    </p>
                     <div class="project-tech">
                         <span class="tech-tag">PyTorch</span>
                         <span class="tech-tag">Transformers</span>
@@ -67,6 +70,7 @@
                         <span class="tech-tag">NLP</span>
                     </div>
                     <div class="project-links">
+                        <a href="https://leximind-five.vercel.app" class="project-link" target="_blank" rel="noopener">Live site →</a>
                         <a href="https://HuggingFace.co/spaces/OliverPerrin/LexiMind" class="project-link" target="_blank" rel="noopener">HF Space →</a>
                         <a href="https://github.com/OliverPerrin/LexiMind" class="project-link" target="_blank" rel="noopener">GitHub →</a>
                     </div>
@@ -74,17 +78,17 @@
             </div>
 
             <div class="section-header">
-                <span class="eyebrow">SaaS · ongoing</span>
+                <span class="eyebrow">Product · ongoing</span>
                 <h2 class="section-title">LiminalML</h2>
             </div>
             <div class="projects-list">
                 <article id="liminalml" class="project-card is-featured fade-in-up">
                     <div class="project-head">
-                        <h3 class="project-title">LiminalML - structured interview prep for ML &amp; SWE</h3>
+                        <h3 class="project-title">LiminalML - software for learning and explaining ML</h3>
                         <span class="project-date">2025 – present</span>
                     </div>
                     <p class="project-description">
-                        A product I'm building: a <strong>structured, non-skippable path</strong> through 157+ ML and SWE interview topics, grounded in the candidate's own resume. Two tracks (ML/Research, 71 topics; SWE, 86 topics), a six-stage flow that progresses from big picture → intuition → math/internals → implementation → interview questions → retrieval check. Every session injects the user's real projects and STAR stories into explanations and comprehension checks, so prep is calibrated to engineers who've already shipped code, not beginners.
+                        Two products I'm building under one name. <strong>Study</strong> takes an ML concept through six stages, from the big picture and intuition through the maths and implementation to a recall check, so you understand it well enough to retrieve it later. <strong>Studio</strong> turns ML ideas into interactive figures: start from a preset, edit the data and the explanation, and export a PNG, SVG or HTML file for an article, slide or doc.
                     </p>
                     <div class="project-tech">
                         <span class="tech-tag">Product</span>
@@ -94,6 +98,8 @@
                     </div>
                     <div class="project-links">
                         <a href="https://liminalml.com" class="project-link" target="_blank" rel="noopener">liminalml.com ↗</a>
+                        <a href="https://liminalml.com/study" class="project-link" target="_blank" rel="noopener">Study →</a>
+                        <a href="https://liminalml.com/studio" class="project-link" target="_blank" rel="noopener">Studio →</a>
                     </div>
                 </article>
             </div>
@@ -133,7 +139,7 @@
                         <span class="project-date">2025</span>
                     </div>
                     <p class="project-description">
-                        Full ML pipeline over FastF1 and Ergast data across multiple seasons, with engineered features covering lap times, session deltas, and driver/team context. Random Forest regressor (MAE 1.78, RMSE 2.28 grid positions) plus two Logistic Regression classifiers for Q3 and top-ten qualification (<code>93.8%</code> and <code>92.6%</code> accuracy). Interactive Streamlit dashboard for scenario planning and model diagnostics.
+                        Full ML pipeline over FastF1 and Jolpica-F1 data across multiple seasons, with engineered features covering lap times, session deltas, and driver/team context. Random Forest regressor (MAE 1.74, RMSE 2.09 grid positions) plus two Logistic Regression classifiers for Q3 and top-ten qualification (<code>87.4%</code> and <code>88.5%</code> accuracy on the current data). Interactive Streamlit dashboard for scenario planning and model diagnostics.
                     </p>
                     <div class="project-tech">
                         <span class="tech-tag">Python</span>
@@ -154,7 +160,7 @@
                         <span class="project-date">2025</span>
                     </div>
                     <p class="project-description">
-                        Aggregates real-time schedules, scores, and event data from 3+ external APIs into a FastAPI backend with Pydantic validation and a PostgreSQL store. Dockerized with CI/CD through Netlify and Koyeb. A good exercise in real-world schema reconciliation and deploy ergonomics.
+                        Aggregates real-time schedules, scores, and event data from more than ten public data providers into a FastAPI backend with Pydantic validation and a SQLite or PostgreSQL store. Dockerized with CI/CD through Netlify and Koyeb. A good exercise in real-world schema reconciliation and deploy ergonomics.
                     </p>
                     <div class="project-tech">
                         <span class="tech-tag">React</span>
