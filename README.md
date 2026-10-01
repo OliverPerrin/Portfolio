@@ -1,8 +1,10 @@
-# Oliver Perrin — Portfolio
+<h1 align="center">oliverperrin.com</h1>
 
-Personal portfolio website for Oliver Perrin, an ML Engineer and founder of [LiminalML](https://liminalml.com).
+<p align="center">Personal website of Oliver Perrin, machine learning engineer and founder of <a href="https://liminalml.com">LiminalML</a>.</p>
 
-Live site: [oliverperrin.com](https://oliverperrin.com)
+<p align="center"><a href="https://oliverperrin.com"><strong>Live site</strong></a></p>
+
+---
 
 ## Run locally
 
