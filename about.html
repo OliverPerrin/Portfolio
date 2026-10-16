@@ -6,76 +6,84 @@
     <title>About — Oliver Perrin</title>
     <meta name="description" content="About Oliver Perrin — ML Engineer at a stealth startup and Founder of LiminalML. Production ML work at a stealth startup, independent research on multi-task learning, and self-study through Stanford's ML / DL / RL curriculum.">
     <link rel="stylesheet" href="app.css">
-    <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.34/dist/lenis.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script src="app.js" defer></script>
 </head>
 <body>
-    <nav class="nav-container">
-        <div class="nav-content">
-            <a href="index.html" class="logo">
-                <img src="ProfilePhotocopy.png" alt="Oliver Perrin" class="logo-image">
-                <span>Oliver Perrin</span>
-            </a>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="projects.html">Projects</a></li>
-                <li><a href="experience.html">Experience</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="Oliver_Perrin_Resume.pdf" target="_blank" rel="noopener" class="resume-link">Resume</a></li>
-            </ul>
-            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"></svg>
-            </button>
-        </div>
-    </nav>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+        <a class="wordmark" href="index.html">Oliver Perrin</a>
+        <span class="header-location">Charlotte, North Carolina</span>
+        <details class="site-index">
+            <summary>Menu <span aria-hidden="true" class="menu-mark"></span></summary>
+            <nav aria-label="Site navigation">
+                <a href="index.html#work">Work</a>
+                <a href="index.html#writing">Writing</a>
+                <a href="about.html">About</a>
+                <a href="projects.html">Projects</a>
+                <a href="experience.html">Experience</a>
+                <a href="contact.html">Contact</a>
+                <a class="menu-resume" href="Oliver_Perrin_Resume.pdf" target="_blank" rel="noopener">Résumé <span>PDF</span></a>
+            </nav>
+        </details>
+    </header>
 
-    <main class="page">
-        <section class="section">
-            <div class="section-header">
+    <main id="main" class="about-page">
+        <section class="about-overview">
+            <header class="about-heading">
                 <span class="eyebrow">About</span>
-            </div>
-            <div class="prose fade-in-up">
-                <p>I'm Oliver, a Machine Learning Engineer &amp; Researcher based in Charlotte, NC, with a dual focus on empirical research in MTL and production deployment within MTL as well as RL and post-training. I graduated with a B.S. in Computer Science from Appalachian State with a minor in Mathematics and a Data Science certificate. I'm now full-time as the sole ML Engineer at a stealth, pre-launch startup I joined after graduating. My research interests sit are in <strong>multi-task learning, reinforcement learning, and NLP</strong>.</p>
+                <h1 class="about-title">Research, engineering,<br> and learning by building.</h1>
+            </header>
+            <div class="about-biography prose">
+                <p>I'm Oliver, a machine learning engineer and researcher based in Charlotte, North Carolina. My interests are in NLP, multi-task learning, post-training, and reinforcement learning. I graduated from Appalachian State with a B.S. in Computer Science, a minor in Mathematics, and a Data Science certificate.</p>
+                <p>I'm the sole ML engineer at a stealth, pre-launch startup, owning model development, evaluation, and integration. I keep the company's product and implementation details private.</p>
+                <p>I’m also the founder of <a href="https://liminalml.com">LiminalML</a>, a SaaS company I design, build, and run solo. Study and Studio are its tools for learning and explaining machine learning. On the side, my open-source project <a href="projects.html#leximind">LexiMind</a> explores shared representations and adaptation for language tasks, alongside a separate book-discovery app.</p>
 
-                <p>I joined the startup orginally as an intern after my capstone project which was an ML harmonization system and real-time inference dashboard which became the initial production system for the startup and what I've been building onwards from, it's now much more comple than that. Today, I'm the sole MLE on our 4-person team, owning all ML architecture, DB, api, research, and production decisions regarding AI whithin our app and business</p>
-
-                <h3>Coursework &amp; self-study</h3>
+                </div>
+            <div class="about-topic">
+                <h2>Coursework &amp; self-study</h2>
+                <div class="prose">
 
                 <p>A lot of my depth in ML, DL, and RL comes from deliberate self-study on top of my curriculum from university. I've worked through Stanford courses completely, watching full lectures, writing notes, doing problem sets, and exams.</p>
 
                 <p class="inline-list"><strong>Stanford (self-directed, lectures + exams + notes):</strong> <code>CS229</code> Machine Learning · <code>CS230</code> Deep Learning · <code>CS336</code> Language Modeling from Scratch · <code>CS224R</code> Deep Reinforcement Learning · <code>CME295/296</code> Transformers &amp; LLMs.</p>
 
-                <p class="inline-list"><strong>Appalachian State:</strong> <code>Applied Machine Learning</code> · <code>Advanced Reinforcement Learning</code> · <code>Artificial Intelligence</code> · <code>Computer Systems</code> <code>Numerical Methods</code> · <code>Computational Mathematics</code> · <code>Statistical Data Analysis</code> · <code>Linear Algebra</code> · <code>Theoretical Computer Science</code> · <code>Programming Langauges (Functional Programming w/ Haskell)</code> · <code>Data Structures &amp; Algorithms</code>.</p>
+                <p class="inline-list"><strong>Appalachian State:</strong> <code>Applied Machine Learning</code> · <code>Advanced Reinforcement Learning</code> · <code>Artificial Intelligence</code> · <code>Computer Systems</code> <code>Numerical Methods</code> · <code>Computational Mathematics</code> · <code>Statistical Data Analysis</code> · <code>Linear Algebra</code> · <code>Theoretical Computer Science</code> · <code>Programming Languages (Functional Programming w/ Haskell)</code> · <code>Data Structures &amp; Algorithms</code>.</p>
 
                 <p class="inline-list"><strong>Other:</strong> DeepLearning.AI <em>Machine Learning Specialization</em> (Andrew Ng) — see <a href="#certifications">certifications</a> below.</p>
 
-                <h3>Notable academic projects from university</h3>
+                </div>
+            </div>
+            <div class="about-topic">
+                <h2>Notable academic projects from university</h2>
+                <div class="prose">
 
-                <p class="inline-list">Formal language interpreter with lambda calculus and type inference (Haskell) · pipelined CPU simulator (C/C++) · 2D game engine (Java). My senior capstone was an ML harmonization system and inference dashboard that led to what I've expanded on at the startup, it formed the foundation of my full-time role.</p>
+                <p class="inline-list">Formal language interpreter with lambda calculus and type inference (Haskell) · pipelined CPU simulator (C/C++) · 2D game engine (Java). My senior capstone helped form the foundation for my full-time ML engineering work.</p>
 
-                <h3>Reach out</h3>
+                </div>
+            </div>
+            <div class="about-topic">
+                <h2>Reach out</h2>
+                <div class="prose">
 
                 <p>I'm heads-down at the startup, but I always like talking to people working on hard ML problems, especially those with interests in post-training, RL, NLP, MTL, the works. If that's you, <a href="contact.html">get in touch</a>.</p>
+                </div>
             </div>
         </section>
 
-        <section class="section" id="certifications">
+        <section class="about-credentials" id="certifications">
             <div class="section-header">
                 <span class="eyebrow">Certifications</span>
                 <h2 class="section-title">Verified credentials</h2>
                 <p class="section-subtitle">The structured courses I've completed and kept verifiable records for.</p>
             </div>
-            <div class="cert-list fade-in-up">
+            <div class="cert-list">
                 <div class="cert-row">
                     <div class="cert-logo"><img src="dlailogosquare.webp" alt="DeepLearning.AI"></div>
                     <div class="cert-body">
                         <div class="cert-title">Machine Learning Specialization</div>
                         <div class="cert-meta">DeepLearning.AI · Coursera <span class="sep">·</span> Oct 2025 <span class="sep">·</span> ID 06E4OTKJIT07</div>
                     </div>
-                    <a class="cert-link" href="https://www.coursera.org/account/accomplishments/specialization/06E4OTKJIT07" target="_blank" rel="noopener">Verify →</a>
+                    <a class="cert-link" href="https://www.coursera.org/account/accomplishments/specialization/06E4OTKJIT07" target="_blank" rel="noopener">Verify </a>
                 </div>
                 <div class="cert-row">
                     <div class="cert-logo"><img src="dlailogosquare.webp" alt="DeepLearning.AI"></div>
@@ -83,7 +91,7 @@
                         <div class="cert-title">Advanced Learning Algorithms</div>
                         <div class="cert-meta">DeepLearning.AI · Coursera <span class="sep">·</span> Oct 2025 <span class="sep">·</span> ID PL6KR2EVUROY</div>
                     </div>
-                    <a class="cert-link" href="https://www.coursera.org/account/accomplishments/records/PL6KR2EVUROY" target="_blank" rel="noopener">Verify →</a>
+                    <a class="cert-link" href="https://www.coursera.org/account/accomplishments/records/PL6KR2EVUROY" target="_blank" rel="noopener">Verify </a>
                 </div>
                 <div class="cert-row">
                     <div class="cert-logo"><img src="dlailogosquare.webp" alt="DeepLearning.AI"></div>
@@ -91,7 +99,7 @@
                         <div class="cert-title">Supervised Machine Learning: Regression &amp; Classification</div>
                         <div class="cert-meta">DeepLearning.AI · Coursera <span class="sep">·</span> Oct 2025 <span class="sep">·</span> ID HB8B5EPKOK4O</div>
                     </div>
-                    <a class="cert-link" href="https://coursera.org/share/5c17e24da4d1df53bd219d4fdca3cbc7" target="_blank" rel="noopener">Verify →</a>
+                    <a class="cert-link" href="https://coursera.org/share/5c17e24da4d1df53bd219d4fdca3cbc7" target="_blank" rel="noopener">Verify </a>
                 </div>
                 <div class="cert-row">
                     <div class="cert-logo"><img src="dlailogosquare.webp" alt="DeepLearning.AI"></div>
@@ -99,31 +107,31 @@
                         <div class="cert-title">Unsupervised Learning, Recommenders, Reinforcement Learning</div>
                         <div class="cert-meta">DeepLearning.AI · Coursera <span class="sep">·</span> Oct 2025 <span class="sep">·</span> ID WLQRZA432Y1S</div>
                     </div>
-                    <a class="cert-link" href="https://coursera.org/share/848e82d7ed966cdd7299f9793a5934cb" target="_blank" rel="noopener">Verify →</a>
+                    <a class="cert-link" href="https://coursera.org/share/848e82d7ed966cdd7299f9793a5934cb" target="_blank" rel="noopener">Verify </a>
                 </div>
                 <div class="cert-row">
-                    <div class="cert-logo"><img src="openai_old_logo.png.webp" alt="OpenAI"></div>
+                    <div class="cert-logo"><span class="credential-wordmark">OpenAI</span></div>
                     <div class="cert-body">
                         <div class="cert-title">AI Professional Skills Certification</div>
                         <div class="cert-meta">The Global Career Accelerator · OpenAI <span class="sep">·</span> Aug 2025 <span class="sep">·</span> ID 157474466</div>
                     </div>
-                    <a class="cert-link" href="https://www.credential.net/ba36eec5-de5e-4fb6-a65a-263766f2be88" target="_blank" rel="noopener">Verify →</a>
+                    <a class="cert-link" href="https://www.credential.net/ba36eec5-de5e-4fb6-a65a-263766f2be88" target="_blank" rel="noopener">Verify </a>
                 </div>
                 <div class="cert-row">
-                    <div class="cert-logo"><img src="grammy-awards.jpg" alt="The Recording Academy"></div>
+                    <div class="cert-logo"><span class="credential-wordmark">Recording Academy</span></div>
                     <div class="cert-body">
                         <div class="cert-title">Python and Data Certification</div>
                         <div class="cert-meta">The Global Career Accelerator · The Recording Academy <span class="sep">·</span> Aug 2025 <span class="sep">·</span> ID 157474457</div>
                     </div>
-                    <a class="cert-link" href="https://www.credential.net/7c8a0a5a-0d28-456f-90d7-41ca572ffd1e" target="_blank" rel="noopener">Verify →</a>
+                    <a class="cert-link" href="https://www.credential.net/7c8a0a5a-0d28-456f-90d7-41ca572ffd1e" target="_blank" rel="noopener">Verify </a>
                 </div>
                 <div class="cert-row">
-                    <div class="cert-logo"><img src="intel-logo.png" alt="Intel"></div>
+                    <div class="cert-logo"><span class="credential-wordmark">Intel</span></div>
                     <div class="cert-body">
                         <div class="cert-title">Querying Data Certification</div>
                         <div class="cert-meta">The Global Career Accelerator · Intel Corporation <span class="sep">·</span> Jun 2025 <span class="sep">·</span> ID 153793264</div>
                     </div>
-                    <a class="cert-link" href="https://www.credential.net/40163989-73f7-425d-bd0d-fadd41b8bdca" target="_blank" rel="noopener">Verify →</a>
+                    <a class="cert-link" href="https://www.credential.net/40163989-73f7-425d-bd0d-fadd41b8bdca" target="_blank" rel="noopener">Verify </a>
                 </div>
                 <div class="cert-row">
                     <div class="cert-logo">
@@ -131,25 +139,17 @@
                     </div>
                     <div class="cert-body">
                         <div class="cert-title">Social / Behavioral Research</div>
-                        <div class="cert-meta">CITI Program <span class="sep">·</span> Nov 2024 → Nov 2027 <span class="sep">·</span> ID 66199109</div>
+                        <div class="cert-meta">CITI Program <span class="sep">·</span> Nov 2024  Nov 2027 <span class="sep">·</span> ID 66199109</div>
                     </div>
-                    <a class="cert-link" href="https://www.citiprogram.org/verify/?w08d8e788-97b7-4fc0-b08e-636c920c02ce-66199109" target="_blank" rel="noopener">Verify →</a>
+                    <a class="cert-link" href="https://www.citiprogram.org/verify/?w08d8e788-97b7-4fc0-b08e-636c920c02ce-66199109" target="_blank" rel="noopener">Verify </a>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-links">
-                <a href="index.html">Home</a>
-                <a href="projects.html">Projects</a>
-                <a href="experience.html">Experience</a>
-                <a href="contact.html">Contact</a>
-                <a href="Oliver_Perrin_Resume.pdf" target="_blank" rel="noopener">Resume</a>
-            </div>
-            <div class="copyright">© 2026 Oliver Perrin</div>
-        </div>
+    <footer class="site-footer">
+        <div><a href="mailto:oliver.t.perrin@gmail.com">Say hello</a><span>© 2026 Oliver Perrin</span></div>
+        <nav aria-label="Elsewhere"><a href="https://github.com/OliverPerrin">GitHub</a><a href="https://www.linkedin.com/in/oliverperrin/">LinkedIn</a><a href="https://liminalml.substack.com/">Substack</a><a href="Oliver_Perrin_Resume.pdf" target="_blank" rel="noopener">Résumé</a></nav>
     </footer>
 </body>
 </html>

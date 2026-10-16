@@ -1,103 +1,90 @@
-// Default to dark theme unless user previously chose light
-document.body.classList.remove('light-theme');
-
-// ---------- Smooth scrolling ----------
-const lenis = new Lenis({
-    duration: 1.0,
-    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-    smoothWheel: true,
-    smoothTouch: false,
-});
-
-function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
-requestAnimationFrame(raf);
-
-gsap.registerPlugin(ScrollTrigger);
-
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        const target = this.getAttribute('href');
-        if (target && target.length > 1) {
-            e.preventDefault();
-            lenis.scrollTo(target);
+// Let the browser own scrolling, focus, and history.
+const indexMenu = document.querySelector('.site-index');
+if (indexMenu) {
+    indexMenu.addEventListener('click', event => {
+        if (event.target.closest('a')) indexMenu.open = false;
+    });
+    document.addEventListener('keydown', event => {
+        if (event.key === 'Escape' && indexMenu.open) {
+            indexMenu.open = false;
+            indexMenu.querySelector('summary').focus();
         }
     });
-});
+    document.addEventListener('click', event => {
+        if (!indexMenu.contains(event.target)) indexMenu.open = false;
+    });
+}
 
-// ---------- Theme toggle ----------
-const themeToggle = document.getElementById('theme-toggle');
-const body = document.body;
-
-function renderThemeIcon(isDark) {
-    if (!themeToggle) return;
-    const icon = themeToggle.querySelector('svg');
-    if (!icon) return;
-    if (isDark) {
-        icon.innerHTML = `
-            <circle cx="12" cy="12" r="4"></circle>
-            <line x1="12" y1="2" x2="12" y2="4"></line>
-            <line x1="12" y1="20" x2="12" y2="22"></line>
-            <line x1="4.93" y1="4.93" x2="6.34" y2="6.34"></line>
-            <line x1="17.66" y1="17.66" x2="19.07" y2="19.07"></line>
-            <line x1="2" y1="12" x2="4" y2="12"></line>
-            <line x1="20" y1="12" x2="22" y2="12"></line>
-            <line x1="4.93" y1="19.07" x2="6.34" y2="17.66"></line>
-            <line x1="17.66" y1="6.34" x2="19.07" y2="4.93"></line>
-        `;
-    } else {
-        icon.innerHTML = `<path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"></path>`;
+// The same offline 3D runtime and public presets used by LiminalML Studio.
+// Load it only as the showcase approaches the viewport. No autoplay.
+const sceneHost = document.getElementById('studio-scene');
+if (sceneHost) {
+    const descriptions = {
+        lora: ['LoRA update space', 'Change the adapter rank to see its outputs expand from a line to a plane to a volume.', 'A three-output toy model with fixed synthetic inputs. It shows the adapter correction, not trained model activations.'],
+        rope: ['Rotary position encoding', 'Move through token positions and see three coordinate pairs rotate at different frequencies.', 'The rings separate three pairs in a six-dimensional vector. This illustrates position encoding; it does not compute attention.'],
+        'kv-cache': ['KV-cache memory', 'Step through decoding to see keys and values accumulate for each layer.', 'Three illustrative layers, with head and feature dimensions collapsed. This is a conceptual cache, not a memory or latency benchmark.']
+    };
+    let selected = 'lora';
+    let cleanup;
+    let assets;
+    let request = 0;
+    function loadAssets() {
+        if (!assets) {
+            assets = Promise.all([
+                fetch('assets/studio-presets.json').then(response => {
+                    if (!response.ok) throw new Error('Studio presets unavailable');
+                    return response.json();
+                }),
+                new Promise((resolve, reject) => {
+                    if (window.LiminalSpatial) return resolve();
+                    const script = document.createElement('script');
+                    script.src = 'assets/studio-runtime.js';
+                    script.onload = resolve;
+                    script.onerror = reject;
+                    document.head.append(script);
+                })
+            ]);
+        }
+        return assets;
     }
-}
-
-const savedTheme = localStorage.getItem('theme');
-if (savedTheme === 'light') {
-    body.classList.add('light-theme');
-    renderThemeIcon(false);
-} else {
-    renderThemeIcon(true);
-}
-
-if (themeToggle) {
-    themeToggle.addEventListener('click', () => {
-        body.classList.toggle('light-theme');
-        const isLight = body.classList.contains('light-theme');
-        localStorage.setItem('theme', isLight ? 'light' : 'dark');
-        renderThemeIcon(!isLight);
-    });
-}
-
-// ---------- Active nav link ----------
-(function markActiveNavLink() {
-    const path = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
-    document.querySelectorAll('.nav-links a').forEach(a => {
-        const href = (a.getAttribute('href') || '').toLowerCase();
-        if (href === path || (path === '' && href === 'index.html')) {
-            a.classList.add('active');
+    async function showScene(kind) {
+        selected = kind;
+        const version = ++request;
+        document.querySelectorAll('[data-scene]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.scene === kind)));
+        const [title, description, limits] = descriptions[kind];
+        document.getElementById('visual-title').textContent = title;
+        document.getElementById('visual-description').textContent = description;
+        document.getElementById('visual-limits').textContent = limits;
+        document.getElementById('visual-source').href = 'https://liminalml.com/explore/spatial-' + kind;
+        sceneHost.setAttribute('aria-busy', 'true');
+        try {
+            const [documents] = await loadAssets();
+            if (version !== request) return;
+            if (cleanup) cleanup();
+            cleanup = window.LiminalSpatial.mountSpatialVisual(sceneHost, documents.find(doc => doc.template === kind), { compact: true, branded: true });
+        } catch {
+            if (version !== request) return;
+            sceneHost.replaceChildren();
+            const message = document.createElement('p');
+            message.className = 'scene-loading';
+            message.textContent = 'The interactive preview could not load. You can open this visual directly in Studio using the link alongside it.';
+            sceneHost.append(message);
+        } finally {
+            if (version === request) sceneHost.setAttribute('aria-busy', 'false');
         }
-    });
-})();
-
-// ---------- Fade-ins ----------
-gsap.utils.toArray('.fade-in, .fade-in-up').forEach((el) => {
-    gsap.fromTo(el,
-        { opacity: 0, y: 16 },
-        {
-            opacity: 1, y: 0, duration: 0.6, ease: 'power2.out',
-            scrollTrigger: { trigger: el, start: 'top 90%', toggleActions: 'play none none none' }
-        }
-    );
-});
-
-// ---------- Contact form (optional / mailto fallback) ----------
-function sendEmail(event) {
-    event.preventDefault();
-    const name = document.getElementById('name')?.value || '';
-    const email = document.getElementById('email')?.value || '';
-    const subject = document.getElementById('subject')?.value || '';
-    const message = document.getElementById('message')?.value || '';
-    const body = `Name: ${name}\nEmail: ${email}\n\n${message}`;
-    window.location.href = `mailto:oliver.t.perrin@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    const form = document.getElementById('contactForm');
-    if (form) form.reset();
+    }
+    document.querySelectorAll('[data-scene]').forEach(button => button.addEventListener('click', () => showScene(button.dataset.scene)));
+    if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver(entries => {
+            if (entries.some(entry => entry.isIntersecting)) {
+                observer.disconnect();
+                showScene(selected);
+            }
+        }, { rootMargin: '500px' });
+        observer.observe(sceneHost);
+    } else {
+        showScene(selected);
+    }
+    window.addEventListener('pagehide', () => { if (cleanup) cleanup(); });
+    window.addEventListener('pageshow', event => { if (event.persisted) showScene(selected); });
 }
-window.sendEmail = sendEmail;

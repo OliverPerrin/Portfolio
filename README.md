@@ -1,8 +1,10 @@
-# Oliver Perrin — Portfolio
+<h1 align="center">oliverperrin.com</h1>
 
-Personal portfolio website for Oliver Perrin, an ML Engineer and founder of [LiminalML](https://liminalml.com).
+<p align="center">Personal website of Oliver Perrin, machine learning engineer and founder of <a href="https://liminalml.com">LiminalML</a>.</p>
 
-Live site: [oliverperrin.com](https://oliverperrin.com)
+<p align="center"><a href="https://oliverperrin.com"><strong>Live site</strong></a></p>
+
+---
 
 ## Run locally
 
@@ -22,7 +24,7 @@ Then open [http://localhost:8000](http://localhost:8000).
 - `experience.html` — Experience
 - `contact.html` — Contact
 
-The site is built with vanilla HTML, CSS, and JavaScript.
+The site is built with vanilla HTML, CSS, and JavaScript. The homepage lazily loads LiminalML’s self-contained Studio runtime for the interactive LoRA, RoPE, and KV-cache scenes; see `assets/README.md` for source provenance. No build step or remote model service is required.
 
 ## Links
 
