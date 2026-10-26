@@ -1,19 +1,19 @@
-/* One continuous silver particle scene, with an open column beside the portrait. */
+/* A large, centered particle background that stays fixed while the page scrolls. */
 .has-atmosphere { isolation: isolate; }
 .ml-atmosphere { position: fixed; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; background: #181818; }
 .ml-atmosphere canvas, .ml-atmosphere-shade { position: absolute; inset: 0; width: 100%; height: 100%; }
 .ml-atmosphere-shade { background: linear-gradient(90deg, rgba(24,24,24,.94), rgba(24,24,24,.78) 30%, rgba(24,24,24,.06) 57%, transparent 78%); }
-.has-atmosphere .personal-intro { position: relative; display: block; padding: 50px 0 75px; min-height: 0; }
-.has-atmosphere .intro-copy { max-width: min(480px, 48%); }
-.has-atmosphere .intro-photo { position: relative; width: clamp(240px, 24vw, 320px); margin: 46px 0 0; }
+.has-atmosphere .personal-intro { position: relative; display: block; padding: 50px 0 115px; min-height: 660px; }
+.has-atmosphere .intro-copy { max-width: min(480px, calc(100% - 300px)); }
+.has-atmosphere .intro-photo { position: absolute; right: 0; top: 90px; width: clamp(220px, 21vw, 280px); margin: 0; }
 .has-atmosphere .intro-photo img { width: 100%; height: auto; display: block; filter: saturate(.65); }
 .has-atmosphere .intro-photo figcaption { padding-top: 12px; line-height: 1.5; }
 .has-atmosphere .site-footer { padding-bottom: 100px; }
 .atmosphere-caption { position: fixed; z-index: 30; right: 24px; bottom: 20px; padding: 7px 10px; border-radius: 4px; background: rgba(24,24,24,.84); color: var(--text-dim); font-size: .72rem; pointer-events: none; }
 @media(max-width:640px) {
-    .has-atmosphere .personal-intro { padding: 35px 0 60px; }
+    .has-atmosphere .personal-intro { min-height: 0; padding: 35px 0 60px; }
     .has-atmosphere .intro-copy { max-width: 320px; }
-    .has-atmosphere .intro-photo { width: min(85%, 280px); margin: 36px 0 0; }
+    .has-atmosphere .intro-photo { position: relative; right: auto; top: auto; width: min(75%, 250px); margin: 36px 0 0 auto; }
     .ml-atmosphere-shade { background: linear-gradient(90deg,rgba(24,24,24,.91),rgba(24,24,24,.74) 40%,rgba(24,24,24,.04)); }
     .atmosphere-caption { right: 12px; bottom: 12px; padding: 7px 9px; font-size: .66rem; }
 }

@@ -119,14 +119,14 @@
       }else{
         const branch=i%3,headY=(branch-1)*1.35;
         if(u<.36){
-          x=gaussian()*.065;y=-1.85+v*1.4;z=gaussian()*.065;a=.4+w*.28;
+          x=-2.1+v*1.65;y=gaussian()*.065;z=gaussian()*.065;a=.4+w*.28;
         }else if(u<.83){
           const t=v,e=t*t*(3-2*t);
-          x=headY*e+gaussian()*.045;y=-.45+t*2.1;z=(branch-1)*.24*e+gaussian()*.045;a=.35+w*.3;
+          x=-.45+t*2.25;y=headY*e+gaussian()*.045;z=(branch-1)*.24*e+gaussian()*.045;a=.35+w*.3;
         }else{
           const shared=i%2===0;
-          x=(shared?0:headY)+gaussian()*.12;
-          y=(shared?[-1.65,-1.05,-.45][branch]:1.65)+gaussian()*.12;z=(shared?0:(branch-1)*.24)+gaussian()*.12;a=.6+w*.3;
+          x=(shared?[-1.85,-1.15,-.45][branch]:1.8)+gaussian()*.12;
+          y=(shared?0:headY)+gaussian()*.12;z=(shared?0:(branch-1)*.24)+gaussian()*.12;a=.6+w*.3;
         }
       }
       data.set([x,y,z,a],i*4);
@@ -264,27 +264,12 @@
     gl.bindBuffer(gl.ARRAY_BUFFER,toBuffer);gl.bufferData(gl.ARRAY_BUFFER,to,gl.DYNAMIC_DRAW);
   }
   function composition(){
-    const bounds=document.querySelector('.personal-page').getBoundingClientRect();
-    let left=Math.max(bounds.left+bounds.width*.51, width*.48),right=Math.min(width-22,bounds.right+15);
-    let top=Math.min(130,height*.16),bottom=height-65;
-    if(width<=640){
-      left=30;right=width-14;top=height*.18;bottom=height-52;
-      const photo=document.querySelector('.intro-photo').getBoundingClientRect();
-      if(photo.bottom>top&&photo.top<bottom){
-        const above=Math.max(0,photo.top-top-24),below=Math.max(0,bottom-photo.bottom-24);
-        if(above>=below&&above>40)bottom=photo.top-24;
-        else if(below>40)top=photo.bottom+24;
-      }
-    }
-    const pixels=Math.min((right-left)/4.8,(bottom-top)/4.7);
-    return {centerX:(left+right)/width-1,centerY:1-(top+bottom)/height,scaleX:2*pixels/width,scaleY:2*pixels/height};
+    // A large viewport-centered composition, independent of page content and scroll.
+    const pixels=Math.min(width/4.6,height/4.2);
+    return {centerX:0,centerY:0,scaleX:2*pixels/width,scaleY:2*pixels/height};
   }
-  let camera;
   function draw(){
-    const next=composition();
-    if(!camera||reduced.matches)camera=next;
-    else for(const key of Object.keys(next))camera[key]+=(next[key]-camera[key])*.12;
-    const {centerX,centerY,scaleX,scaleY}=camera;
+    const {centerX,centerY,scaleX,scaleY}=composition();
     // Keep every structure equally visible while reading, including RoPE's fine rings.
     const presence=.88;
     if(gl){
@@ -330,8 +315,6 @@
     if(gl)gl.viewport(0,0,canvas.width,canvas.height);else if(ctx)ctx.setTransform(ratio,0,0,ratio,0,0);
     draw();
   }
-  // Scrolling changes only the composition around the portrait, never visibility.
-  window.addEventListener('scroll',()=>{if(reduced.matches)draw();},{passive:true});
   window.addEventListener('pointermove',e=>{if(reduced.matches)return;const r=stage.getBoundingClientRect();tx=(e.clientX-r.left)/width-.5;ty=(e.clientY-r.top)/height-.5;},{passive:true});
   document.documentElement.addEventListener('pointerleave',()=>{tx=ty=0;});
   document.addEventListener('visibilitychange',sync);reduced.addEventListener('change',sync);
