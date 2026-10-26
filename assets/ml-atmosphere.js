@@ -3,7 +3,6 @@
   'use strict';
   const stage=document.querySelector('.ml-atmosphere');
   if(!stage)return;
-  const viewport=window;
   let canvas=stage.querySelector('canvas');
   const buttons=[...document.querySelectorAll('[data-topic]')];
   const progress=document.querySelector('.atmosphere-progress span');
@@ -78,7 +77,7 @@
   const shapes=topics.map((_,i)=>makeShape(i));
   let from=shapes[0].slice(),to=shapes[0],topic=0,fromKind=-1;
   let elapsed=0,morph=1,time=0,visible=true,disposed=false;
-  let width=1,height=1,ratio=1,scroll=0,raf=0,last=0,px=0,py=0,tx=0,ty=0;
+  let width=1,height=1,ratio=1,raf=0,last=0,px=0,py=0,tx=0,ty=0;
   const smooth=x=>{x=Math.max(0,Math.min(1,x));return x*x*x*(x*(x*6-15)+10);};
   function animated(data,k,kind,t){
     let x=data[k],y=data[k+1],z=data[k+2];
@@ -183,7 +182,8 @@
     const bounds=document.querySelector('.personal-page').getBoundingClientRect();
     const centerX=width<500?.31:(bounds.left+bounds.width*.70)/width*2-1;
     const centerY=width<500?-.15:.06;
-    const presence=.88*(1-Math.min(scroll,1)*.55);
+    // Keep every structure equally visible while reading, including RoPE's fine rings.
+    const presence=.88;
     if(gl){
       gl.clear(gl.COLOR_BUFFER_BIT);gl.useProgram(program);
       gl.uniform1f(uniforms.uTime,time);gl.uniform1f(uniforms.uMorph,morph);
@@ -230,7 +230,6 @@
   }
   buttons.forEach((b,i)=>b.addEventListener('click',()=>select(i,true)));
   document.querySelector('[data-atmosphere-next]').addEventListener('click',()=>select((topic+1)%topics.length,true));
-  viewport.addEventListener('scroll',()=>{scroll=window.scrollY/height;draw();},{passive:true});
   window.addEventListener('pointermove',e=>{if(reduced.matches)return;const r=stage.getBoundingClientRect();tx=(e.clientX-r.left)/width-.5;ty=(e.clientY-r.top)/height-.5;},{passive:true});
   document.documentElement.addEventListener('pointerleave',()=>{tx=ty=0;});
   document.addEventListener('visibilitychange',sync);reduced.addEventListener('change',sync);
@@ -240,6 +239,5 @@
   const observer=new IntersectionObserver(([entry])=>{visible=entry.isIntersecting;sync();});observer.observe(stage);
   window.addEventListener('pagehide',()=>{disposed=true;cancelAnimationFrame(raf);});
   window.addEventListener('pageshow',()=>{disposed=false;sync();});
-  scroll=window.scrollY/Math.max(1,window.innerHeight);
   resize();sync();
 })();
