@@ -285,7 +285,7 @@ function bindQuad(){
 
 // ---------- Layout: each plate sets the frame (cx cy width height presence, as viewport fractions) ----------
 function presetFor(plate,i){
-  const raw=narrow.matches?(plate.dataset.frameMobile||(i===0?plate.dataset.frame:'0.5 0.5 0.9 0.9 0.22'))
+  const raw=narrow.matches?(plate.dataset.frameMobile||(i===0?plate.dataset.frame:'0.5 0.52 0.94 0.76 0.22'))
     :medium.matches&&plate.dataset.frameMedium?plate.dataset.frameMedium:plate.dataset.frame;
   return raw.split(/\s+/).map(Number);
 }
