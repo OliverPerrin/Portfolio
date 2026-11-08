@@ -1,19 +1,111 @@
-/* A large, centered particle background that stays fixed while the page scrolls. */
-.has-atmosphere { isolation: isolate; }
-.ml-atmosphere { position: fixed; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; background: #181818; }
-.ml-atmosphere canvas, .ml-atmosphere-shade { position: absolute; inset: 0; width: 100%; height: 100%; }
-.ml-atmosphere-shade { background: linear-gradient(90deg, rgba(24,24,24,.94), rgba(24,24,24,.78) 30%, rgba(24,24,24,.06) 57%, transparent 78%); }
-.has-atmosphere .personal-intro { position: relative; display: block; padding: 50px 0 115px; min-height: 660px; }
-.has-atmosphere .intro-copy { max-width: min(480px, calc(100% - 300px)); }
-.has-atmosphere .intro-photo { position: absolute; right: 0; top: 90px; width: clamp(220px, 21vw, 280px); margin: 0; }
-.has-atmosphere .intro-photo img { width: 100%; height: auto; display: block; filter: saturate(.65); }
-.has-atmosphere .intro-photo figcaption { padding-top: 12px; line-height: 1.5; }
-.has-atmosphere .site-footer { padding-bottom: 100px; }
-.atmosphere-caption { position: fixed; z-index: 30; right: 24px; bottom: 20px; padding: 7px 10px; border-radius: 4px; background: rgba(24,24,24,.84); color: var(--text-dim); font-size: .72rem; pointer-events: none; }
-@media(max-width:640px) {
-    .has-atmosphere .personal-intro { min-height: 0; padding: 35px 0 60px; }
-    .has-atmosphere .intro-copy { max-width: 320px; }
-    .has-atmosphere .intro-photo { position: relative; right: auto; top: auto; width: min(75%, 250px); margin: 36px 0 0 auto; }
-    .ml-atmosphere-shade { background: linear-gradient(90deg,rgba(24,24,24,.91),rgba(24,24,24,.74) 40%,rgba(24,24,24,.04)); }
-    .atmosphere-caption { right: 12px; bottom: 12px; padding: 7px 9px; font-size: .66rem; }
+/* Mono frame home page: full-screen plates around a fixed WebGL frame. */
+.frame-page { --ink: #070707; --paper: #f6f6f3; --body: #c4c4c0; --quiet: #8a8a86; --rule: rgba(246,246,243,.38); --chip: rgba(7,7,7,.78); --ease: cubic-bezier(.7,0,.2,1); }
+html:has(.frame-page) { background: #070707; }
+.frame-page { background: transparent; color: var(--paper); isolation: isolate; line-height: 1.6; }
+.frame-page::after { display: none; }
+
+.fl-canvas { position: fixed; inset: 0; width: 100%; height: 100%; z-index: -1; display: block; pointer-events: none; }
+.fl-fallback { position: fixed; z-index: -1; display: none; border: 1.5px solid var(--paper); pointer-events: none; }
+.no-gl .fl-fallback { display: block; }
+
+/* Fixed header that inverts where it crosses the frame; normal while the menu is open. */
+.frame-page .site-header { position: fixed; top: 0; left: 0; right: 0; max-width: none; padding: 24px 40px; z-index: 45; mix-blend-mode: difference; color: #fff; }
+.frame-page .site-header:has(.site-index[open]) { mix-blend-mode: normal; }
+.frame-page .header-location { color: #fff; opacity: .6; font-size: .74rem; }
+.frame-page .wordmark { font-size: .9rem; }
+.frame-page .site-index summary { font-size: .82rem; }
+
+/* Plates */
+.fl-plate { position: relative; min-height: 100vh; padding: 15vh 5.5vw 12vh; }
+.fl-label { display: block; font-size: .72rem; font-weight: 500; letter-spacing: .2em; text-transform: uppercase; color: var(--quiet); margin-bottom: 22px; }
+.fl-note { font-size: .78rem; color: var(--quiet); letter-spacing: .02em; }
+.fl-plate p { color: var(--body); font-size: 1rem; line-height: 1.72; margin-bottom: 15px; }
+.fl-plate p a, .fl-link { color: var(--paper); border-bottom: 1px solid var(--rule); padding-bottom: 2px; transition: border-color .3s; }
+.fl-plate p a:hover, .fl-link:hover { border-color: var(--paper); }
+.fl-link { display: inline-block; font-size: .88rem; margin-top: 10px; }
+.fl-links { display: flex; gap: 28px; flex-wrap: wrap; }
+.fl-title { font-size: clamp(2.2rem, 4.2vw, 3.6rem); font-weight: 500; letter-spacing: -.045em; line-height: 1.02; margin-bottom: 10px; }
+
+/* 1. Opening: the name crosses into the frame and inverts. */
+.fl-hero { display: flex; flex-direction: column; justify-content: space-between; padding-top: 13vh; padding-bottom: 9vh; }
+.fl-name { font-size: clamp(4.4rem, 13.4vw, 13.5rem); font-weight: 500; letter-spacing: -.07em; line-height: .84; mix-blend-mode: difference; color: #fff; }
+.fl-intro { max-width: 23rem; margin-top: 8vh; }
+.fl-hero .fl-intro p:first-child { font-size: 1.2rem; line-height: 1.5; color: var(--paper); }
+
+/* 2–3. Current work (text left) and LexiMind (text right). */
+.fl-work, .fl-research { display: flex; align-items: center; }
+.fl-work .fl-col { width: min(34rem, 54vw); }
+.fl-research .fl-col { margin-left: auto; margin-right: 2vw; width: min(34rem, 46vw); }
+.fl-work .fl-note, .fl-research .fl-note { margin-bottom: 30px; }
+
+/* 4. LiminalML: the frame opens to the screen edges and the Studio demos take the space. */
+.fl-product .fl-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; margin-bottom: 26px; }
+.fl-product .fl-lead { display: grid; grid-template-columns: 1fr 1.25fr; gap: 7vw; margin-bottom: 8px; }
+.fl-product .fl-lead > p:first-child { font-size: 1.3rem; line-height: 1.5; color: var(--paper); }
+.fl-product .visual-showcase { margin-top: 34px; border: 1px solid var(--rule); padding: 0 28px 24px; background: rgba(7,7,7,.55); }
+.fl-product .visual-selector { border-bottom-color: var(--rule); }
+.fl-product .visual-selector button { font-size: .72rem; letter-spacing: .16em; text-transform: uppercase; }
+.fl-product .visual-explanation h3 { font-size: 1.4rem; }
+.fl-product .visual-explanation > p { color: var(--body); }
+
+/* 5–6. Writing beside a sliver of light; other projects beside a small window. */
+.fl-list-plate { display: flex; flex-direction: column; justify-content: center; }
+.fl-wrap { width: min(72vw, 980px); }
+.fl-projects .fl-wrap { width: min(66vw, 900px); }
+.fl-list-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 30px; margin-bottom: 30px; }
+.fl-list-head p { margin: 0; max-width: 22rem; }
+.fl-articles a { display: grid; grid-template-columns: 130px 1fr 90px; gap: 28px; align-items: baseline; padding: 24px 0; border-top: 1px solid var(--rule); }
+.fl-articles a:last-child { border-bottom: 1px solid var(--rule); }
+.fl-articles span { font-size: .74rem; color: var(--quiet); }
+.fl-articles span:last-child { text-align: right; }
+.fl-articles h3 { font-size: 1.32rem; font-weight: 400; letter-spacing: -.02em; line-height: 1.35; }
+.fl-articles a:hover h3, .fl-projects-list a:hover h3 { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 6px; }
+.fl-projects-list a { display: grid; grid-template-columns: 1fr 2fr .9fr; gap: 28px; align-items: baseline; padding: 22px 0; border-top: 1px solid var(--rule); }
+.fl-projects-list a:last-child { border-bottom: 1px solid var(--rule); }
+.fl-projects-list h3 { font-size: 1.2rem; font-weight: 500; letter-spacing: -.025em; }
+.fl-projects-list p { margin: 0; font-size: .94rem; }
+.fl-projects-list span { font-size: .72rem; color: var(--quiet); text-align: right; }
+
+/* 7. Close: the frame reaches the edges of the screen. */
+.fl-close { display: flex; flex-direction: column; justify-content: flex-end; padding-bottom: 13vh; }
+.fl-hello { font-size: clamp(3rem, 8vw, 7.5rem); font-weight: 500; letter-spacing: -.06em; line-height: .95; mix-blend-mode: difference; color: #fff; align-self: flex-start; }
+.fl-close-row { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; margin-top: 34px; font-size: .85rem; color: var(--body); }
+.fl-close-row nav { display: flex; gap: 24px; }
+.fl-close-row nav a:hover { text-decoration: underline; }
+.fl-close-row span { font-size: .74rem; color: var(--quiet); }
+
+/* A shutter wipe as each plate arrives. */
+.has-js .fl-reveal { clip-path: inset(0 100% 0 0); transition: clip-path 1s var(--ease); transition-delay: calc(var(--d, 0) * 90ms); }
+.has-js .is-in .fl-reveal { clip-path: inset(0 0 0 0); }
+
+/* Pause control and topic caption. */
+.fl-pause, .fl-caption { position: fixed; bottom: 30px; z-index: 50; border: 1px solid var(--rule); background: var(--chip); font-size: .68rem; letter-spacing: .16em; text-transform: uppercase; color: var(--body); padding: 8px 12px; }
+.fl-pause { left: 40px; cursor: pointer; }
+.fl-pause[aria-pressed="true"] { color: var(--paper); }
+.fl-caption { right: 40px; pointer-events: none; transition: opacity .5s; }
+.fl-caption.is-hidden { opacity: 0; }
+
+@media (max-width: 1100px) {
+    .fl-product .fl-lead { grid-template-columns: 1fr; gap: 10px; }
+}
+@media (max-width: 900px) {
+    .fl-articles a, .fl-projects-list a { grid-template-columns: 1fr; gap: 6px; }
+    .fl-articles span:last-child, .fl-projects-list span { text-align: left; }
+}
+@media (max-width: 720px) {
+    .frame-page .site-header { padding: 20px 24px; }
+    .frame-page .header-location { display: none; }
+    .fl-plate { padding: 14vh 24px 12vh; }
+    .fl-hero { padding-top: 12vh; }
+    .fl-name { font-size: 23vw; }
+    .fl-intro { margin-top: 46vh; }
+    .fl-work .fl-col, .fl-research .fl-col, .fl-wrap, .fl-projects .fl-wrap { width: 100%; margin: 0; }
+    .fl-product .fl-head, .fl-list-head { flex-direction: column; align-items: flex-start; }
+    .fl-product .visual-showcase { padding: 0 16px 16px; }
+    .fl-close-row { flex-direction: column; align-items: flex-start; }
+    .fl-pause { left: 24px; bottom: 24px; }
+    .fl-caption { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .has-js .fl-reveal { clip-path: none; transition: none; }
 }

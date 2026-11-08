@@ -8,11 +8,11 @@
     <link rel="icon" href="/favicon-192.png" type="image/png" sizes="192x192">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
     <title>Oliver Perrin — Machine learning engineer</title>
-    <meta name="description" content="Oliver Perrin — machine learning engineer on the founding team of a stealth startup, where he leads the ML work. Founder of LiminalML, with interests in NLP, multi-task learning, and post-training.">
+    <meta name="description" content="Oliver Perrin — founding machine learning engineer at a stealth startup. Research interests in reinforcement learning and post-training. Builds LiminalML.">
     <meta name="author" content="Oliver Perrin">
     <link rel="canonical" href="https://oliverperrin.com/">
     <meta property="og:title" content="Oliver Perrin | ML Engineer">
-    <meta property="og:description" content="Machine learning engineer on the founding team of a stealth startup and founder of LiminalML. Technical writing, research, and open-source projects in NLP and multi-task learning.">
+    <meta property="og:description" content="Founding ML engineer at a stealth startup. Research interests in reinforcement learning and post-training.">
     <meta property="og:url" content="https://oliverperrin.com/">
     <meta property="og:image" content="https://oliverperrin.com/assets/landing-preview-20261016.png">
     <meta property="og:type" content="website">
@@ -37,8 +37,9 @@
     }
     </script>
 </head>
-<body class="has-atmosphere">
-    <div class="ml-atmosphere" aria-hidden="true"><canvas></canvas><div class="ml-atmosphere-shade"></div></div>
+<body class="frame-page">
+    <canvas class="fl-canvas" aria-hidden="true"></canvas>
+    <div class="fl-fallback" aria-hidden="true"></div>
     <a class="skip-link" href="#main">Skip to content</a>
     <header class="site-header">
         <a class="wordmark" href="index.html">Oliver Perrin</a>
@@ -52,56 +53,91 @@
                 <a href="projects.html">Projects</a>
                 <a href="experience.html">Experience</a>
                 <a href="contact.html">Contact</a>
-                <a class="menu-resume" href="Oliver_Perrin_Resume.pdf" target="_blank" rel="noopener">Résumé <span>PDF</span></a>
             </nav>
         </details>
     </header>
-    <main id="main" class="personal-page">
-        <section class="personal-intro" aria-labelledby="intro-title">
-            <div class="intro-copy">
-                <h1 id="intro-title">Oliver<br>Perrin</h1>
-                <p class="intro-description">I’m a machine learning engineer on the founding team of a stealth startup, where I lead the ML technical direction across model development, evaluation, inference, and integration.</p>
-                <p class="intro-detail">Outside that work, I build <a href="#liminalml">LiminalML</a> and explore NLP, multi-task learning, and post-training. I also write about the models I build and the ideas behind them.</p>
-                <a class="text-link" href="#writing">Read my writing</a>
+    <main id="main">
+        <section class="fl-plate fl-hero" aria-labelledby="intro-title"
+            data-frame="0.64 0.52 0.6 0.72 1" data-frame-medium="0.7 0.36 0.5 0.46 1" data-frame-mobile="0.5 0.36 0.86 0.36 1">
+            <h1 id="intro-title" class="fl-name fl-reveal">Oliver<br>Perrin</h1>
+            <div class="fl-intro">
+                <p class="fl-reveal" style="--d:2">I’m the founding machine learning engineer at a stealth startup.</p>
+                <p class="fl-reveal" style="--d:3">My research interests are reinforcement learning and post-training. I also build <a href="#liminalml">LiminalML</a> and write about machine learning.</p>
+                <a class="fl-link fl-reveal" style="--d:4" href="#writing">Read my writing</a>
             </div>
-            <figure class="intro-photo"><img src="assets/oliver-hiking.jpg" width="1367" height="1823" alt="Oliver standing on a rocky overlook in the mountains" fetchpriority="high"><figcaption>Located in Charlotte, North Carolina</figcaption></figure>
         </section>
-        <section id="work" class="work-intro" aria-labelledby="work-title">
-            <h2 id="work-title">My work</h2>
-            <div class="startup-line"><div><h3>Stealth startup</h3></div><div><p>I’m the only ML engineer on the team. Starting from the CEO’s product ideas, I work out the ML approach and build it, along with the backend and data infrastructure it depends on. The company is pre-launch and most of this work is proprietary, so I keep the details private.</p><a class="text-link" href="experience.html">Experience</a></div></div>
+
+        <section id="work" class="fl-plate fl-work" aria-labelledby="work-title" data-frame="0.79 0.5 0.28 0.64 0.9">
+            <div class="fl-col">
+                <h2 id="work-title" class="fl-label fl-reveal">Current work</h2>
+                <h3 class="fl-title fl-reveal" style="--d:1">Machine Learning Engineer</h3>
+                <p class="fl-note fl-reveal" style="--d:2">Founding team · Stealth startup · May 2026–present</p>
+                <p class="fl-reveal" style="--d:3">Sole ML engineer on a four-person team. I own the ML stack end to end: model training, evaluation, inference, and integration into the product.</p>
+                <p class="fl-reveal" style="--d:4">The product is pre-launch, so the details are private.</p>
+                <a class="fl-link fl-reveal" style="--d:5" href="experience.html">Experience</a>
+            </div>
         </section>
-        <section id="liminalml" class="company-section" aria-labelledby="company-title">
-            <div class="company-heading"><div><h2 id="company-title">LiminalML</h2></div><a class="text-link" href="https://liminalml.com" target="_blank" rel="noopener">Visit LiminalML</a></div>
-            <div class="company-description"><p>I founded LiminalML to build software for learning and explaining machine learning. I design, build, and run the company myself.</p><div><p><a href="https://liminalml.com/study">Study</a> works through intuition, maths, code, and recall.</p><p><a href="https://liminalml.com/studio">Studio</a> lets you create and share interactive technical visuals. Try a few of the ones I’ve built below.</p></div></div>
+
+        <section id="leximind" class="fl-plate fl-research" aria-labelledby="research-title" data-frame="0.235 0.5 0.33 0.54 0.9">
+            <div class="fl-col">
+                <h2 id="research-title" class="fl-title fl-reveal">LexiMind</h2>
+                <p class="fl-note fl-reveal" style="--d:1">Research · Open source · Nov 2025–present</p>
+                <p class="fl-reveal" style="--d:2">Does model merging (task arithmetic, TIES) match multi-task LoRA fine-tuning once you count the compute spent training each specialist? A budget-matched study on three text-classification tasks, using a transformer I implemented in PyTorch and initialized from FLAN-T5.</p>
+                <p class="fl-reveal" style="--d:3">Baselines are done; the main runs are next.</p>
+                <div class="fl-links fl-reveal" style="--d:4"><a class="fl-link" href="projects.html#leximind">About the study</a><a class="fl-link" href="https://github.com/OliverPerrin/LexiMind">Source code</a></div>
+            </div>
+        </section>
+
+        <section id="liminalml" class="fl-plate fl-product" aria-labelledby="company-title" data-frame="0.5 0.5 0.965 0.95 0">
+            <div class="fl-head">
+                <div><h2 id="company-title" class="fl-title fl-reveal">LiminalML</h2><p class="fl-note fl-reveal" style="--d:1">Independent product · Apr 2026–present</p></div>
+                <a class="fl-link fl-reveal" style="--d:2" href="https://liminalml.com" target="_blank" rel="noopener">Visit LiminalML</a>
+            </div>
+            <div class="fl-lead">
+                <p class="fl-reveal" style="--d:3">Interactive explainers for machine learning.</p>
+                <div>
+                    <p class="fl-reveal" style="--d:4"><a href="https://liminalml.com/study">Study</a> walks through a topic from intuition to math to code.</p>
+                    <p class="fl-reveal" style="--d:5"><a href="https://liminalml.com/studio">Studio</a> makes animated ML figures you can export. Try three of them here.</p>
+                </div>
+            </div>
             <div class="visual-showcase">
                 <div class="visual-selector" role="group" aria-label="Choose a LiminalML visualization"><button type="button" data-scene="lora" aria-pressed="true" aria-controls="studio-scene">LoRA</button><button type="button" data-scene="rope" aria-pressed="false" aria-controls="studio-scene">Rotary position encoding</button><button type="button" data-scene="kv-cache" aria-pressed="false" aria-controls="studio-scene">KV cache</button></div>
                 <div class="visual-layout"><div class="visual-explanation"><h3 id="visual-title">LoRA update space</h3><p id="visual-description">Change the adapter rank to see its outputs expand from a line to a plane to a volume.</p><p class="visual-limits" id="visual-limits">A three-output toy model with fixed synthetic inputs. It shows the adapter correction, not trained model activations.</p><a id="visual-source" class="text-link" href="https://liminalml.com/explore/spatial-lora" target="_blank" rel="noopener">Open in Studio</a></div><div id="studio-scene" class="studio-scene" aria-label="Interactive LiminalML visual"><p class="scene-loading">Preparing the interactive visual…</p><noscript><p>Explore these interactive visuals on <a href="https://liminalml.com/explore">LiminalML Studio</a>.</p></noscript></div></div>
             </div>
         </section>
-        <section id="writing" class="writing-section" aria-labelledby="writing-title">
-            <div class="section-intro"><div><h2 id="writing-title">Writing</h2></div><p>Implementation notes, explanations,<br>and things I learned the hard way.</p></div>
-            <div class="article-list">
-                <a href="https://liminalml.substack.com/p/byte-pair-encoding-from-scratch-and" target="_blank" rel="noopener"><span class="article-topic">Tokenization</span><h3>Byte Pair Encoding From Scratch and the Tradeoffs the Tutorials Skip</h3><span class="article-action">Read essay</span></a>
-                <a href="https://liminalml.substack.com/p/pre-ln-rmsnorm-and-why-normalization" target="_blank" rel="noopener"><span class="article-topic">Architecture</span><h3>Pre-LN, RMSNorm, and Why Normalization Placement Matters More Than You Think</h3><span class="article-action">Read essay</span></a>
-                <a href="https://liminalml.substack.com/p/relative-position-bias-the-detail" target="_blank" rel="noopener"><span class="article-topic">Transformers</span><h3>Relative Position Bias: The Detail Most Transformer Tutorials Skip</h3><span class="article-action">Read essay</span></a>
-            </div><a class="text-link all-writing" href="https://liminalml.substack.com/" target="_blank" rel="noopener">All writing on Substack</a>
-        </section>
-        <section class="side-research" aria-labelledby="research-title"><div><h2 id="research-title">LexiMind</h2></div><div><p>My open-source research project, started as an undergraduate. With a custom PyTorch transformer, I’m testing whether merging task-specialist models beats joint training once you count the cost of training the specialists.</p><p>The repository also has a book-discovery app. Its content-based recommendations run separately from the research model.</p><div class="research-links"><a class="text-link" href="projects.html#leximind">About the research</a><a class="text-link" href="https://github.com/OliverPerrin/LexiMind">Source code</a></div></div></section>
-        <section class="open-source-index" aria-labelledby="open-source-title">
-            <div class="section-intro"><div><h2 id="open-source-title">Open source</h2></div><a class="text-link" href="projects.html#open-source">Explore the projects</a></div>
-            <div class="open-source-list">
-                <a href="projects.html#playaxis"><h3>PlayAxis</h3><p>Find events, follow teams, log training, and connect with people who play.</p><span>React / FastAPI</span></a>
-                <a href="projects.html#sartheatlas"><h3>SartheAtlas</h3><p>Explore Le Mans cars and the circuit through interactive engineering studies and maps.</p><span>Three.js / MapLibre</span></a>
-                <a href="projects.html#pulse"><h3>Pulse</h3><p>A local dashboard for coding-agent usage, subscription allowances, and reset times.</p><span>Electron / Node.js</span></a>
+
+        <section id="writing" class="fl-plate fl-list-plate" aria-labelledby="writing-title" data-frame="0.885 0.5 0.11 0.72 0.7">
+            <div class="fl-wrap">
+                <div class="fl-list-head"><h2 id="writing-title" class="fl-title fl-reveal">Writing</h2><p class="fl-reveal" style="--d:1">Implementation notes, explanations, and things I learned the hard way.</p></div>
+                <div class="fl-articles">
+                    <a class="fl-reveal" style="--d:2" href="https://liminalml.substack.com/p/byte-pair-encoding-from-scratch-and" target="_blank" rel="noopener"><span>Tokenization</span><h3>Byte Pair Encoding From Scratch and the Tradeoffs the Tutorials Skip</h3><span>Read essay</span></a>
+                    <a class="fl-reveal" style="--d:3" href="https://liminalml.substack.com/p/pre-ln-rmsnorm-and-why-normalization" target="_blank" rel="noopener"><span>Architecture</span><h3>Pre-LN, RMSNorm, and Why Normalization Placement Matters More Than You Think</h3><span>Read essay</span></a>
+                    <a class="fl-reveal" style="--d:4" href="https://liminalml.substack.com/p/relative-position-bias-the-detail" target="_blank" rel="noopener"><span>Transformers</span><h3>Relative Position Bias: The Detail Most Transformer Tutorials Skip</h3><span>Read essay</span></a>
+                </div>
+                <a class="fl-link fl-reveal" style="--d:5;margin-top:26px" href="https://liminalml.substack.com/" target="_blank" rel="noopener">All writing on Substack</a>
             </div>
         </section>
+
+        <section class="fl-plate fl-list-plate fl-projects" aria-labelledby="open-source-title" data-frame="0.86 0.73 0.17 0.24 0.75">
+            <div class="fl-wrap">
+                <div class="fl-list-head"><h2 id="open-source-title" class="fl-title fl-reveal">Other projects</h2><a class="fl-link fl-reveal" style="--d:1" href="projects.html#open-source">All projects</a></div>
+                <div class="fl-projects-list">
+                    <a class="fl-reveal" style="--d:2" href="projects.html#playaxis"><h3>PlayAxis</h3><p>Sports event discovery, team following, and training logs.</p><span>React / FastAPI</span></a>
+                    <a class="fl-reveal" style="--d:3" href="projects.html#sartheatlas"><h3>SartheAtlas</h3><p>3D explorer for Le Mans cars and the Circuit de la Sarthe.</p><span>Three.js / MapLibre</span></a>
+                    <a class="fl-reveal" style="--d:4" href="projects.html#pulse"><h3>Pulse</h3><p>Usage and limits dashboard for AI coding agents.</p><span>Electron / Node.js</span></a>
+                </div>
+            </div>
+        </section>
+
+        <footer class="fl-plate fl-close" data-frame="0.5 0.5 0.94 0.9 0.5">
+            <a class="fl-hello fl-reveal" href="mailto:oliver.t.perrin@gmail.com">Say hello</a>
+            <div class="fl-close-row fl-reveal" style="--d:2">
+                <nav aria-label="Elsewhere"><a href="https://github.com/OliverPerrin">GitHub</a><a href="https://www.linkedin.com/in/oliverperrin/">LinkedIn</a><a href="https://liminalml.substack.com/">Substack</a></nav>
+                <span>© 2026 Oliver Perrin</span>
+            </div>
+        </footer>
     </main>
-    <footer class="site-footer">
-        <div><a href="mailto:oliver.t.perrin@gmail.com">Say hello</a><span>© 2026 Oliver Perrin</span></div>
-        <nav aria-label="Elsewhere"><a href="https://github.com/OliverPerrin">GitHub</a><a href="https://www.linkedin.com/in/oliverperrin/">LinkedIn</a><a href="https://liminalml.substack.com/">Substack</a><a href="Oliver_Perrin_Resume.pdf" target="_blank" rel="noopener">Résumé</a></nav>
-    </footer>
-    <div class="atmosphere-caption" hidden>
-        <span id="background-topic" aria-live="off" title="An illustrative gridworld: an agent follows a path through obstacles toward a reward.">Reinforcement learning</span>
-    </div>
+    <button type="button" class="fl-pause" aria-pressed="false">Pause</button>
+    <div class="fl-caption is-hidden" aria-hidden="true"></div>
 </body>
 </html>
