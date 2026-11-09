@@ -60,11 +60,10 @@ html:has(.frame-page) { background: #070707; }
 .fl-articles span:last-child { text-align: right; }
 .fl-articles h3 { font-size: 1.32rem; font-weight: 400; letter-spacing: -.02em; line-height: 1.35; }
 .fl-articles a:hover h3, .fl-projects-list a:hover h3 { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 6px; }
-.fl-projects-list a { display: grid; grid-template-columns: 1fr 2fr .9fr; gap: 28px; align-items: baseline; padding: 22px 0; border-top: 1px solid var(--rule); }
+.fl-projects-list a { display: grid; grid-template-columns: 1fr 2fr; gap: 28px; align-items: baseline; padding: 22px 0; border-top: 1px solid var(--rule); }
 .fl-projects-list a:last-child { border-bottom: 1px solid var(--rule); }
 .fl-projects-list h3 { font-size: 1.2rem; font-weight: 500; letter-spacing: -.025em; }
 .fl-projects-list p { margin: 0; font-size: .94rem; }
-.fl-projects-list span { font-size: .72rem; color: var(--quiet); text-align: right; }
 
 /* 7. Close: the frame reaches the edges of the screen. */
 .fl-close { display: flex; flex-direction: column; justify-content: flex-end; padding-bottom: 21vh; }
@@ -90,7 +89,7 @@ html:has(.frame-page) { background: #070707; }
 }
 @media (max-width: 900px) {
     .fl-articles a, .fl-projects-list a { grid-template-columns: 1fr; gap: 6px; }
-    .fl-articles span:last-child, .fl-projects-list span { text-align: left; }
+    .fl-articles span:last-child { text-align: left; }
 }
 @media (max-width: 720px) {
     .frame-page .site-header { padding: 20px 24px; }
