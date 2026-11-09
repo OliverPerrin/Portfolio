@@ -37,13 +37,13 @@
         </details>
     </header>
     <main id="main">
-        <section class="fl-plate pg-plate" aria-labelledby="proj-title" data-frame="0.75 0.5 0.38 0.62 1" data-frame-medium="0.76 0.36 0.4 0.42 1">
+        <section data-scenes="merge lora hypercar map gauges" class="fl-plate pg-plate" aria-labelledby="proj-title" data-frame="0.75 0.5 0.38 0.62 1" data-frame-medium="0.76 0.36 0.4 0.42 1">
             <span class="fl-label fl-reveal" data-decode>Projects</span>
             <h1 id="proj-title" class="pg-display fl-reveal" style="--d:1" data-decode>Selected work</h1>
             <div class="pg-sub"><p class="fl-reveal" style="--d:2">Research, an independent product, and open-source builds. Startup work is private.</p></div>
         </section>
 
-        <section class="fl-plate pg-plate" aria-labelledby="leximind-name" data-frame="0.77 0.5 0.34 0.6 0.9" data-frame-medium="0.77 0.24 0.36 0.3 0.9">
+        <section class="fl-plate pg-plate" aria-labelledby="leximind-name" data-frame="0.77 0.5 0.34 0.6 0.9" data-scenes="merge mtl" data-frame-medium="0.77 0.24 0.36 0.3 0.9">
             <div class="pj-col">
                 <span class="pg-index fl-reveal" aria-hidden="true">01</span>
                 <span class="fl-label fl-reveal" style="--d:1">Research · open source</span>
@@ -56,7 +56,7 @@
             </div>
         </section>
 
-        <section class="fl-plate pg-plate pj-plate--right" aria-labelledby="liminalml-name" data-frame="0.23 0.5 0.34 0.6 0.9" data-frame-medium="0.23 0.24 0.36 0.3 0.9">
+        <section class="fl-plate pg-plate pj-plate--right" aria-labelledby="liminalml-name" data-frame="0.23 0.5 0.34 0.6 0.9" data-scenes="lora kv attention rope" data-frame-medium="0.23 0.24 0.36 0.3 0.9">
             <div class="pj-col">
                 <span class="pg-index fl-reveal" aria-hidden="true">02</span>
                 <span class="fl-label fl-reveal" style="--d:1">Independent product · ongoing</span>
@@ -69,34 +69,34 @@
             </div>
         </section>
 
-        <section id="open-source" class="fl-plate pg-plate" aria-labelledby="os-title" data-frame-target=".pj-sheet" data-frame-pad="22" data-frame="0.5 0.6 0.9 0.5 0">
+        <section id="open-source" class="fl-plate pg-plate pj-tools" aria-labelledby="os-title" data-frame="0.79 0.55 0.33 0.6 1" data-frame-medium="0.79 0.3 0.34 0.34 1" data-scenes="hypercar map gauges">
             <div class="pj-head">
                 <div><span class="fl-label fl-reveal">Independent projects · open source</span><h2 id="os-title" class="pj-name fl-reveal" style="--d:1" data-decode>Tools &amp; explorations</h2></div>
                 <span class="pg-index fl-reveal" aria-hidden="true">03</span>
             </div>
-            <div class="pj-sheet fl-reveal" style="--d:2">
-                <article id="playaxis" class="pj-card" data-frame-hover>
+            <div class="pj-stack fl-reveal" style="--d:2">
+                <article id="playaxis" class="pj-card" data-scene-hover="map">
                     <span class="pj-frame-no" aria-hidden="true">03A</span>
-                    <h3>PlayAxis</h3><span class="fl-note">Sports, training &amp; community</span>
-                    <p>Sports and gaming event discovery on a map, team following, and private training logs.</p>
-                    <div class="fl-links"><a class="fl-link" href="https://playaxis.netlify.app" target="_blank" rel="noopener">Website</a><a class="fl-link" href="https://github.com/OliverPerrin/PlayAxis" target="_blank" rel="noopener">Source code</a></div>
+                    <div class="pj-card-id"><h3>PlayAxis</h3><span class="fl-note">Sports, training &amp; community</span></div>
+                    <div class="pj-card-body"><p>Sports and gaming event discovery on a map, team following, and private training logs.</p>
+                    <div class="fl-links"><a class="fl-link" href="https://playaxis.netlify.app" target="_blank" rel="noopener">Website</a><a class="fl-link" href="https://github.com/OliverPerrin/PlayAxis" target="_blank" rel="noopener">Source code</a></div></div>
                 </article>
-                <article id="sartheatlas" class="pj-card" data-frame-hover>
+                <article id="sartheatlas" class="pj-card" data-scene-hover="hypercar">
                     <span class="pj-frame-no" aria-hidden="true">03B</span>
-                    <h3>SartheAtlas</h3><span class="fl-note">Le Mans, explored in 3D</span>
-                    <p>3D explorer for Le Mans cars and the Circuit de la Sarthe, with exploded engineering views and terrain maps. The car models are illustrative, not manufacturer CAD.</p>
-                    <div class="fl-links"><a class="fl-link" href="https://sartheatlas.vercel.app" target="_blank" rel="noopener">Website</a><a class="fl-link" href="https://github.com/OliverPerrin/SartheAtlas" target="_blank" rel="noopener">Source code</a></div>
+                    <div class="pj-card-id"><h3>SartheAtlas</h3><span class="fl-note">Le Mans, explored in 3D</span></div>
+                    <div class="pj-card-body"><p>3D explorer for Le Mans cars and the Circuit de la Sarthe, with exploded engineering views and terrain maps. The car models are illustrative, not manufacturer CAD.</p>
+                    <div class="fl-links"><a class="fl-link" href="https://sartheatlas.vercel.app" target="_blank" rel="noopener">Website</a><a class="fl-link" href="https://github.com/OliverPerrin/SartheAtlas" target="_blank" rel="noopener">Source code</a></div></div>
                 </article>
-                <article id="pulse" class="pj-card" data-frame-hover>
+                <article id="pulse" class="pj-card" data-scene-hover="gauges">
                     <span class="pj-frame-no" aria-hidden="true">03C</span>
-                    <h3>Pulse</h3><span class="fl-note">Local coding-agent usage</span>
-                    <p>Local macOS app and dashboard for AI coding-agent usage, limits, and reset times (Codex, Claude Code, Cursor, and others).</p>
-                    <div class="fl-links"><a class="fl-link" href="https://usagepulse.vercel.app" target="_blank" rel="noopener">Website</a><a class="fl-link" href="https://github.com/OliverPerrin/pulse" target="_blank" rel="noopener">Source code</a></div>
+                    <div class="pj-card-id"><h3>Pulse</h3><span class="fl-note">Local coding-agent usage</span></div>
+                    <div class="pj-card-body"><p>Local macOS app and dashboard for AI coding-agent usage, limits, and reset times (Codex, Claude Code, Cursor, and others).</p>
+                    <div class="fl-links"><a class="fl-link" href="https://usagepulse.vercel.app" target="_blank" rel="noopener">Website</a><a class="fl-link" href="https://github.com/OliverPerrin/pulse" target="_blank" rel="noopener">Source code</a></div></div>
                 </article>
             </div>
         </section>
 
-        <section class="fl-plate pg-plate" aria-labelledby="site-title" data-frame-target=".pj-exhibit" data-frame-pad="26" data-frame="0.35 0.6 0.5 0.4 0">
+        <section class="fl-plate pg-plate" aria-labelledby="site-title" data-frame-target=".pj-exhibit" data-frame-pad="26" data-frame-presence="1" data-frame="0.35 0.6 0.5 0.4 0" data-scenes="frame">
             <span class="pg-index fl-reveal" aria-hidden="true">04</span>
             <span class="fl-label fl-reveal" style="--d:1">Ongoing</span>
             <h2 id="site-title" class="pj-name fl-reveal" style="--d:1" data-decode>This site</h2>
@@ -107,7 +107,7 @@
             </article>
         </section>
 
-        <section class="fl-plate pg-plate" aria-labelledby="legacy-title" data-frame="0.975 0.5 0.006 0.5 0.6">
+        <section class="fl-plate pg-plate pj-legacy" aria-labelledby="legacy-title" data-frame="0.875 0.52 0.16 0.62 0.85" data-scenes="optim rl">
             <div class="pj-head">
                 <div><span class="fl-label fl-reveal">Legacy</span><h2 id="legacy-title" class="pj-name fl-reveal" style="--d:1" data-decode>Earlier projects</h2></div>
                 <span class="pg-index fl-reveal" aria-hidden="true">05</span>
@@ -131,7 +131,7 @@
             </div>
         </section>
 
-        <footer class="fl-plate fl-close" data-frame="0.5 0.5 0.96 0.8 0.5">
+        <footer class="fl-plate fl-close" data-frame="0.5 0.5 0.96 0.8 0.5" data-scenes="attention gauges">
             <a class="fl-hello fl-reveal" href="mailto:oliver.t.perrin@gmail.com">Say hello</a>
             <div class="fl-close-row fl-reveal" style="--d:2">
                 <nav aria-label="Elsewhere"><a href="https://github.com/OliverPerrin">GitHub</a><a href="https://www.linkedin.com/in/oliverperrin/">LinkedIn</a><a href="https://liminalml.substack.com/">Substack</a></nav>

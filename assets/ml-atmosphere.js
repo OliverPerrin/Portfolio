@@ -18,10 +18,20 @@ const topics=[
   ['Supervised fine-tuning','Examples enter the model; predictions produce a loss that drives a weight update.'],
   ['Rotary position encoding','Three coordinate pairs rotate at different frequencies.'],
   ['Optimization','A synthetic quadratic loss surface and a descending path.'],
-  ['Multi-task learning','A shared encoder feeds three task heads.']
+  ['Multi-task learning','A shared encoder feeds three task heads.'],
+  ['',''],
+  ['LoRA','A frozen weight matrix plus a low-rank update: B times A, as in LiminalML Studio.'],
+  ['KV cache','Keys and values accumulate per layer as tokens are decoded, as in LiminalML Studio.'],
+  ['Attention','A query scores each key; softmax turns the scores into weights, as in LiminalML Studio.'],
+  ['Model merging','Three task vectors combine into one merged model, as studied in LexiMind.'],
+  ['Le Mans hypercar','An illustrative Le Mans prototype, after SartheAtlas.'],
+  ['Event map','Events pinned on a map, after PlayAxis.'],
+  ['Usage dashboard','Allowance gauges over token history, after Pulse.']
 ];
 const FRAME=5;                       // every particle sits on the frame itself
-const sequence=[FRAME,0,1,2,3,4];
+const NAMES={rl:0,sft:1,rope:2,optim:3,mtl:4,frame:5,lora:6,kv:7,attention:8,merge:9,hypercar:10,map:11,gauges:12};
+const defaultSequence=[FRAME,0,1,2,3,4];
+let sequence=defaultSequence;
 const count=36000,hold=3.6,frameHold=2.2,morphDuration=1.7,tau=Math.PI*2;
 const route=[[0,0],[1,0],[2,0],[2,1],[3,1],[4,1],[4,2],[4,3],[3,3],[2,3],[2,4],[2,5],[3,5],[4,5],[5,5]];
 const walls=[[1,1],[1,2],[1,4],[2,2],[3,0],[3,2],[3,4],[4,4]];
@@ -64,21 +74,125 @@ function makeShape(kind){
       if(u<.36){x=-2.1+v*1.65;y=gaussian()*.065;z=gaussian()*.065;a=.4+w*.28;}
       else if(u<.83){const t=v,e=t*t*(3-2*t);x=-.45+t*2.25;y=headY*e+gaussian()*.045;z=(branch-1)*.24*e+gaussian()*.045;a=.35+w*.3;}
       else{const shared=i%2===0;x=(shared?[-1.85,-1.15,-.45][branch]:1.8)+gaussian()*.12;y=(shared?0:headY)+gaussian()*.12;z=(shared?0:(branch-1)*.24)+gaussian()*.12;a=.6+w*.3;}
-    }else{
+    }else if(kind===FRAME){
       // The frame: x stores a perimeter position, y an offset along the edge normal.
       const edge=u<.84;x=v;y=edge?gaussian()*.006:-Math.abs(gaussian())*.045;z=0;a=edge?.7+w*.3:.16+w*.14;
+    }else{
+      [x,y,z,a]=extraPoint(kind,i,u,v,w);
     }
     data.set([x,y,z,a],i*4);
   }
   return data;
 }
-const shapes=[0,1,2,3,4,5].map(makeShape);
+
+// ---------- Scenes from the projects: LiminalML figures, LexiMind, SartheAtlas, PlayAxis, Pulse ----------
+function sm(x){x=Math.max(0,Math.min(1,x));return x*x*(3-2*x);}
+function lerpKeys(k,s){if(s<=k[0][0])return k[0][1];for(let j=1;j<k.length;j++){if(s<=k[j][0]){const a=k[j-1],b=k[j],t=sm((s-a[0])/(b[0]-a[0]));return a[1]+(b[1]-a[1])*t;}}return k[k.length-1][1];}
+// Hypercar proportions: about 5 m long, 2 m wide, 1.05 m tall; front at +x. s runs 0 (tail) to 1 (nose).
+const CAR={
+  c:[[0,-.2],[.08,-.14],[.3,-.06],[.45,-.08],[.62,-.15],[.8,-.24],[.92,-.31],[1,-.4]],             // centreline top
+  f:[[0,-.2],[.1,-.06],[.2,.0],[.3,-.06],[.42,-.2],[.6,-.22],[.7,-.08],[.78,.01],[.87,-.07],[.95,-.3],[1,-.4]], // fender line
+  w:[[0,.72],[.2,.8],[.42,.66],[.6,.68],[.78,.8],[.92,.7],[1,.48]]                                   // half width
+};
+const FLOOR=-.52,WY=-.32,WR=.3,WHEELS=[[-1.2,.66],[-1.2,-.66],[1.12,.66],[1.12,-.66]];
+function carTop(s,u){const c=lerpKeys(CAR.c,s),f=lerpKeys(CAR.f,s),g=sm((Math.abs(u)-.35)/.55);return c*(1-g)+f*g;}
+function extraPoint(kind,i,u,v,w){
+  let x=0,y=0,z=0,a=.3;
+  if(kind===6){
+    // LoRA: frozen W, plus B (tall, thin) times A (short, wide), with their product BA beneath A.
+    if(u<.4){x=-2.05+v*1.6;y=-.8+w*1.6;if(i%2)x=-2.05+Math.round(v*16)/16*1.6;else y=-.8+Math.round(w*16)/16*1.6;a=.16+random()*.12;}
+    else if(u<.43){const t=v*2-1;if(i%2){x=-.2+t*.12;y=0;}else{x=-.2;y=t*.12;}a=.85;}
+    else if(u<.6){x=.08+v*.22;y=-.8+w*1.6;if(i%3===0)x=.08+(v<.5?0:.22);a=.5+random()*.35;}
+    else if(u<.77){x=.72+v*1.4;y=.58+w*.22;if(i%3===0)y=.58+(w<.5?0:.22);a=.5+random()*.35;}
+    else{x=.72+v*1.4;y=-.8+w*1.22;if(i%2)x=.72+Math.round(v*8)/8*1.4;else y=-.8+Math.round(w*8)/8*1.22;a=.12+random()*.12;}
+    z=gaussian()*.01;
+  }else if(kind===7){
+    // KV cache: three layers, keys and values per decoded token.
+    const token=i%12,layer=Math.floor(i/12)%3,isV=Math.floor(i/36)%2;
+    const cx=-2+token*.35,cy=(layer-1)*.78,cz=isV?.15:-.15;
+    x=cx+(v-.5)*.24;y=cy+(w-.5)*.24;z=cz+(random()-.5)*.12;
+    if(i%3===0)x=cx+(v<.5?-.12:.12);else if(i%3===1)y=cy+(w<.5?-.12:.12);
+    a=isV?.6:.42;
+  }else if(kind===8){
+    // Attention: a query against four keys on the unit circle, and the softmax weights (62/17/5/16%).
+    const ox=-.9;
+    if(u<.12){const g=v*tau;x=ox+Math.cos(g);y=Math.sin(g);a=.12;}
+    else if(u<.3){x=ox+v*.92+gaussian()*.008;y=v*.39+gaussian()*.008;a=.92;}
+    else if(u<.62){const k=i%4,g=[.35,1.25,2.6,-.9][k];x=ox+Math.cos(g)*v+gaussian()*.006;y=Math.sin(g)*v+gaussian()*.006;a=[.75,.45,.28,.45][k];}
+    else{const k=i%4,wt=[.62,.17,.05,.16][k],bx=.75+k*.38,h=wt*2.2;x=bx+(v-.5)*.24;y=-.95+w*h;if(i%2)x=bx+(v<.5?-.12:.12);a=.35+wt*.8;}
+  }else if(kind===9){
+    // Model merging: three task vectors from shared weights, and their scaled sum.
+    const base=[-1.1,-.4,0],T=[[1.9,1.3,.3],[2.2,-.5,.8],[1.3,.3,-1.2]],lam=.4;
+    const M=[0,1,2].map(d=>(T[0][d]+T[1][d]+T[2][d])*lam);
+    const at=(vec,t)=>[base[0]+vec[0]*t,base[1]+vec[1]*t,base[2]+vec[2]*t];
+    let q;
+    if(u<.08){q=[base[0]+gaussian()*.05,base[1]+gaussian()*.05,base[2]+gaussian()*.05];a=.95;}
+    else if(u<.58){const k=i%3;q=at(T[k],w<.15?1:v);if(w<.15){q[0]+=gaussian()*.04;q[1]+=gaussian()*.04;q[2]+=gaussian()*.04;a=.85;}else{q[0]+=gaussian()*.008;q[1]+=gaussian()*.008;a=.42;}}
+    else if(u<.84){q=at(M,w<.18?1:v);if(w<.18){q[0]+=gaussian()*.05;q[1]+=gaussian()*.05;q[2]+=gaussian()*.05;}a=.95;}
+    else{const k=i%3,tip=at(T[k],1),mt=at(M,1);q=[tip[0]+(mt[0]-tip[0])*v,tip[1]+(mt[1]-tip[1])*v,tip[2]+(mt[2]-tip[2])*v];a=Math.floor(v*14)%2?0:.28;}
+    [x,y,z]=q;
+  }else if(kind===10){
+    // Le Mans hypercar: wedge body with fender bulges, canopy, shark fin, swan-neck wing, wheels, light bars.
+    const s=v,X=-2+4*s;
+    if(u<.38){
+      const uu=w*2-1,W=lerpKeys(CAR.w,s);
+      x=X;z=uu*W;y=carTop(s,uu);if(Math.abs(uu)>.94)y-=(Math.abs(uu)-.94)*1.6;a=.2+random()*.12;
+      if(i%7===0){const ln=Math.round(uu*4)/4;z=ln*W;y=carTop(s,ln);a=.45;}
+    }else if(u<.56){
+      const side=i%2?1:-1,W=lerpKeys(CAR.w,s);
+      const yy=FLOOR+w*(carTop(s,side)-FLOOR),wx=X<0?-1.2:1.12,ra=WR+.05;
+      if(Math.hypot(X-wx,yy-WY)<ra){const g=Math.abs(Math.atan2(yy-WY,X-wx));x=wx+Math.cos(g)*ra;y=WY+Math.sin(g)*ra;a=.7;}
+      else{x=X;y=yy;a=.17+random()*.1;}
+      z=side*W*(.97+.03*(1-w));
+    }else if(u<.66){
+      const el=w*Math.PI/2,az=v*tau,r=Math.cos(el);
+      x=.45+.8*r*Math.cos(az);z=.32*r*Math.sin(az);y=-.14+.38*Math.sin(el);a=i%9===0?.6:.26+random()*.1;
+    }else if(u<.7){
+      x=-.15-1.7*v;const bottom=carTop((x+2)/4,0),top=.22+.08*v;y=bottom+(top-bottom)*w;z=gaussian()*.004;a=w>.92?.7:.2;
+    }else if(u<.78){
+      const part=i%6;
+      if(part<3){x=-2.02+.3*v;z=-.8+1.6*w;y=.3+.035*Math.sin(v*Math.PI);a=(v<.08||v>.92)?.75:.4;}
+      else if(part<5){const sd=part===3?1:-1;x=-2.06+.42*v;y=-.2+.56*w;z=sd*.81;a=(w>.95||w<.04||v<.04||v>.96)?.7:.08;}
+      else{const sd=i%12<6?1:-1;x=-1.86+gaussian()*.01;z=sd*.24+gaussian()*.01;const b=carTop((x+2)/4,.3);y=b+(.3-b)*w;a=.55;}
+    }else if(u<.9){
+      const wh=WHEELS[i%4],phi=v*tau;
+      if(w<.66){x=wh[0]+Math.cos(phi)*WR;y=WY+Math.sin(phi)*WR;z=wh[1]+(random()-.5)*.26;a=.3;}
+      else{const rr=i%3===0?.2:random()*.2,g=i%3===0?phi:Math.floor(phi/tau*10)/10*tau;x=wh[0]+Math.cos(g)*rr;y=WY+Math.sin(g)*rr;z=wh[1]+(wh[1]>0?.13:-.13);a=.55;}
+    }else if(u<.94){
+      if(i%2){const sd=i%4<2?1:-1;x=1.66+.1*v;y=-.32+.12*w;z=sd*(.52+.04*v);a=.95;}
+      else{x=-2;y=-.12+gaussian()*.006;z=-.66+1.32*v;a=.95;}
+    }else{
+      const part=i%3;
+      if(part===0){x=1.72+.36*v;y=FLOOR-.02;z=(w*2-1)*.72;a=.28;}
+      else if(part===1){x=-2.02+.32*w;z=(Math.floor(v*7)-3)*.15;y=FLOOR+.16*random();a=.16;}
+      else{const sd=i%2?1:-1;x=X;z=sd*lerpKeys(CAR.w,s);y=FLOOR;a=.4;}
+    }
+  }else if(kind===11){
+    // Event map: a street grid with roads, and pinned events with rings.
+    const pins=[[-1.4,.6,.7],[-.6,-.8,.5],[.2,.3,.9],[1.1,-.4,.6],[1.6,.9,.45],[-.2,1,.55],[.8,-1.1,.65]];
+    if(u<.45){x=-2+v*4;z=-1.4+w*2.8;if(i%2)x=-2+Math.round(v*20)/20*4;else z=-1.4+Math.round(w*14)/14*2.8;y=-.6;a=.08+random()*.08;}
+    else if(u<.65){const k=i%3;x=-2+4*v;z=.9*Math.sin(v*3+k*2)*.6+(k-1)*.75;y=-.6;a=.42;}
+    else{const p=pins[i%7],part=w;
+      if(part<.6){x=p[0]+gaussian()*.012;z=p[1]+gaussian()*.012;y=-.6+v*p[2];a=.55;}
+      else if(part<.8){x=p[0]+gaussian()*.05;z=p[1]+gaussian()*.05;y=-.6+p[2]+gaussian()*.05;a=.95;}
+      else{const g=v*tau;x=p[0]+Math.cos(g)*.2;z=p[1]+Math.sin(g)*.2;y=-.6;a=.45;}}
+  }else{
+    // Usage dashboard: three allowance gauges over a bar chart of token history.
+    if(u<.55){const g=i%3,cx=(g-1)*1.35,cy=.4,R=.5,fill=[.72,.45,.9][g],ang=Math.PI*1.25-v*Math.PI*1.5,r=R+(w-.5)*.07;
+      x=cx+Math.cos(ang)*r;y=cy+Math.sin(ang)*r;a=v<fill?.85:.14;}
+    else if(u<.6){const g=i%3;x=(g-1)*1.35+gaussian()*.03;y=.4+gaussian()*.03;a=.9;}
+    else{const b=i%24,bx=-2+(b+.5)*(4/24),h=.15+.55*(.5+.5*Math.sin(b*.7+1.3))*(.6+.4*Math.sin(b*.23));
+      x=bx+(v-.5)*.11;y=-1+w*h;a=.32+random()*.2;}
+  }
+  return[x,y,z,a];
+}
+const shapes=Array.from({length:13},(_,k)=>makeShape(k));
 
 // ---------- State ----------
 const clock=()=>performance.now()/1000;
 const smooth=x=>{x=Math.max(0,Math.min(1,x));return x*x*(3-2*x);};
 const easeInOut=x=>{x=Math.max(0,Math.min(1,x));return x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2;};
-let topic=reduced.matches?0:FRAME,seqIndex=sequence.indexOf(topic);
+let topic=reduced.matches?0:FRAME,seqIndex=sequence.indexOf(topic),activePlate=0,hoverScene=null;
 let from=shapes[topic],to=shapes[topic],fromKind=topic,fromFlat=topic===FRAME?1:0;
 let elapsed=0,morph=1,time=0,sceneTime=0,paused=false;
 const t0=clock();
@@ -104,6 +218,11 @@ function animated(data,k,kind,t){
   else if(kind===1&&data[k+3]>.85){if(data[k+3]>.95)x+=-1.8+((t*.7+phase)%1)*1.65;else{const p=trainingPosition(t*.27+phase);x+=p[0];y+=p[1];z+=p[2];}alpha*=.12+.88*Math.pow(.5+.5*Math.cos(phase*tau*3),8);}
   else if(kind===2&&data[k+3]>.85){const pair=Math.round(y/1.28)+1,angle=t*.55*Math.pow(.3,pair),c=Math.cos(angle),s=Math.sin(angle);const nx=c*x-s*z;z=s*x+c*z;x=nx;}
   else if(kind===4){x+=Math.sin(t*1.2+phase*20)*.013;y+=Math.cos(t+phase*17)*.013;}
+  else if(kind>FRAME){
+    if(kind===7&&x>-2.2+((sceneTime*.9)%4.8))alpha=0;
+    if(kind===10){const g=t*.22,c=Math.cos(g),sn=Math.sin(g);const nx=c*x-sn*z;z=sn*x+c*z;x=nx;}
+    alpha*=.78+.22*Math.sin(t*1.6+phase*tau);
+  }
   else if(kind===FRAME){const s=((x+t*(.004+.012*meta[i*3]))%1+1)%1,r=rectPoint(s,frameHalfU[0],frameHalfU[1]);const off=y;x=r[0]+r[2]*off;y=r[1]+r[3]*off;z=0;if(s>drawLevel(clock()))alpha=0;}
   return[x,y,z,alpha];
 }
@@ -162,6 +281,11 @@ vec4 animate(vec4 p,float kind){
   }
   else if(kind>1.5&&kind<2.5&&p.w>.85){float pair=floor(p.y/1.28+.5)+1.;float angle=uTime*.55*pow(.3,pair);p.xz=mat2(cos(angle),sin(angle),-sin(angle),cos(angle))*p.xz;}
   else if(kind>3.5&&kind<4.5){p.xy+=vec2(sin(uTime*1.2+aMeta.z*20.),cos(uTime+aMeta.z*17.))*.013;}
+  else if(kind>5.5){
+    if(kind>6.5&&kind<7.5)p.w*=step(p.x,-2.2+mod(uSceneTime*.9,4.8));
+    if(kind>9.5&&kind<10.5){float g=uTime*.22;p.xz=mat2(cos(g),sin(g),-sin(g),cos(g))*p.xz;}
+    p.w*=.78+.22*sin(uTime*1.6+aMeta.z*6.2831853);
+  }
   else if(kind>4.5){
     float s=fract(p.x+uTime*(.004+.012*aMeta.x));vec2 nrm;vec2 q=rectPoint(s,uFrameHalf,nrm);
     p.xy=q+nrm*p.y;p.z=0.;p.w*=step(s,uDraw);
@@ -300,6 +424,21 @@ function presetAt(i){
   const el=sel&&plate.querySelector(sel);
   return el?wrap(el,+(plate.dataset.framePad||24),+(plate.dataset.framePresence||0)):presets[i];
 }
+function sceneList(plate){
+  const l=(plate&&plate.dataset.scenes||'').split(/[\s,]+/).map(n=>NAMES[n]).filter(n=>n!=null);
+  return l.length?l:defaultSequence;
+}
+function activeIndex(){
+  const y=scrollY;let a=0;
+  for(let i=1;i<plates.length;i++){const t=(y-(anchors[i]-.72*H))/(.62*H);if(t>=.5)a=i;else if(t<=0)break;}
+  return a;
+}
+function setPlate(i){
+  activePlate=i;sequence=sceneList(plates[i]);
+  seqIndex=sequence.indexOf(topic);
+  if(hoverScene||topic===FRAME||seqIndex>=0)return;
+  seqIndex=0;select(sequence[0]);
+}
 function targetFrame(){
   if(hoverEl&&document.contains(hoverEl))return wrap(hoverEl,+(hoverEl.dataset.framePad||14),0);
   const y=scrollY;const f=presetAt(0).slice();
@@ -367,8 +506,13 @@ function tick(){
   if(animatingScene()){
     time+=dt;sceneTime+=dt;
     if(morph<1)morph=Math.min(1,morph+dt/morphDuration);
-    else{elapsed+=dt;if(elapsed>=(topic===FRAME?frameHold:hold)){seqIndex=(seqIndex+1)%sequence.length;select(sequence[seqIndex]);}}
+    else{elapsed+=dt;if(elapsed>=(topic===FRAME?frameHold:hold)){
+      if(hoverScene)elapsed=0;
+      else if(sequence.length>1||sequence[0]!==topic){seqIndex=(seqIndex+1)%sequence.length;select(sequence[seqIndex]);}
+      else elapsed=0;
+    }}
   }
+  const ai=activeIndex();if(ai!==activePlate)setPlate(ai);
   // The frame follows its target on a spring; reduced motion snaps.
   const goal=targetPixels();let settling=false;
   for(let k=0;k<5;k++){
@@ -409,6 +553,17 @@ addEventListener('pointermove',e=>{
 },{passive:true});
 document.documentElement.addEventListener('pointerleave',()=>{tiltTX=tiltTY=0;pointerOn=false;wake();});
 addEventListener('scroll',wake,{passive:true});
+// Hovering or focusing a project marked data-scene-hover shows its scene.
+function setSceneHover(el){
+  const name=el?el.dataset.sceneHover:null;
+  if(name===hoverScene)return;
+  hoverScene=name;
+  if(name&&NAMES[name]!=null){select(NAMES[name]);elapsed=0;}
+  else seqIndex=sequence.indexOf(topic);
+  wake();
+}
+document.addEventListener('pointerover',e=>{if(e.pointerType==='mouse')setSceneHover(e.target.closest?.('[data-scene-hover]')||null);},{passive:true});
+document.addEventListener('focusin',e=>setSceneHover(e.target.closest?.('[data-scene-hover]')||null));
 // Hovering or focusing an element marked data-frame-hover pulls the frame onto it.
 let hoverEl=null;
 function setHover(el){if(el!==hoverEl){hoverEl=el;wake();}}
