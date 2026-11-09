@@ -11,9 +11,15 @@
     <meta name="description" content="Experience of Oliver Perrin — founding Machine Learning Engineer at a stealth startup, Founder of LiminalML, Systems Engineering Intern at Triaxis Power Consulting.">
     <link rel="canonical" href="https://oliverperrin.com/experience">
     <link rel="stylesheet" href="app.css">
+    <link rel="stylesheet" href="assets/ml-atmosphere.css">
+    <link rel="stylesheet" href="assets/pages.css">
     <script src="app.js" defer></script>
+    <script src="assets/ml-atmosphere.js" defer></script>
+    <script src="assets/frame-ui.js" defer></script>
 </head>
-<body>
+<body class="frame-page pg-experience">
+    <canvas class="fl-canvas" aria-hidden="true"></canvas>
+    <div class="fl-fallback" aria-hidden="true"></div>
     <a class="skip-link" href="#main">Skip to content</a>
     <header class="site-header">
         <a class="wordmark" href="index.html">Oliver Perrin</a>
@@ -30,49 +36,50 @@
             </nav>
         </details>
     </header>
+    <div class="ex-scrubber" aria-hidden="true"><span></span></div>
+    <main id="main">
+        <section class="fl-plate pg-plate" aria-labelledby="exp-title" data-frame="0.76 0.5 0.36 0.62 1" data-frame-medium="0.76 0.36 0.4 0.42 1">
+            <span class="fl-label fl-reveal" data-decode>Experience</span>
+            <h1 id="exp-title" class="pg-display fl-reveal" style="--d:1" data-decode>Professional timeline</h1>
+            <div class="pg-sub"><p class="fl-reveal" style="--d:2">Founding ML engineer at a stealth startup.</p></div>
+        </section>
 
-    <main id="main" class="page">
-        <section class="section">
-            <div class="section-header">
-                <span class="eyebrow">Experience</span>
-                <h1 class="section-title">Professional timeline</h1>
-                <p class="section-subtitle">Founding ML engineer at a stealth startup.</p>
-            </div>
-
-            <div class="timeline">
-                <div class="timeline-item fade-in-up">
-                    <div class="item-date">May 2026  Present</div>
-                    <div class="item-title">Machine Learning Engineer · Founding Team</div>
-                    <div class="item-company">Stealth Startup · Remote</div>
-                    <div class="item-description">
-                        Sole ML engineer on a four-person founding team. Own model training, evaluation, inference, and product integration. Pre-launch; details are private.
-                    </div>
-                </div>
-
-                <div class="timeline-item fade-in-up">
-                    <div class="item-date">April 2026  Present</div>
-                    <div class="item-title">Founder &amp; Developer</div>
-                    <div class="item-company">LiminalML · Charlotte Metro</div>
-                    <div class="item-description">
-                        Solo-built interactive ML explainers (Study) and figure editor (Studio). Next.js, TypeScript, Supabase, Stripe.
-                    </div>
-                </div>
-
-                <div class="timeline-item fade-in-up">
-                    <div class="item-date">Jun 2023  Aug 2024</div>
-                    <div class="item-title">Systems Engineering Intern</div>
-                    <div class="item-company">Triaxis Power Consulting LLC · Charlotte, NC</div>
-                    <div class="item-description">
-                        Built Raspberry Pi sensor monitoring for pipe temperature and thermal expansion in power plants.
-                    </div>
-                </div>
+        <section class="fl-plate ex-role" aria-label="Machine Learning Engineer · Founding Team" data-frame-target=".ex-date" data-frame-pad="26" data-frame="0.3 0.5 0.4 0.5 0">
+            <div class="ex-date fl-reveal"><span>May 2026</span> <span>Present</span></div>
+            <div class="ex-body">
+                <h2 class="ex-title fl-reveal" style="--d:1">Machine Learning Engineer · Founding Team</h2>
+                <p class="fl-note fl-reveal" style="--d:2">Stealth Startup · Remote</p>
+                <p class="fl-reveal" style="--d:3">Sole ML engineer on a four-person founding team. Own model training, evaluation, inference, and product integration. Pre-launch; details are private.</p>
             </div>
         </section>
-    </main>
 
-    <footer class="site-footer">
-        <div><a href="mailto:oliver.t.perrin@gmail.com">Say hello</a><span>© 2026 Oliver Perrin</span></div>
-        <nav aria-label="Elsewhere"><a href="https://github.com/OliverPerrin">GitHub</a><a href="https://www.linkedin.com/in/oliverperrin/">LinkedIn</a><a href="https://liminalml.substack.com/">Substack</a></nav>
-    </footer>
+        <section class="fl-plate ex-role ex-role--flip" aria-label="Founder &amp; Developer" data-frame-target=".ex-date" data-frame-pad="26" data-frame="0.3 0.5 0.4 0.5 0">
+            <div class="ex-date fl-reveal"><span>April 2026</span> <span>Present</span></div>
+            <div class="ex-body">
+                <h2 class="ex-title fl-reveal" style="--d:1">Founder &amp; Developer</h2>
+                <p class="fl-note fl-reveal" style="--d:2">LiminalML · Charlotte Metro</p>
+                <p class="fl-reveal" style="--d:3">Solo-built interactive ML explainers (Study) and figure editor (Studio). Next.js, TypeScript, Supabase, Stripe.</p>
+            </div>
+        </section>
+
+        <section class="fl-plate ex-role" aria-label="Systems Engineering Intern" data-frame-target=".ex-date" data-frame-pad="26" data-frame="0.3 0.5 0.4 0.5 0">
+            <div class="ex-date fl-reveal"><span>Jun 2023</span> <span>Aug 2024</span></div>
+            <div class="ex-body">
+                <h2 class="ex-title fl-reveal" style="--d:1">Systems Engineering Intern</h2>
+                <p class="fl-note fl-reveal" style="--d:2">Triaxis Power Consulting LLC · Charlotte, NC</p>
+                <p class="fl-reveal" style="--d:3">Built Raspberry Pi sensor monitoring for pipe temperature and thermal expansion in power plants.</p>
+            </div>
+        </section>
+
+        <footer class="fl-plate fl-close" data-frame="0.5 0.5 0.96 0.8 0.5">
+            <a class="fl-hello fl-reveal" href="mailto:oliver.t.perrin@gmail.com">Say hello</a>
+            <div class="fl-close-row fl-reveal" style="--d:2">
+                <nav aria-label="Elsewhere"><a href="https://github.com/OliverPerrin">GitHub</a><a href="https://www.linkedin.com/in/oliverperrin/">LinkedIn</a><a href="https://liminalml.substack.com/">Substack</a></nav>
+                <span>© 2026 Oliver Perrin</span>
+            </div>
+        </footer>
+    </main>
+    <button type="button" class="fl-pause" aria-pressed="false">Pause</button>
+    <div class="fl-caption is-hidden" aria-hidden="true"></div>
 </body>
 </html>

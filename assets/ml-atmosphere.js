@@ -287,15 +287,27 @@ function bindQuad(){
 function presetFor(plate,i){
   const raw=narrow.matches?(plate.dataset.frameMobile||(i===0?plate.dataset.frame:'0.5 0.52 0.94 0.76 0.22'))
     :medium.matches&&plate.dataset.frameMedium?plate.dataset.frameMedium:plate.dataset.frame;
-  return raw.split(/\s+/).map(Number);
+  return (raw||'0.5 0.52 0.94 0.76 0.22').split(/\s+/).map(Number);
 }
 function measure(){anchors=plates.map(p=>p.getBoundingClientRect().top+scrollY);presets=plates.map(presetFor);}
+// A frame wrapped around a live element: follows it while the page scrolls.
+function wrap(el,pad,presence){
+  const r=el.getBoundingClientRect();
+  return[(r.left+r.width/2)/W,(r.top+r.height/2)/H,(r.width+2*pad)/W,(r.height+2*pad)/H,presence];
+}
+function presetAt(i){
+  const plate=plates[i],sel=plate.dataset.frameTarget;
+  const el=sel&&plate.querySelector(sel);
+  return el?wrap(el,+(plate.dataset.framePad||24),+(plate.dataset.framePresence||0)):presets[i];
+}
 function targetFrame(){
-  const y=scrollY;const f=presets[0].slice();
+  if(hoverEl&&document.contains(hoverEl))return wrap(hoverEl,+(hoverEl.dataset.framePad||14),0);
+  const y=scrollY;const f=presetAt(0).slice();
   for(let i=1;i<plates.length;i++){
     const t=easeInOut((y-(anchors[i]-.72*H))/(.62*H));
     if(t<=0)break;
-    for(let k=0;k<5;k++)f[k]+=(presets[i][k]-f[k])*t;
+    const g=presetAt(i);
+    for(let k=0;k<5;k++)f[k]+=(g[k]-f[k])*t;
   }
   return f;
 }
@@ -397,6 +409,12 @@ addEventListener('pointermove',e=>{
 },{passive:true});
 document.documentElement.addEventListener('pointerleave',()=>{tiltTX=tiltTY=0;pointerOn=false;wake();});
 addEventListener('scroll',wake,{passive:true});
+// Hovering or focusing an element marked data-frame-hover pulls the frame onto it.
+let hoverEl=null;
+function setHover(el){if(el!==hoverEl){hoverEl=el;wake();}}
+document.addEventListener('pointerover',e=>{if(e.pointerType==='mouse')setHover(e.target.closest?.('[data-frame-hover]')||null);},{passive:true});
+document.addEventListener('focusin',e=>setHover(e.target.closest?.('[data-frame-hover]')||null));
+document.addEventListener('focusout',e=>{if(!e.relatedTarget?.closest?.('[data-frame-hover]'))setHover(null);});
 addEventListener('resize',resize);
 document.addEventListener('visibilitychange',wake);
 reduced.addEventListener('change',()=>{morph=1;plates.forEach(p=>p.classList.add('is-in'));wake();});

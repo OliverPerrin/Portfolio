@@ -11,9 +11,15 @@
     <meta name="description" content="About Oliver Perrin — founding ML engineer at a stealth startup, with research interests in reinforcement learning and post-training. Education, coursework, and certifications.">
     <link rel="canonical" href="https://oliverperrin.com/about">
     <link rel="stylesheet" href="app.css">
+    <link rel="stylesheet" href="assets/ml-atmosphere.css">
+    <link rel="stylesheet" href="assets/pages.css">
     <script src="app.js" defer></script>
+    <script src="assets/ml-atmosphere.js" defer></script>
+    <script src="assets/frame-ui.js" defer></script>
 </head>
-<body>
+<body class="frame-page pg-about">
+    <canvas class="fl-canvas" aria-hidden="true"></canvas>
+    <div class="fl-fallback" aria-hidden="true"></div>
     <a class="skip-link" href="#main">Skip to content</a>
     <header class="site-header">
         <a class="wordmark" href="index.html">Oliver Perrin</a>
@@ -30,59 +36,48 @@
             </nav>
         </details>
     </header>
+    <main id="main">
+        <section class="fl-plate ab-hero" aria-labelledby="about-title" data-frame="0.5 0.73 0.89 0.3 1" data-frame-mobile="0.5 0.68 0.86 0.3 1">
+            <span class="fl-label fl-reveal" data-decode>About</span>
+            <h1 id="about-title" class="ab-title fl-reveal" style="--d:1">Engineering, research,<br> and learning by building.</h1>
+        </section>
 
-    <main id="main" class="about-page">
-        <section class="about-overview">
-            <header class="about-heading">
-                <span class="eyebrow">About</span>
-                <h1 class="about-title">Engineering, research,<br> and learning by building.</h1>
-            </header>
-            <div class="about-intro">
-                <figure class="about-photo"><img src="assets/oliver-hiking.jpg" width="1367" height="1823" alt="Oliver standing on a rocky overlook in the mountains"></figure>
-                <div class="about-biography prose">
+        <section class="fl-plate pg-plate" aria-label="Biography" data-frame-target=".ab-photo" data-frame-pad="22" data-frame="0.3 0.5 0.3 0.7 0">
+            <div class="ab-sheet">
+                <figure class="ab-photo fl-reveal"><img src="assets/oliver-hiking.jpg" width="1367" height="1823" alt="Oliver standing on a rocky overlook in the mountains"><span class="ab-film-no" aria-hidden="true">01A</span></figure>
+                <div class="ab-bio">
                     <p>I’m Oliver, a machine learning engineer in Charlotte, North Carolina.</p>
                     <p>I’m the founding ML engineer at a stealth startup, where I own model training, evaluation, inference, and integration.</p>
                     <p>My research interests are reinforcement learning and post-training: fine-tuning, LoRA, and model merging. Outside work I build <a href="https://liminalml.com">LiminalML</a> and run <a href="projects.html#leximind">LexiMind</a>, an open-source model-merging study.</p>
                     <p>B.S. in Computer Science from Appalachian State University (2026), with a minor in Mathematics and a Data Science certificate.</p>
                 </div>
             </div>
-            <div class="about-topic">
-                <h2>Coursework</h2>
-                <div class="prose">
+        </section>
 
-                <p class="inline-list"><strong>Stanford (self-directed, lectures + exams + notes):</strong> <code>CS229</code> Machine Learning · <code>CS230</code> Deep Learning · <code>CS336</code> Language Modeling from Scratch · <code>CS224R</code> Deep Reinforcement Learning · <code>CME295/296</code> Transformers &amp; LLMs.</p>
-
-                <p class="inline-list"><strong>Appalachian State:</strong> <code>Applied Machine Learning</code> · <code>Advanced Reinforcement Learning</code> · <code>Artificial Intelligence</code> · <code>Computer Systems</code> · <code>Numerical Methods</code> · <code>Computational Mathematics</code> · <code>Statistical Data Analysis</code> · <code>Linear Algebra</code> · <code>Theoretical Computer Science</code> · <code>Programming Languages (Functional Programming w/ Haskell)</code> · <code>Data Structures &amp; Algorithms</code>.</p>
-
-                <p class="inline-list"><strong>Other:</strong> DeepLearning.AI <em>Machine Learning Specialization</em> (Andrew Ng). See <a href="#certifications">certifications</a> below.</p>
-
-                </div>
-            </div>
-            <div class="about-topic">
-                <h2>Academic projects</h2>
-                <div class="prose">
-
-                <p class="inline-list">Lambda-calculus interpreter with type inference (Haskell) · pipelined CPU simulator (C/C++) · 2D game engine (Java).</p>
-
-                </div>
-            </div>
-            <div class="about-topic">
-                <h2>Reach out</h2>
-                <div class="prose">
-
-                <p>Always happy to talk about RL, post-training, or NLP. <a href="contact.html">Get in touch</a>.</p>
-                </div>
+        <section class="fl-plate pg-plate" aria-labelledby="course-title" data-frame-target=".ab-tickers" data-frame-pad="18" data-frame="0.5 0.6 0.9 0.4 0">
+            <h2 id="course-title" class="pg-outline fl-reveal" data-decode>Coursework</h2>
+            <div class="ab-tickers">
+                <div class="ab-ticker"><strong>Stanford (self-directed, lectures + exams + notes):</strong><div class="ab-track"><div class="ab-reel"><p><code>CS229</code> Machine Learning · <code>CS230</code> Deep Learning · <code>CS336</code> Language Modeling from Scratch · <code>CS224R</code> Deep Reinforcement Learning · <code>CME295/296</code> Transformers &amp; LLMs.</p><p aria-hidden="true"><code>CS229</code> Machine Learning · <code>CS230</code> Deep Learning · <code>CS336</code> Language Modeling from Scratch · <code>CS224R</code> Deep Reinforcement Learning · <code>CME295/296</code> Transformers &amp; LLMs.</p></div></div></div>
+                <div class="ab-ticker"><strong>Appalachian State:</strong><div class="ab-track"><div class="ab-reel"><p><code>Applied Machine Learning</code> · <code>Advanced Reinforcement Learning</code> · <code>Artificial Intelligence</code> · <code>Computer Systems</code> · <code>Numerical Methods</code> · <code>Computational Mathematics</code> · <code>Statistical Data Analysis</code> · <code>Linear Algebra</code> · <code>Theoretical Computer Science</code> · <code>Programming Languages (Functional Programming w/ Haskell)</code> · <code>Data Structures &amp; Algorithms</code>.</p><p aria-hidden="true"><code>Applied Machine Learning</code> · <code>Advanced Reinforcement Learning</code> · <code>Artificial Intelligence</code> · <code>Computer Systems</code> · <code>Numerical Methods</code> · <code>Computational Mathematics</code> · <code>Statistical Data Analysis</code> · <code>Linear Algebra</code> · <code>Theoretical Computer Science</code> · <code>Programming Languages (Functional Programming w/ Haskell)</code> · <code>Data Structures &amp; Algorithms</code>.</p></div></div></div>
+                <div class="ab-ticker"><strong>Other:</strong><div class="ab-static"><p>DeepLearning.AI <em>Machine Learning Specialization</em> (Andrew Ng). See <a href="#certifications">certifications</a> below.</p></div></div>
             </div>
         </section>
 
-        <section class="about-credentials" id="certifications">
-            <div class="section-header">
-                <span class="eyebrow">Certifications</span>
-                <h2 class="section-title">Verified credentials</h2>
-                <p class="section-subtitle">The structured courses I've completed and kept verifiable records for.</p>
+        <section class="fl-plate pg-plate" aria-label="Academic projects and contact" data-frame-target=".ab-reach-link" data-frame-pad="16" data-frame="0.7 0.6 0.3 0.12 0">
+            <div class="ab-diptych">
+                <div><h2 class="fl-label fl-reveal" data-decode>Academic projects</h2><p class="ab-items fl-reveal" style="--d:1">Lambda-calculus interpreter with type inference (Haskell) · pipelined CPU simulator (C/C++) · 2D game engine (Java).</p></div>
+                <div class="ab-reach"><h2 class="fl-label fl-reveal" data-decode>Reach out</h2><p class="fl-reveal" style="--d:2">Always happy to talk about RL, post-training, or NLP. <a class="ab-reach-link" href="contact.html">Get in touch</a>.</p></div>
             </div>
-            <div class="cert-list">
-                <div class="cert-row">
+        </section>
+
+        <section id="certifications" class="fl-plate ab-certs" aria-labelledby="cert-title" data-frame="0.975 0.5 0.006 0.5 0.6">
+            <div class="ab-certs-head">
+                <span class="fl-label">Certifications</span>
+                <h2 id="cert-title" class="fl-title" data-decode>Verified credentials</h2>
+                <p>The structured courses I've completed and kept verifiable records for.</p>
+            </div>
+            <div class="ab-cert-grid">
+                <div class="ab-cert" data-frame-hover>
                     <div class="cert-logo"><img src="dlailogosquare.webp" alt="DeepLearning.AI"></div>
                     <div class="cert-body">
                         <div class="cert-title">Machine Learning Specialization</div>
@@ -90,7 +85,7 @@
                     </div>
                     <a class="cert-link" href="https://www.coursera.org/account/accomplishments/specialization/06E4OTKJIT07" target="_blank" rel="noopener">Verify </a>
                 </div>
-                <div class="cert-row">
+                <div class="ab-cert" data-frame-hover>
                     <div class="cert-logo"><img src="dlailogosquare.webp" alt="DeepLearning.AI"></div>
                     <div class="cert-body">
                         <div class="cert-title">Advanced Learning Algorithms</div>
@@ -98,7 +93,7 @@
                     </div>
                     <a class="cert-link" href="https://www.coursera.org/account/accomplishments/records/PL6KR2EVUROY" target="_blank" rel="noopener">Verify </a>
                 </div>
-                <div class="cert-row">
+                <div class="ab-cert" data-frame-hover>
                     <div class="cert-logo"><img src="dlailogosquare.webp" alt="DeepLearning.AI"></div>
                     <div class="cert-body">
                         <div class="cert-title">Supervised Machine Learning: Regression &amp; Classification</div>
@@ -106,7 +101,7 @@
                     </div>
                     <a class="cert-link" href="https://coursera.org/share/5c17e24da4d1df53bd219d4fdca3cbc7" target="_blank" rel="noopener">Verify </a>
                 </div>
-                <div class="cert-row">
+                <div class="ab-cert" data-frame-hover>
                     <div class="cert-logo"><img src="dlailogosquare.webp" alt="DeepLearning.AI"></div>
                     <div class="cert-body">
                         <div class="cert-title">Unsupervised Learning, Recommenders, Reinforcement Learning</div>
@@ -114,7 +109,7 @@
                     </div>
                     <a class="cert-link" href="https://coursera.org/share/848e82d7ed966cdd7299f9793a5934cb" target="_blank" rel="noopener">Verify </a>
                 </div>
-                <div class="cert-row">
+                <div class="ab-cert" data-frame-hover>
                     <div class="cert-logo"><span class="credential-wordmark">OpenAI</span></div>
                     <div class="cert-body">
                         <div class="cert-title">AI Professional Skills Certification</div>
@@ -122,7 +117,7 @@
                     </div>
                     <a class="cert-link" href="https://www.credential.net/ba36eec5-de5e-4fb6-a65a-263766f2be88" target="_blank" rel="noopener">Verify </a>
                 </div>
-                <div class="cert-row">
+                <div class="ab-cert" data-frame-hover>
                     <div class="cert-logo"><span class="credential-wordmark">Recording Academy</span></div>
                     <div class="cert-body">
                         <div class="cert-title">Python and Data Certification</div>
@@ -130,7 +125,7 @@
                     </div>
                     <a class="cert-link" href="https://www.credential.net/7c8a0a5a-0d28-456f-90d7-41ca572ffd1e" target="_blank" rel="noopener">Verify </a>
                 </div>
-                <div class="cert-row">
+                <div class="ab-cert" data-frame-hover>
                     <div class="cert-logo"><span class="credential-wordmark">Intel</span></div>
                     <div class="cert-body">
                         <div class="cert-title">Querying Data Certification</div>
@@ -138,7 +133,7 @@
                     </div>
                     <a class="cert-link" href="https://www.credential.net/40163989-73f7-425d-bd0d-fadd41b8bdca" target="_blank" rel="noopener">Verify </a>
                 </div>
-                <div class="cert-row">
+                <div class="ab-cert" data-frame-hover>
                     <div class="cert-logo">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
                     </div>
@@ -150,11 +145,16 @@
                 </div>
             </div>
         </section>
-    </main>
 
-    <footer class="site-footer">
-        <div><a href="mailto:oliver.t.perrin@gmail.com">Say hello</a><span>© 2026 Oliver Perrin</span></div>
-        <nav aria-label="Elsewhere"><a href="https://github.com/OliverPerrin">GitHub</a><a href="https://www.linkedin.com/in/oliverperrin/">LinkedIn</a><a href="https://liminalml.substack.com/">Substack</a></nav>
-    </footer>
+        <footer class="fl-plate fl-close" data-frame="0.5 0.5 0.96 0.8 0.5">
+            <a class="fl-hello fl-reveal" href="mailto:oliver.t.perrin@gmail.com">Say hello</a>
+            <div class="fl-close-row fl-reveal" style="--d:2">
+                <nav aria-label="Elsewhere"><a href="https://github.com/OliverPerrin">GitHub</a><a href="https://www.linkedin.com/in/oliverperrin/">LinkedIn</a><a href="https://liminalml.substack.com/">Substack</a></nav>
+                <span>© 2026 Oliver Perrin</span>
+            </div>
+        </footer>
+    </main>
+    <button type="button" class="fl-pause" aria-pressed="false">Pause</button>
+    <div class="fl-caption is-hidden" aria-hidden="true"></div>
 </body>
 </html>
