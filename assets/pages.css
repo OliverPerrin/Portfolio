@@ -6,8 +6,8 @@
 .pg-display { font-size: clamp(3rem, 6.2vw, 6.6rem); font-weight: 500; letter-spacing: -.06em; line-height: .92; max-width: 44vw; mix-blend-mode: difference; color: #fff; }
 .pg-sub { max-width: 26rem; margin-top: 34px; }
 .pg-sub p, .pg-hero p { font-size: 1.05rem; }
-.pg-index { display: block; font-size: clamp(4.5rem, 10vw, 9.5rem); font-weight: 500; letter-spacing: -.07em; line-height: .8; color: transparent; -webkit-text-stroke: 1px rgba(246,246,243,.55); margin-bottom: 18px; user-select: none; }
-.pg-outline { font-size: clamp(4rem, 11vw, 11rem); font-weight: 500; letter-spacing: -.07em; line-height: .85; color: transparent; -webkit-text-stroke: 1px rgba(246,246,243,.75); margin-bottom: 40px; }
+.pg-index { display: block; font-size: clamp(4.5rem, 10vw, 9.5rem); font-weight: 500; letter-spacing: -.01em; line-height: .8; color: transparent; -webkit-text-stroke: 1px rgba(246,246,243,.55); margin-bottom: 18px; padding: 0 .08em 0 .02em; user-select: none; }
+.pg-outline { font-size: clamp(4rem, 11vw, 11rem); font-weight: 500; letter-spacing: -.015em; line-height: .85; color: transparent; -webkit-text-stroke: 1px rgba(246,246,243,.75); margin-bottom: 40px; }
 .pg-tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 22px 0 6px; }
 .pg-tags span { font-size: .68rem; letter-spacing: .14em; text-transform: uppercase; border: 1px solid var(--rule); padding: 5px 9px; color: var(--body); }
 .fl-plate code { font-family: inherit; font-size: inherit; color: var(--paper); border: 1px solid var(--rule); padding: .05em .4em; }
@@ -23,7 +23,7 @@
 .ab-photo img { display: block; width: 100%; height: auto; filter: grayscale(1) contrast(1.15) brightness(.04) blur(6px); transition: filter 2.8s cubic-bezier(.2,.6,.2,1) .3s; }
 .has-js .is-in .ab-photo img, .no-js .ab-photo img { filter: grayscale(1) contrast(1.15) brightness(1) blur(0); }
 html:not(.has-js) .ab-photo img { filter: grayscale(1) contrast(1.15); }
-.ab-film-no { position: absolute; left: 24px; bottom: -22px; font-size: .62rem; letter-spacing: .3em; color: var(--quiet); }
+.ab-film-no { position: absolute; left: 32px; bottom: 10px; font-size: .62rem; letter-spacing: .3em; color: #fff; mix-blend-mode: difference; }
 .ab-bio p { font-size: 1.05rem; }
 .ab-bio p:first-child { font-size: clamp(1.5rem, 2.4vw, 2.2rem); line-height: 1.25; letter-spacing: -.02em; color: var(--paper); margin-bottom: 26px; }
 .ab-tickers { border: 0; }
@@ -59,11 +59,11 @@ html:not(.has-js) .ab-photo img { filter: grayscale(1) contrast(1.15); }
 .ab-cert:hover .cert-link { border-color: var(--ink); }
 
 /* ---------- Experience: timecodes ---------- */
-.ex-scrubber { position: fixed; left: 28px; top: 18vh; bottom: 18vh; width: 1px; background: rgba(246,246,243,.18); z-index: 44; pointer-events: none; }
+.ex-scrubber { position: fixed; left: 46px; top: 18vh; bottom: 18vh; width: 1px; background: rgba(246,246,243,.18); z-index: 44; pointer-events: none; }
 .ex-scrubber span { position: absolute; inset: 0; background: var(--paper); transform-origin: top; transform: scaleY(var(--scroll, 0)); }
 .ex-role { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 7vw; align-items: center; }
 .ex-role--flip .ex-date { order: 2; }
-.ex-date { justify-self: start; font-size: clamp(3.2rem, 7.6vw, 8.4rem); font-weight: 500; letter-spacing: -.06em; line-height: .9; color: transparent; -webkit-text-stroke: 1px var(--paper); }
+.ex-date { justify-self: start; font-size: clamp(3.2rem, 7.2vw, 8rem); font-weight: 500; letter-spacing: -.015em; line-height: .9; color: transparent; -webkit-text-stroke: 1px var(--paper); }
 .ex-role--flip .ex-date { justify-self: end; text-align: right; }
 .ex-date span { display: block; }
 .ex-date span:first-child::after { content: ""; display: block; width: 1.2em; height: 1px; background: var(--paper); margin: .16em 0; }
