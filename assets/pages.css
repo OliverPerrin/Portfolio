@@ -97,6 +97,7 @@ html:not(.has-js) .ab-photo img { filter: grayscale(1) contrast(1.15); }
 .pj-card p { font-size: .94rem; }
 .pj-frame-no { position: absolute; top: 12px; right: 14px; font-size: .6rem; letter-spacing: .3em; color: var(--quiet); }
 .pj-card:hover, .pj-card:focus-within, .pj-row:hover, .pj-row:focus-within { background: var(--paper); color: var(--ink); }
+.pj-card:hover h3, .pj-card:focus-within h3, .pj-row:hover h3, .pj-row:focus-within h3 { color: var(--ink); }
 .pj-card:hover p, .pj-card:hover .fl-note, .pj-card:hover .pj-frame-no, .pj-row:hover p, .pj-row:hover .fl-note { color: #444; }
 .pj-card:hover .pg-tags span, .pj-row:hover .pg-tags span { color: var(--ink); border-color: rgba(7,7,7,.35); }
 .pj-card:hover .fl-link, .pj-row:hover .fl-link { color: var(--ink); border-color: var(--ink); }

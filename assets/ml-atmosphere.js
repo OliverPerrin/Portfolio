@@ -167,6 +167,7 @@ function extraPoint(kind,i,u,v,w){
       else if(part===1){x=-2.02+.32*w;z=(Math.floor(v*7)-3)*.15;y=FLOOR+.16*random();a=.16;}
       else{const sd=i%2?1:-1;x=X;z=sd*lerpKeys(CAR.w,s);y=FLOOR;a=.4;}
     }
+    x*=.8;y*=.8;z*=.8;
   }else if(kind===11){
     // Event map: a street grid with roads, and pinned events with rings.
     const pins=[[-1.4,.6,.7],[-.6,-.8,.5],[.2,.3,.9],[1.1,-.4,.6],[1.6,.9,.45],[-.2,1,.55],[.8,-1.1,.65]];
